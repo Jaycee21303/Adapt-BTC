@@ -255,3 +255,30 @@ li {
   margin-top: 60px;
   color: #bbbbbb;
 }
+/* MOBILE POLISH */
+@media (max-width: 768px) {
+
+  .nav-links {
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+  }
+
+  .hero h1 {
+    font-size: 32px;
+    line-height: 1.2;
+  }
+
+  .container {
+    width: 92%;
+  }
+
+  .grid-2, .grid-3, .grid-4 {
+    grid-template-columns: 1fr !important;
+  }
+
+  .card {
+    padding: 20px;
+  }
+}
+
