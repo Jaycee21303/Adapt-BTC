@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="bg-[#0D1117] text-white">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,118 +7,168 @@
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="font-inter">
+<body class="bg-gray-100 text-gray-900 font-inter">
 
 <!-- NAVBAR -->
-<header class="w-full bg-[#0D1117]/80 backdrop-blur border-b border-white/10">
+<header class="bg-white border-b border-gray-200">
   <nav class="max-w-7xl mx-auto flex justify-between items-center py-4 px-6">
-    <div class="flex items-center gap-3">
-      <img src="assets/img/logo.png" class="h-10 w-auto" alt="AdaptBTC Logo">
-      <span class="text-xl font-bold tracking-wide">AdaptBTC</span>
+
+    <!-- LOGO -->
+    <a href="index.html" class="flex items-center gap-1">
+      <span class="text-2xl font-extrabold tracking-tight text-gray-900">ADAPT</span>
+      <span class="text-2xl font-extrabold tracking-tight text-[#3B82F6]">BTC</span>
+    </a>
+
+    <!-- NAV LINKS -->
+    <div class="hidden md:flex gap-8 text-gray-700 font-medium">
+      <a href="index.html" class="hover:text-black">Home</a>
+      <a href="beginner.html" class="hover:text-black">Beginner Guide</a>
+      <a href="our-mission.html" class="hover:text-black">Our Mission</a>
+      <a href="get-involved.html" class="hover:text-black">Get Involved</a>
+      <a href="donate.html" class="hover:text-black">Donate</a>
     </div>
 
-    <div class="hidden md:flex gap-8 text-gray-300">
-      <a href="index.html" class="hover:text-white">Home</a>
-      <a href="beginner.html" class="hover:text-white">Beginner Guide</a>
-      <a href="consulting.html" class="hover:text-white">Consulting</a>
-      <a href="our-mission.html" class="hover:text-white">Our Mission</a>
-      <a href="get-involved.html" class="hover:text-white">Get Involved</a>
-      <a href="donate.html" class="hover:text-white">Donate</a>
-    </div>
+    <!-- CTA BUTTON -->
+    <a href="consulting.html" class="hidden md:inline-block bg-[#3B82F6] text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-blue-600 transition">Book a Session</a>
   </nav>
 </header>
 
 <!-- HERO -->
-<section class="max-w-6xl mx-auto px-6 pt-20 pb-12">
-  <h1 class="text-4xl md:text-6xl font-bold leading-tight">
-    Why Bitcoin Matters<br>— and Why the World Is Adapting
-  </h1>
+<section class="max-w-7xl mx-auto px-6 pt-16 pb-10">
+  <div class="max-w-2xl">
+    <h1 class="text-5xl font-bold leading-tight">
+      Bitcoin Is Changing Money.<br>We're Here To Help You Adapt.
+    </h1>
+    <p class="mt-6 text-lg text-gray-700">
+      Bitcoin is the first digitally scarce, inflation-resistant form of money. 
+      AdaptBTC helps individuals and small businesses understand Bitcoin with simple education, clear tools, and optional 1-on-1 guidance.
+    </p>
 
-  <p class="mt-6 text-lg text-gray-300 max-w-2xl">
-    Bitcoin is the first digitally scarce, globally accessible, inflation-resistant money.
-    This page explains why it exists, why it matters, and how it protects everyday people
-    and small businesses.
-  </p>
-
-  <div class="mt-8 flex gap-4">
-    <a href="beginner.html" class="px-6 py-3 bg-blue-600 rounded-lg font-semibold hover:bg-blue-700">
-      Start Learning
-    </a>
-    <a href="consulting.html" class="px-6 py-3 border border-gray-600 rounded-lg font-semibold hover:bg-gray-800">
-      Work With Us →
-    </a>
+    <div class="mt-8 flex gap-4">
+      <a href="beginner.html" class="px-6 py-3 bg-[#3B82F6] text-white rounded-lg font-semibold hover:bg-blue-600 transition">Start Learning</a>
+      <a href="consulting.html" class="px-6 py-3 border border-gray-300 rounded-lg font-semibold hover:bg-gray-200 transition">Book a Session →</a>
+    </div>
   </div>
 </section>
 
 <!-- WHY BITCOIN MATTERS -->
-<section class="max-w-6xl mx-auto px-6 py-16">
-  <h2 class="text-3xl font-bold mb-10 text-blue-400">Why Bitcoin Matters</h2>
+<section class="max-w-7xl mx-auto px-6 py-14">
+  <h2 class="text-3xl font-bold mb-10 text-gray-900">Why Bitcoin Matters</h2>
 
-  <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
-    <div>
+  <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
       <h3 class="text-xl font-semibold mb-2">Inflation Protection</h3>
-      <p class="text-gray-400">
-        Bitcoin’s supply is capped at 21 million, unlike fiat currencies which lose value every year.
-      </p>
+      <p class="text-gray-700">Bitcoin has a fixed supply of 21 million, giving it predictable monetary properties unlike inflationary fiat currency.</p>
     </div>
-    <div>
+
+    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
       <h3 class="text-xl font-semibold mb-2">True Ownership</h3>
-      <p class="text-gray-400">
-        You control your money directly. No bank can freeze or reverse your transactions.
-      </p>
+      <p class="text-gray-700">You control your money directly. No bank can freeze, reverse, or limit your transactions.</p>
     </div>
-    <div>
-      <h3 class="text-xl font-semibold mb-2">Borderless Money</h3>
-      <p class="text-gray-400">
-        Send value across the world in minutes — without intermediaries or permission.
-      </p>
+
+    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+      <h3 class="text-xl font-semibold mb-2">Borderless Payments</h3>
+      <p class="text-gray-700">Send value anywhere in the world — instantly, securely, and without middlemen.</p>
     </div>
-    <div>
+
+    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
       <h3 class="text-xl font-semibold mb-2">Most Secure Network</h3>
-      <p class="text-gray-400">
-        Bitcoin is protected by the largest decentralized computing network ever created.
-      </p>
+      <p class="text-gray-700">Bitcoin is secured by the largest decentralized computing network ever created.</p>
     </div>
   </div>
 </section>
 
-<!-- INFLATION SECTION -->
-<section class="max-w-5xl mx-auto px-6 py-16">
-  <h2 class="text-3xl font-bold text-blue-400 mb-6">U.S. Inflation — November 2025</h2>
+<!-- TOOLS SECTION -->
+<section class="max-w-7xl mx-auto px-6 py-14">
+  <h2 class="text-3xl font-bold mb-8 text-gray-900">Bitcoin Tools</h2>
 
-  <div class="bg-white/5 border border-white/10 p-6 rounded-xl">
-    <p class="text-xl font-semibold mb-3">
-      📊 Latest CPI Year-Over-Year: <span class="text-green-400">2.6%</span>
-    </p>
-    <p class="text-gray-300">
-      While inflation has decreased from the 2021–2022 highs, purchasing power continues to erode.
-      Bitcoin offers an alternative monetary system with fixed supply and predictable issuance.
-    </p>
+  <div class="grid md:grid-cols-3 gap-8">
+
+    <!-- DCA Tool Placeholder -->
+    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+      <h3 class="text-xl font-semibold mb-3">DCA Calculator</h3>
+      <p class="text-gray-700 mb-4">Estimate long-term Bitcoin savings with a dollar-cost averaging strategy.</p>
+      <!-- Insert your JS widget here -->
+    </div>
+
+    <!-- Halving Countdown Placeholder -->
+    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+      <h3 class="text-xl font-semibold mb-3">Halving Countdown</h3>
+      <p class="text-gray-700 mb-4">Track the next Bitcoin halving event and understand its impact on supply.</p>
+    </div>
+
+    <!-- Inflation Loss Tool Placeholder -->
+    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+      <h3 class="text-xl font-semibold mb-3">Inflation Loss Tool</h3>
+      <p class="text-gray-700 mb-4">See how inflation reduces purchasing power over time.</p>
+    </div>
+
   </div>
 </section>
 
-<!-- EMAIL SIGNUP -->
+<!-- CONSULTING PROMO -->
+<section class="max-w-6xl mx-auto px-6 py-16">
+  <div class="bg-white border border-gray-200 p-10 rounded-xl shadow-sm">
+    <h2 class="text-3xl font-bold mb-4">Need Help Getting Started?</h2>
+    <p class="text-gray-700 mb-6 max-w-2xl">
+      AdaptBTC offers simple, 1-on-1 Bitcoin guidance for everyday people and small businesses.
+      Learn safely, avoid scams, and build a long-term plan with confidence.
+    </p>
+
+    <ul class="text-gray-700 space-y-2 mb-8">
+      <li>• Beginner Bitcoin Session — <strong>$49</strong></li>
+      <li>• Small Business Bitcoin Setup — <strong>$199</strong></li>
+    </ul>
+
+    <a href="consulting.html" class="inline-block bg-[#3B82F6] text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-600 transition">
+      Book a Session →
+    </a>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
 <section class="max-w-4xl mx-auto px-6 py-16 text-center">
   <h3 class="text-2xl font-bold mb-4">Join the AdaptBTC Newsletter</h3>
-  <p class="text-gray-300 mb-6">Get Bitcoin education, strategy tips, and updates.</p>
+  <p class="text-gray-600 mb-6">Bitcoin education, strategy tips, and updates.</p>
 
-  <form class="flex flex-col md:flex-row gap-4 justify-center">
-    <input type="email" placeholder="Your email address"
-      class="px-4 py-3 rounded-lg bg-white/10 border border-white/20 w-full md:w-96">
-    <button class="px-6 py-3 bg-blue-600 rounded-lg hover:bg-blue-700 font-semibold">
+  <form onsubmit="return validateEmail();" class="flex flex-col md:flex-row gap-4 justify-center">
+    <input id="newsletterEmail" type="email" required placeholder="Your email address" class="px-4 py-3 rounded-lg bg-white border border-gray-300 w-full md:w-96">
+    <button class="px-6 py-3 bg-[#3B82F6] text-white rounded-lg font-semibold hover:bg-blue-600 transition">
       Subscribe
     </button>
   </form>
+
+  <p id="newsletterMessage" class="mt-3 text-sm hidden"></p>
+
+  <script>
+    function validateEmail() {
+      const email = document.getElementById('newsletterEmail').value.trim();
+      const msg = document.getElementById('newsletterMessage');
+
+      if (email === "") {
+        msg.innerText = "Please enter a valid email.";
+        msg.classList.remove("hidden");
+        msg.classList.add("text-red-600");
+        return false;
+      }
+
+      msg.innerText = "Subscribed successfully!";
+      msg.classList.remove("hidden");
+      msg.classList.add("text-green-600");
+      return false; 
+    }
+  </script>
 </section>
 
 <!-- FOOTER -->
-<footer class="w-full border-t border-white/10 py-8 text-center text-gray-400">
+<footer class="border-t border-gray-300 py-8 mt-16 text-center text-gray-600">
   <p>AdaptBTC • Los Angeles, CA</p>
   <div class="mt-3 flex justify-center gap-6 text-sm">
-    <a href="privacy.html" class="hover:text-white">Privacy Policy</a>
-    <a href="terms.html" class="hover:text-white">Terms</a>
+    <a href="privacy.html" class="hover:text-black">Privacy Policy</a>
+    <a href="terms.html" class="hover:text-black">Terms</a>
   </div>
 </footer>
 
 </body>
 </html>
+
