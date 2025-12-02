@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="refresh" content="0; url=community.html#support">
-    <meta name="description" content="Redirecting to the AdaptBTC Community page to support our open Bitcoin onboarding work.">
-    <link rel="canonical" href="https://adaptbtc.com/community.html">
-    <title>AdaptBTC – Support (Redirect)</title>
+    <meta name="description" content="Donate to AdaptBTC with Bitcoin Lightning. Scan the QR, copy the invoice, and help fund open-access onboarding tools and education.">
+    <link rel="canonical" href="https://adaptbtc.com/donate.html">
+    <title>AdaptBTC – Donate with Bitcoin</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="assets/css/global.css">
@@ -36,47 +35,57 @@
 
 <!-- HERO -->
 <section class="max-w-6xl mx-auto px-6 pt-12 pb-6">
-    <h1 class="text-4xl md:text-5xl font-bold">Support AdaptBTC</h1>
+    <h1 class="text-4xl md:text-5xl font-bold">Donate with Bitcoin</h1>
 
     <p class="mt-5 text-lg max-w-3xl text-gray-700">
-        Donations help us provide free Bitcoin education, maintain tools, build resources for beginners, 
-        and expand our ability to help people understand Bitcoin safely.
-        <br><br>
-        Your support directly funds development and outreach — thank you for helping us grow.
+        Help keep AdaptBTC free and open for every new Bitcoiner. Your Lightning donation funds education,
+        tooling, translations, and community workshops so people everywhere can onboard safely.
     </p>
+
+    <div class="mt-6 flex flex-wrap gap-3">
+        <a href="#lightning-donate" class="btn-primary">Donate now</a>
+        <a href="#how-it-works" class="btn-secondary">How Lightning donations work</a>
+    </div>
 </section>
 
 <!-- DONATION OPTIONS -->
-<section class="max-w-5xl mx-auto px-6 py-10">
+<section id="lightning-donate" class="max-w-6xl mx-auto px-6 py-10">
     <div class="card">
-        <h2 class="text-2xl font-bold mb-4">Ways to Support</h2>
+        <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8">
+            <div class="lg:max-w-xl">
+                <p class="eyebrow">Direct Bitcoin support</p>
+                <h2 class="text-3xl font-bold">Lightning donation wallet</h2>
+                <p class="text-gray-700 mt-3">Scan the QR code below with your Lightning wallet or paste the invoice to fund AdaptBTC’s open education work.</p>
 
-        <div class="space-y-6 text-gray-700">
+                <div class="mt-4 bg-gray-50 border border-gray-200 rounded-xl p-4">
+                    <div class="flex items-center justify-between gap-3 flex-wrap">
+                        <div>
+                            <p class="text-sm font-semibold text-gray-800">Lightning invoice</p>
+                            <p class="text-sm text-gray-600 break-all" id="invoice-text">lightning:LNURL1DP68GURN8GHJ7MRWW4EXCTN0D3HX2APWVMJHYMP0WAHKCMR0VA58GUMHD96X2AP0D3H</p>
+                        </div>
+                        <button id="copy-invoice" class="btn-secondary text-sm">Copy</button>
+                    </div>
+                    <p class="text-xs text-gray-500 mt-2">Replace this invoice with your live LNURL or invoice string whenever you rotate wallets.</p>
+                </div>
 
-            <div>
-                <h3 class="text-xl font-semibold mb-2">⚡ Lightning (Coming Soon)</h3>
-                <p class="text-gray-700">
-                    We will soon accept Bitcoin Lightning donations through Cash App or a direct LN invoice.
-                    This allows fast, low-fee Bitcoin donations.
-                </p>
+                <div class="mt-4 space-y-2 text-sm text-gray-700">
+                    <p class="font-semibold">How to use</p>
+                    <ul class="list-disc list-inside space-y-1">
+                        <li>Open your Lightning wallet and tap “Send” or “Pay invoice.”</li>
+                        <li>Scan the QR code or paste the invoice string above.</li>
+                        <li>Confirm the amount and send to support AdaptBTC.</li>
+                    </ul>
+                </div>
             </div>
 
-            <div>
-                <h3 class="text-xl font-semibold mb-2">💳 Cash App (Under Setup)</h3>
-                <p>
-                    We’re finalizing our Cash App business profile to accept direct community support. 
-                    Once active, you’ll be able to donate instantly.
-                </p>
+            <div class="w-full lg:w-96 flex flex-col items-center gap-3">
+                <div class="bg-white border border-gray-200 rounded-2xl p-4 shadow-sm w-full flex flex-col items-center">
+                    <h3 class="text-lg font-semibold mb-2">Scan to donate</h3>
+                    <canvas id="lightning-qr" class="w-64 h-64 border border-gray-200 rounded-xl" aria-label="Lightning donation QR"></canvas>
+                    <p class="text-xs text-gray-500 mt-2">QR auto-generates from the invoice string so you can swap wallets anytime.</p>
+                </div>
+                <a href="#how-it-works" class="btn-primary w-full text-center">View donation tips</a>
             </div>
-
-            <div>
-                <h3 class="text-xl font-semibold mb-2">✉️ Email Updates</h3>
-                <p>
-                    If you'd like to stay updated on when donations go live, subscribe to our newsletter 
-                    on the homepage.
-                </p>
-            </div>
-
         </div>
     </div>
 </section>
@@ -118,6 +127,31 @@
     </div>
 </section>
 
+<!-- HOW IT WORKS -->
+<section id="how-it-works" class="max-w-6xl mx-auto px-6 pb-10">
+    <div class="card">
+        <h2 class="text-2xl font-bold mb-3">How Lightning donations work</h2>
+        <p class="text-gray-700">Lightning payments are near-instant and low-fee. Use any Lightning-enabled wallet (Cash App, Phoenix, Muun, Wallet of Satoshi, etc.) to send support.</p>
+
+        <div class="grid md:grid-cols-3 gap-6 mt-4 text-sm text-gray-700">
+            <div>
+                <p class="font-semibold">1) Open your wallet</p>
+                <p class="mt-1">Choose “Send” or “Pay invoice.”</p>
+            </div>
+            <div>
+                <p class="font-semibold">2) Scan or paste</p>
+                <p class="mt-1">Scan the QR or paste the invoice string above.</p>
+            </div>
+            <div>
+                <p class="font-semibold">3) Confirm & send</p>
+                <p class="mt-1">Select an amount, confirm, and your support is delivered.</p>
+            </div>
+        </div>
+
+        <p class="text-xs text-gray-500 mt-4">Need to rotate wallets? Replace the invoice string and the QR will regenerate automatically.</p>
+    </div>
+</section>
+
 <!-- CTA -->
 <section class="max-w-6xl mx-auto px-6 py-16 text-center">
     <h2 class="text-3xl font-bold">Thank You for Supporting AdaptBTC</h2>
@@ -139,6 +173,32 @@
         <a href="https://twitter.com/AdaptBTC" class="hover:text-black">X (Twitter)</a>
     </div>
 </footer>
+
+<script src="https://cdn.jsdelivr.net/npm/qrious@4.0.2/dist/qrious.min.js"></script>
+<script>
+    (function() {
+        const invoiceText = document.getElementById('invoice-text').textContent.trim();
+        const qrCanvas = document.getElementById('lightning-qr');
+
+        try {
+            new QRious({ element: qrCanvas, value: invoiceText, size: 256, level: 'H' });
+        } catch (e) {
+            console.error('QR generation failed', e);
+        }
+
+        const copyButton = document.getElementById('copy-invoice');
+        copyButton?.addEventListener('click', async () => {
+            try {
+                await navigator.clipboard.writeText(invoiceText);
+                copyButton.textContent = 'Copied!';
+                setTimeout(() => copyButton.textContent = 'Copy', 2500);
+            } catch (err) {
+                copyButton.textContent = 'Copy failed';
+                setTimeout(() => copyButton.textContent = 'Copy', 2500);
+            }
+        });
+    })();
+</script>
 
 </body>
 </html>
