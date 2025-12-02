@@ -1,118 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Support AdaptBTC | Donate</title>
-  <link rel="stylesheet" href="assets/css/global.css" />
-  <script src="assets/js/main.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AdaptBTC – Donate & Support</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="assets/css/global.css">
 </head>
 
-<body>
+<body class="bg-gray-100 text-gray-900 font-inter">
 
 <!-- NAVBAR -->
-<header class="navbar">
-  <div class="nav-logo">AdaptBTC</div>
-  <nav class="nav-links">
-    <a href="index.html">Home</a>
-    <a href="beginner.html">Beginners</a>
-    <a href="consulting.html">Consulting</a>
-    <a href="our-mission.html">Our Mission</a>
-    <a href="get-involved.html">Get Involved</a>
-    <a href="donate.html">Donate</a>
-  </nav>
+<header class="w-full bg-white shadow-sm">
+    <nav class="max-w-7xl mx-auto flex justify-between items-center py-4 px-6">
+        <div class="flex items-center gap-3">
+            <img src="assets/img/logo/adaptbtc_logo.png" class="h-10 w-auto" alt="AdaptBTC Logo">
+            <span class="text-xl font-bold">Adapt<span class="text-blue-600">BTC</span></span>
+        </div>
+
+        <div class="hidden md:flex gap-8 text-gray-600 text-[15px]">
+            <a href="index.html" class="hover:text-black">Home</a>
+            <a href="beginner.html" class="hover:text-black">Beginner Guide</a>
+            <a href="consulting.html" class="hover:text-black">Work With Us</a>
+            <a href="our-mission.html" class="hover:text-black">Our Mission</a>
+            <a href="get-involved.html" class="hover:text-black">Get Involved</a>
+            <a href="donate.html" class="text-black font-semibold">Donate</a>
+        </div>
+    </nav>
 </header>
 
 <!-- HERO -->
-<section class="hero container">
-  <h1>Support AdaptBTC</h1>
-  <p>
-    Help us expand Bitcoin education, reach more people,  
-    and provide free tools and resources to the community.
-  </p>
+<section class="max-w-6xl mx-auto px-6 pt-12 pb-6">
+    <h1 class="text-4xl md:text-5xl font-bold">Support AdaptBTC</h1>
+
+    <p class="mt-5 text-lg max-w-3xl text-gray-700">
+        Donations help us provide free Bitcoin education, maintain tools, build resources for beginners, 
+        and expand our ability to help people understand Bitcoin safely.
+        <br><br>
+        Your support directly funds development and outreach — thank you for helping us grow.
+    </p>
+</section>
+
+<!-- DONATION OPTIONS -->
+<section class="max-w-5xl mx-auto px-6 py-10">
+    <div class="card">
+        <h2 class="text-2xl font-bold mb-4">Ways to Support</h2>
+
+        <div class="space-y-6 text-gray-700">
+
+            <div>
+                <h3 class="text-xl font-semibold mb-2">⚡ Lightning (Coming Soon)</h3>
+                <p class="text-gray-700">
+                    We will soon accept Bitcoin Lightning donations through Cash App or a direct LN invoice.
+                    This allows fast, low-fee Bitcoin donations.
+                </p>
+            </div>
+
+            <div>
+                <h3 class="text-xl font-semibold mb-2">💳 Cash App (Under Setup)</h3>
+                <p>
+                    We’re finalizing our Cash App business profile to accept direct community support. 
+                    Once active, you’ll be able to donate instantly.
+                </p>
+            </div>
+
+            <div>
+                <h3 class="text-xl font-semibold mb-2">✉️ Email Updates</h3>
+                <p>
+                    If you'd like to stay updated on when donations go live, subscribe to our newsletter 
+                    on the homepage.
+                </p>
+            </div>
+
+        </div>
+    </div>
 </section>
 
 <!-- WHY DONATE -->
-<section class="section container">
-  <h2>Why Your Support Matters</h2>
-  <p>
-    AdaptBTC exists to make Bitcoin education accessible, practical,  
-    and empowering for everyone — from absolute beginners to small businesses  
-    preparing for the future of money.
-  </p>
+<section class="max-w-5xl mx-auto px-6 py-10">
+    <h2 class="text-3xl font-bold mb-4">Why Your Support Matters</h2>
 
-  <p>
-    Donations help fund:
-  </p>
+    <div class="grid md:grid-cols-2 gap-6">
 
-  <ul>
-    <li>✔ Free beginner resources and guides</li>
-    <li>✔ Website hosting & development</li>
-    <li>✔ Community outreach and workshops</li>
-    <li>✔ Research, writing, and translation efforts</li>
-    <li>✔ Future open-source Bitcoin projects</li>
-  </ul>
-</section>
+        <div class="card">
+            <h3 class="text-xl font-semibold mb-2">Free Beginner Education</h3>
+            <p class="text-gray-700">
+                Your support allows us to continue offering beginner guides and tools at no cost.
+            </p>
+        </div>
 
-<!-- DONATION METHODS -->
-<section class="section container">
-  <h2>Donation Methods</h2>
+        <div class="card">
+            <h3 class="text-xl font-semibold mb-2">Tool Development</h3>
+            <p class="text-gray-700">
+                We’re building more BTC calculators, learning modules, and long-term tools.
+            </p>
+        </div>
 
-  <div class="grid-2">
+        <div class="card">
+            <h3 class="text-xl font-semibold mb-2">Website Improvements</h3>
+            <p class="text-gray-700">
+                Donations help us maintain hosting, upgrades, performance, and new features.
+            </p>
+        </div>
 
-    <!-- BLOCK: LIGHTNING -->
-    <div class="card">
-      <h3>Donate via Lightning ⚡</h3>
-      <p>
-        Fast, low-fee Bitcoin payments.  
-        Add your Lightning Address or LNURL here later.
-      </p>
+        <div class="card">
+            <h3 class="text-xl font-semibold mb-2">Future Projects</h3>
+            <p class="text-gray-700">
+                Consulting expansion, DCA apps, interactive charts, BTC course material, and more.
+            </p>
+        </div>
 
-      <div class="placeholder-box">
-        <p><strong>Lightning Address:</strong></p>
-        <p>yourname@ln.example (placeholder)</p>
-      </div>
-
-      <div class="placeholder-box">
-        <p><strong>Lightning QR Code:</strong></p>
-        <p>(Add QR image later)</p>
-      </div>
     </div>
-
-    <!-- BLOCK: CASH APP / STRIKE -->
-    <div class="card">
-      <h3>Donate with Cash App or Strike</h3>
-      <p>
-        For people who prefer traditional or hybrid platforms.
-      </p>
-
-      <div class="placeholder-box">
-        <p><strong>Cash App Tag:</strong></p>
-        <p>$YourCashTag (placeholder)</p>
-      </div>
-
-      <div class="placeholder-box">
-        <p><strong>Strike Link:</strong></p>
-        <p>https://strike.me/yourname (placeholder)</p>
-      </div>
-    </div>
-
-  </div>
 </section>
 
 <!-- CTA -->
-<section class="cta container">
-  <h2>Thank You for Supporting the Mission</h2>
-  <p>
-    Your contribution — no matter the size — helps us guide more people  
-    toward responsible, confident Bitcoin adoption.
-  </p>
-  <a class="btn-primary" href="get-involved.html">Back to Get Involved</a>
+<section class="max-w-6xl mx-auto px-6 py-16 text-center">
+    <h2 class="text-3xl font-bold">Thank You for Supporting AdaptBTC</h2>
+    <p class="text-gray-700 mt-2 mb-6">
+        We are committed to helping as many people as possible learn Bitcoin safely.
+    </p>
+
+    <a href="index.html" class="btn-primary">Return Home</a>
 </section>
 
 <!-- FOOTER -->
-<footer class="footer">
-  <p>© 2025 AdaptBTC — Los Angeles, CA</p>
+<footer class="w-full border-t border-gray-300 py-8 text-center text-gray-600">
+    <p>AdaptBTC • Los Angeles, CA</p>
+
+    <div class="mt-3 flex justify-center gap-6 text-sm">
+        <a href="privacy.html" class="hover:text-black">Privacy Policy</a>
+        <a href="terms.html" class="hover:text-black">Terms</a>
+        <a href="https://twitter.com/AdaptBTC" class="hover:text-black">X (Twitter)</a>
+    </div>
 </footer>
 
 </body>
