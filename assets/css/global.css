@@ -122,7 +122,7 @@ select:focus {
 -------------------------------------------------- */
 
 #price-ticker {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 600;
 }
 
@@ -131,19 +131,28 @@ select:focus {
 }
 
 #btc-arrow {
-    font-size: 18px;
+    font-size: 16px;
+}
+
+
+.page-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 48px 24px;
 }
 
 .price-ticker-card {
     background: linear-gradient(135deg, #f2f5ff 0%, #eef2ff 100%);
     border: 1px solid #dfe6ff;
     border-radius: 14px;
-    padding: 16px 20px;
-    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.08);
+    padding: 12px 16px;
+    box-shadow: 0 4px 10px rgba(37, 99, 235, 0.06);
+    max-width: 520px;
+    width: 100%;
 }
 
 .ticker-label {
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -156,8 +165,8 @@ select:focus {
 }
 
 .ticker-subtext {
-    margin-top: 6px;
-    font-size: 13px;
+    margin-top: 4px;
+    font-size: 12px;
     color: #475569;
 }
 
