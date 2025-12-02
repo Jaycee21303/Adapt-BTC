@@ -15,7 +15,7 @@
 <header class="w-full bg-white shadow-sm">
     <nav class="max-w-7xl mx-auto flex justify-between items-center py-4 px-6">
         <div class="flex items-center gap-3">
-            <img src="assets/img/logo/adaptbtc_logo.png" class="h-10 w-auto" alt="AdaptBTC Logo">
+            <img src="assets/img/logo/adaptbtc_logo.png" class="brand-logo" alt="AdaptBTC Logo">
         </div>
 
         <div class="hidden md:flex gap-8 text-gray-600 text-[15px]">
@@ -34,24 +34,41 @@
     <h1 class="text-4xl md:text-5xl font-bold">Get Involved with AdaptBTC</h1>
 
     <p class="mt-5 text-lg max-w-3xl text-gray-700">
-        AdaptBTC is a community-driven educational project.  
-        Whether you're a beginner or a Bitcoin veteran, there are many ways to contribute, learn, and support the mission.
+        AdaptBTC is a community-driven educational project focused on practical, security-first Bitcoin onboarding.
+        Whether you're a beginner or a BTC veteran, you can help teach, build, and onboard the next wave of users.
     </p>
+
+    <div class="mt-6 flex flex-wrap gap-3">
+        <a href="#volunteer-projects" class="btn-primary">See active projects</a>
+        <a href="mailto:hello@adaptbtc.com?subject=I%20want%20to%20help%20AdaptBTC" class="btn-secondary">Email to get involved</a>
+    </div>
 </section>
 
 <!-- HOW TO GET INVOLVED -->
 <section class="max-w-6xl mx-auto px-6 py-10">
 
-    <h2 class="text-3xl font-bold mb-6">Ways You Can Participate</h2>
+    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
+        <div>
+            <h2 class="text-3xl font-bold">Ways You Can Participate</h2>
+            <p class="text-gray-700 mt-2 max-w-3xl">Pick the path that fits your time, skills, and interest. Every action below connects you with a real person on the AdaptBTC team.</p>
+        </div>
+        <a href="https://twitter.com/AdaptBTC" class="text-blue-600 hover:text-blue-700 font-semibold">Chat with us on X &rarr;</a>
+    </div>
 
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
 
         <div class="card">
             <h3 class="text-xl font-semibold mb-2">Spread the Word</h3>
             <p class="text-gray-700">
-                Share AdaptBTC resources, pages, and tools with friends, family, or coworkers 
+                Share AdaptBTC resources, pages, and tools with friends, family, or coworkers
                 who want to learn about Bitcoin.
             </p>
+            <ul class="text-sm text-gray-600 mt-3 list-disc list-inside space-y-1">
+                <li>Send our <a class="text-blue-600 hover:text-blue-700" href="beginner.html">Beginner Guide</a> to new learners.</li>
+                <li>Post the <a class="text-blue-600 hover:text-blue-700" href="consulting.html">Work With Us</a> page in your community groups.</li>
+                <li>Share the <a class="text-blue-600 hover:text-blue-700" href="beginner.html#etf-basics">Bitcoin ETF explainer</a> with people who only have brokerage accounts.</li>
+                <li>Host a 15-minute "What is Bitcoin?" show-and-tell using our slides (email us to get them).</li>
+            </ul>
         </div>
 
         <div class="card">
@@ -60,6 +77,8 @@
                 Get updates, educational material, and announcements directly to your inbox.
                 Built for beginners and long-term thinkers.
             </p>
+            <p class="text-sm text-gray-600 mt-3">Includes weekly explainers, security checklists, and event invites.</p>
+            <a href="beginner.html#newsletter" class="mt-4 inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-semibold">Subscribe now<span aria-hidden="true">&rarr;</span></a>
         </div>
 
         <div class="card">
@@ -67,6 +86,8 @@
             <p class="text-gray-700">
                 If you spot something confusing or think we should add a feature, tool, or page — tell us.
             </p>
+            <p class="text-sm text-gray-600 mt-3">We ship updates weekly and prioritize clear feedback from real users.</p>
+            <a href="mailto:feedback@adaptbtc.com?subject=AdaptBTC%20feedback" class="mt-4 inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-semibold">Send feedback<span aria-hidden="true">&rarr;</span></a>
         </div>
 
         <div class="card">
@@ -74,6 +95,12 @@
             <p class="text-gray-700">
                 Small businesses, groups, and organizations can collaborate for education, workshops, or Bitcoin onboarding.
             </p>
+            <ul class="text-sm text-gray-600 mt-3 list-disc list-inside space-y-1">
+                <li>1-hour security clinics for staff</li>
+                <li>Beginner-friendly onboarding days</li>
+                <li>Custom curriculum for your audience</li>
+            </ul>
+            <a href="consulting.html#engagement-tracks" class="mt-4 inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-semibold">See engagement options<span aria-hidden="true">&rarr;</span></a>
         </div>
 
         <div class="card">
@@ -81,6 +108,12 @@
             <p class="text-gray-700">
                 Designers, developers, educators, and BTC enthusiasts can help expand AdaptBTC’s content and tools.
             </p>
+            <ul class="text-sm text-gray-600 mt-3 list-disc list-inside space-y-1">
+                <li>Write or translate guides</li>
+                <li>Improve UX flows for newcomers</li>
+                <li>Audit content for accuracy and clarity</li>
+            </ul>
+            <a href="#volunteer-projects" class="mt-4 inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-semibold">View open tasks<span aria-hidden="true">&rarr;</span></a>
         </div>
 
         <div class="card">
@@ -88,19 +121,112 @@
             <p class="text-gray-700">
                 Donations help fund free education and development. Every contribution helps grow the project.
             </p>
+            <p class="text-sm text-gray-600 mt-3">We publish quarterly reports on how funds are used.</p>
+            <a href="donate.html" class="mt-4 inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-semibold">Donate securely<span aria-hidden="true">&rarr;</span></a>
         </div>
 
+    </div>
+</section>
+
+<!-- VOLUNTEER PROJECTS -->
+<section id="volunteer-projects" class="max-w-6xl mx-auto px-6 pb-10">
+    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
+        <div>
+            <h2 class="text-3xl font-bold">Active Volunteer Projects</h2>
+            <p class="text-gray-700 mt-2 max-w-3xl">Pick a project below and we’ll match you with a clear brief, point-of-contact, and expected deliverables.</p>
+        </div>
+        <a href="mailto:hello@adaptbtc.com?subject=Volunteer%20for%20AdaptBTC&body=Tell%20us%20which%20project%20you%20want%20to%20join%20and%20your%20skillset." class="btn-primary">Volunteer now</a>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6">
+        <div class="card">
+            <div class="flex items-center justify-between mb-2">
+                <h3 class="text-xl font-semibold">Beginner Guide Refresh</h3>
+                <span class="text-sm bg-emerald-100 text-emerald-700 px-2 py-1 rounded-full">Content</span>
+            </div>
+            <p class="text-gray-700">Help us simplify language, add local currency examples, and keep exchange links up to date.</p>
+            <ul class="text-sm text-gray-600 mt-3 list-disc list-inside space-y-1">
+                <li>Need: editors, translators (ES, PT, FR)</li>
+                <li>Time: 2–3 hours/week for 2 weeks</li>
+                <li>Deliverable: updated copy and glossary PR</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <div class="flex items-center justify-between mb-2">
+                <h3 class="text-xl font-semibold">Security Checklists</h3>
+                <span class="text-sm bg-indigo-100 text-indigo-700 px-2 py-1 rounded-full">Ops</span>
+            </div>
+            <p class="text-gray-700">Draft concise checklists for first self-custody steps, from seed backups to passphrase hygiene.</p>
+            <ul class="text-sm text-gray-600 mt-3 list-disc list-inside space-y-1">
+                <li>Need: security-minded educators</li>
+                <li>Time: 1–2 hours/week for 3 weeks</li>
+                <li>Deliverable: printable PDF and web summary</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <div class="flex items-center justify-between mb-2">
+                <h3 class="text-xl font-semibold">Local Meetup Toolkit</h3>
+                <span class="text-sm bg-amber-100 text-amber-700 px-2 py-1 rounded-full">Community</span>
+            </div>
+            <p class="text-gray-700">Package slide decks, intro scripts, and handouts anyone can run for a 60-minute Bitcoin basics session.</p>
+            <ul class="text-sm text-gray-600 mt-3 list-disc list-inside space-y-1">
+                <li>Need: presenters, designers</li>
+                <li>Time: 2 hours/week for 3 weeks</li>
+                <li>Deliverable: ready-to-use toolkit with speaker notes</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <div class="flex items-center justify-between mb-2">
+                <h3 class="text-xl font-semibold">Beginner Support Desk</h3>
+                <span class="text-sm bg-blue-100 text-blue-700 px-2 py-1 rounded-full">Support</span>
+            </div>
+            <p class="text-gray-700">Host weekly office hours to answer common onboarding questions and share best practices.</p>
+            <ul class="text-sm text-gray-600 mt-3 list-disc list-inside space-y-1">
+                <li>Need: friendly BTC practitioners</li>
+                <li>Time: 1 hour/week</li>
+                <li>Deliverable: FAQ updates after each session</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <div class="flex items-center justify-between mb-2">
+                <h3 class="text-xl font-semibold">ETF Clarity Series</h3>
+                <span class="text-sm bg-purple-100 text-purple-700 px-2 py-1 rounded-full">Research</span>
+            </div>
+            <p class="text-gray-700">Create short explainers comparing spot Bitcoin ETFs (IBIT, FBTC, HODL) and outlining when to pivot to self-custody.</p>
+            <ul class="text-sm text-gray-600 mt-3 list-disc list-inside space-y-1">
+                <li>Need: writers + proofreaders</li>
+                <li>Time: 1–2 hours/week</li>
+                <li>Deliverable: updated ETF FAQ for the Beginner Guide</li>
+            </ul>
+        </div>
     </div>
 </section>
 
 <!-- COMMUNITY CTA -->
 <section class="max-w-6xl mx-auto px-6 py-16 text-center">
     <h2 class="text-3xl font-bold">Be Part of a Growing Community</h2>
-    <p class="text-gray-700 mt-2 mb-6">
+    <p class="text-gray-700 mt-2 mb-4">
         Bitcoin education is for everyone — and together, we can make it more accessible.
     </p>
 
-    <a href="index.html" class="btn-primary">Return Home</a>
+    <div class="max-w-3xl mx-auto text-left bg-white border border-gray-200 rounded-2xl p-6 shadow-sm">
+        <h3 class="text-xl font-semibold">How we help you start fast</h3>
+        <ul class="text-gray-700 mt-3 list-disc list-inside space-y-2">
+            <li>Intro call to understand your goals and your audience.</li>
+            <li>Personalized roadmap with resources, checklists, and timelines.</li>
+            <li>Warm introductions to local Bitcoin meetups and online study groups.</li>
+        </ul>
+        <p class="text-sm text-gray-600 mt-4">You’ll get a reply from a real teammate within one business day.</p>
+
+        <div class="mt-6 flex flex-col sm:flex-row sm:items-center gap-3">
+            <a href="mailto:hello@adaptbtc.com?subject=I%20want%20to%20get%20involved%20with%20AdaptBTC" class="btn-primary w-full sm:w-auto text-center">Email us to get started</a>
+            <a href="https://twitter.com/AdaptBTC" class="btn-secondary w-full sm:w-auto text-center">DM us on X</a>
+        </div>
+    </div>
 </section>
 
 <!-- FOOTER -->

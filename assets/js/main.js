@@ -89,33 +89,6 @@ function calculateDCA() {
 
 
 /* ========================================================
-   INFLATION CALCULATOR
-======================================================== */
-
-function calculateInflation() {
-    const amount = parseFloat(document.getElementById("inflation-amount").value);
-    const rate = parseFloat(document.getElementById("inflation-rate").value);
-    const years = parseFloat(document.getElementById("inflation-years").value);
-
-    if (!amount || !rate || !years) {
-        alert("Please complete all inflation fields.");
-        return;
-    }
-
-    const inflationFactor = Math.pow(1 + rate / 100, years);
-    const realValue = amount / inflationFactor;
-    const lostValue = amount - realValue;
-
-    document.getElementById("inflation-loss").textContent =
-        `Value Lost to Inflation: $${lostValue.toFixed(2)}`;
-
-    document.getElementById("inflation-real").textContent =
-        `Future Purchasing Power: $${realValue.toFixed(2)}`;
-}
-
-
-
-/* ========================================================
    BITCOIN HALVING COUNTDOWN (Next Halving April 2028)
 ======================================================== */
 

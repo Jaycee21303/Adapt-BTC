@@ -15,7 +15,7 @@
 <header class="w-full bg-white shadow-sm">
     <nav class="max-w-7xl mx-auto flex justify-between items-center py-4 px-6">
         <div class="flex items-center gap-3">
-            <img src="assets/img/logo/adaptbtc_logo.png" class="h-10 w-auto" alt="AdaptBTC Logo">
+            <img src="assets/img/logo/adaptbtc_logo.png" class="brand-logo" alt="AdaptBTC Logo">
         </div>
 
         <div class="hidden md:flex gap-8 text-gray-600 text-[15px]">
@@ -30,28 +30,63 @@
 </header>
 
 <!-- HERO SECTION -->
-<section class="max-w-6xl mx-auto px-6 pt-12 pb-6">
-    <h1 class="text-4xl md:text-5xl font-bold">Bitcoin for Absolute Beginners</h1>
+<section class="max-w-6xl mx-auto px-6 pt-12 pb-6 space-y-6">
+    <div class="flex flex-col gap-4 md:gap-0 md:flex-row md:items-center md:justify-between">
+        <div class="max-w-3xl">
+            <h1 class="text-4xl md:text-5xl font-bold">Bitcoin for Absolute Beginners</h1>
 
-    <p class="mt-5 text-lg max-w-3xl text-gray-700">
-        This guide will walk you through everything you need to know to get started with Bitcoin — 
-        safely, confidently, and without confusion. Whether you're brand new or just want the basics, 
-        this is the perfect starting point.
-    </p>
+            <p class="mt-4 text-lg text-gray-700">
+                A practical, jargon-free starting point that explains Bitcoin, shows you how to buy
+                and store it safely, and highlights trustworthy tools to use along the way.
+            </p>
+        </div>
+
+        <div class="flex flex-col gap-2 text-sm text-gray-600 bg-white shadow-sm rounded-xl p-4 border border-gray-200">
+            <h2 class="text-base font-semibold text-gray-900">Jump to:</h2>
+            <div class="flex flex-wrap gap-3">
+                <a href="#what-is-bitcoin" class="px-3 py-1 rounded-full border border-gray-200 bg-gray-50 hover:border-gray-300 transition">Bitcoin basics</a>
+                <a href="#starter-checklist" class="px-3 py-1 rounded-full border border-gray-200 bg-gray-50 hover:border-gray-300 transition">Starter checklist</a>
+                <a href="#trusted-tools" class="px-3 py-1 rounded-full border border-gray-200 bg-gray-50 hover:border-gray-300 transition">Wallets & exchanges</a>
+                <a href="#etf-basics" class="px-3 py-1 rounded-full border border-gray-200 bg-gray-50 hover:border-gray-300 transition">Bitcoin ETFs</a>
+                <a href="#fixed-supply" class="px-3 py-1 rounded-full border border-gray-200 bg-gray-50 hover:border-gray-300 transition">Fixed supply explained</a>
+                <a href="#security" class="px-3 py-1 rounded-full border border-gray-200 bg-gray-50 hover:border-gray-300 transition">Security</a>
+                <a href="#charts" class="px-3 py-1 rounded-full border border-gray-200 bg-gray-50 hover:border-gray-300 transition">Charts</a>
+                <a href="#faq" class="px-3 py-1 rounded-full border border-gray-200 bg-gray-50 hover:border-gray-300 transition">FAQ</a>
+                <a href="#newsletter" class="px-3 py-1 rounded-full border border-gray-200 bg-gray-50 hover:border-gray-300 transition">Newsletter</a>
+            </div>
+        </div>
+    </div>
 </section>
 
 <!-- WHAT IS BITCOIN -->
-<section class="max-w-6xl mx-auto px-6 py-10">
-    <div class="card">
-        <h2 class="text-2xl font-bold mb-4">What Is Bitcoin?</h2>
-        <p class="text-gray-700 mb-4">
-            Bitcoin is digital money that runs on a decentralized network called the blockchain. 
-            It isn’t controlled by any government, company, or bank — and no one can change its rules.
+<section id="what-is-bitcoin" class="max-w-6xl mx-auto px-6 py-10">
+    <div class="card space-y-4">
+        <h2 class="text-2xl font-bold">What Is Bitcoin?</h2>
+        <p class="text-gray-700">
+            Bitcoin is digital, peer-to-peer money that runs on a decentralized network of computers
+            called nodes. No single country, bank, or company controls it, and transactions are
+            recorded transparently on a public ledger (the blockchain).
         </p>
 
+        <div class="grid md:grid-cols-3 gap-4 text-sm">
+            <div class="p-4 bg-gray-50 rounded-lg border border-gray-200">
+                <p class="font-semibold text-gray-900 mb-1">Neutral</p>
+                <p class="text-gray-700">Anyone can use Bitcoin without permission—there are no gatekeepers.</p>
+            </div>
+            <div class="p-4 bg-gray-50 rounded-lg border border-gray-200">
+                <p class="font-semibold text-gray-900 mb-1">Scarce</p>
+                <p class="text-gray-700">Only 21 million will ever exist, making it resistant to inflation.</p>
+            </div>
+            <div class="p-4 bg-gray-50 rounded-lg border border-gray-200">
+                <p class="font-semibold text-gray-900 mb-1">Portable</p>
+                <p class="text-gray-700">Move value globally in minutes without banking hours or borders.</p>
+            </div>
+        </div>
+
         <p class="text-gray-700">
-            Bitcoin lets anyone store, save, and send value anywhere in the world without permission. 
-            It’s the first form of hard, provably scarce digital money.
+            Think of Bitcoin as an open monetary network—similar to how email is an open communication
+            network. You can save, send, and receive funds directly, and the rules are enforced by code
+            rather than by institutions.
         </p>
     </div>
 </section>
@@ -65,7 +100,7 @@
         <div class="card">
             <h3 class="text-xl font-semibold mb-2">Scarcity</h3>
             <p class="text-gray-700">
-                Only 21 million Bitcoin will ever exist. This fixed supply makes it more resistant to inflation.
+                Only 21 million Bitcoin will ever exist. This fixed supply makes it more resistant to inflation and forced dilution of your savings.
             </p>
         </div>
 
@@ -107,6 +142,96 @@
     </div>
 </section>
 
+<!-- FIXED SUPPLY & BANK RUNS -->
+<section id="fixed-supply" class="max-w-6xl mx-auto px-6 py-10">
+    <div class="card space-y-5">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+            <h2 class="text-2xl font-bold">Why the fixed 21M supply matters</h2>
+            <span class="text-xs uppercase tracking-wide text-gray-500">inflation + bank run resilience</span>
+        </div>
+
+        <div class="grid lg:grid-cols-3 gap-4 text-sm text-gray-700">
+            <div class="p-4 rounded-lg border border-gray-200 bg-gray-50">
+                <p class="font-semibold text-gray-900 mb-2">Inflation protection</p>
+                <p>Central banks can expand money supply quickly (e.g., 2008-2009 quantitative easing, 2020 stimulus), which erodes purchasing power.</p>
+                <p class="mt-2">Bitcoin’s code enforces the 21 million cap, so new coins are issued on a predictable schedule and cannot be printed to bail out debts.</p>
+            </div>
+            <div class="p-4 rounded-lg border border-gray-200 bg-gray-50">
+                <p class="font-semibold text-gray-900 mb-2">Concrete examples</p>
+                <ul class="list-disc list-inside space-y-1">
+                    <li>1970s–1980s: USD inflation topped 10%+ annually; savers lost buying power.</li>
+                    <li>2008–2012: Monetary base more than doubled; housing crash bailouts diluted cash savings.</li>
+                    <li>2020–2022: Rapid stimulus raised prices for groceries, rent, and energy worldwide.</li>
+                </ul>
+            </div>
+            <div class="p-4 rounded-lg border border-gray-200 bg-gray-50">
+                <p class="font-semibold text-gray-900 mb-2">Bank run resilience</p>
+                <p>When too many people withdraw at once (e.g., 1930s bank runs, 2008 Lehman collapse, 2023 regional bank failures), banks can freeze funds.</p>
+                <p class="mt-2">Holding your own keys means you are not relying on a bank’s liquidity or withdrawal limits; you can move value anytime, anywhere.</p>
+            </div>
+        </div>
+
+        <div class="p-4 rounded-lg border border-amber-200 bg-amber-50 text-sm text-gray-800">
+            <p class="font-semibold text-amber-900">Bottom line for beginners</p>
+            <p>Bitcoin combines a fixed supply with self-custody. You can opt out of surprise money printing and avoid being locked out of your funds during a crisis by learning to control your own wallet.</p>
+        </div>
+    </div>
+</section>
+
+<section id="starter-checklist" class="max-w-6xl mx-auto px-6 py-10">
+    <div class="card">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
+            <h2 class="text-2xl font-bold">Beginner Starter Checklist</h2>
+            <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-sm font-medium border border-emerald-100">5-minute setup</span>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-4">
+            <div class="flex gap-3 items-start">
+                <span class="h-10 w-10 rounded-full bg-orange-100 text-orange-700 font-bold flex items-center justify-center">1</span>
+                <div>
+                    <p class="font-semibold">Pick a wallet type</p>
+                    <p class="text-gray-700 text-sm">Hardware wallets (Ledger, Trezor) give the strongest protection; mobile wallets (Muun, Phoenix) are easy on the go.</p>
+                </div>
+            </div>
+            <div class="flex gap-3 items-start">
+                <span class="h-10 w-10 rounded-full bg-orange-100 text-orange-700 font-bold flex items-center justify-center">2</span>
+                <div>
+                    <p class="font-semibold">Back up your seed phrase</p>
+                    <p class="text-gray-700 text-sm">Write the 12–24 words on paper (or metal) and store it in two separate safe places.</p>
+                </div>
+            </div>
+            <div class="flex gap-3 items-start">
+                <span class="h-10 w-10 rounded-full bg-orange-100 text-orange-700 font-bold flex items-center justify-center">3</span>
+                <div>
+                    <p class="font-semibold">Buy small amounts</p>
+                    <p class="text-gray-700 text-sm">Use reputable exchanges, then withdraw to your wallet to learn the process.</p>
+                </div>
+            </div>
+            <div class="flex gap-3 items-start">
+                <span class="h-10 w-10 rounded-full bg-orange-100 text-orange-700 font-bold flex items-center justify-center">4</span>
+                <div>
+                    <p class="font-semibold">Test sending & receiving</p>
+                    <p class="text-gray-700 text-sm">Send a tiny amount to yourself to build confidence before larger deposits.</p>
+                </div>
+            </div>
+            <div class="flex gap-3 items-start">
+                <span class="h-10 w-10 rounded-full bg-orange-100 text-orange-700 font-bold flex items-center justify-center">5</span>
+                <div>
+                    <p class="font-semibold">Keep learning</p>
+                    <p class="text-gray-700 text-sm">Understand fees, on-chain vs Lightning, and practice safe backups before investing more.</p>
+                </div>
+            </div>
+            <div class="flex gap-3 items-start">
+                <span class="h-10 w-10 rounded-full bg-orange-100 text-orange-700 font-bold flex items-center justify-center">6</span>
+                <div>
+                    <p class="font-semibold">Enable protections</p>
+                    <p class="text-gray-700 text-sm">Add a PIN to your wallet app, enable 2FA on exchanges, and lock down your email with a strong password manager.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- HOW TO GET STARTED -->
 <section class="max-w-6xl mx-auto px-6 py-10">
     <div class="card">
@@ -119,6 +244,307 @@
             <li><strong>Learn About Security</strong> — Seed phrases, backups, hardware wallets, and avoiding scams.</li>
             <li><strong>Start Small</strong> — Dollar-cost average (DCA) into Bitcoin slowly over time.</li>
         </ol>
+    </div>
+</section>
+
+<section id="trusted-tools" class="max-w-6xl mx-auto px-6 py-10">
+    <div class="grid lg:grid-cols-2 gap-6">
+        <div class="card">
+            <div class="flex items-center justify-between mb-3">
+                <h2 class="text-2xl font-bold">Wallets we like</h2>
+                <span class="text-xs uppercase tracking-wide text-gray-500">self-custody first</span>
+            </div>
+            <ul class="space-y-3 text-gray-700 text-sm">
+                <li><a href="https://trezor.io" class="link">Trezor</a> — battle-tested hardware wallet for secure cold storage.</li>
+                <li><a href="https://www.ledger.com" class="link">Ledger</a> — popular hardware wallet with Bluetooth/mobile options.</li>
+                <li><a href="https://muun.com" class="link">Muun</a> — mobile wallet that supports on-chain + Lightning with an easy UI.</li>
+                <li><a href="https://phoenix.acinq.co" class="link">Phoenix</a> — great for spending on Lightning; self-custodial.</li>
+                <li><a href="https://bluewallet.io" class="link">BlueWallet</a> — simple mobile wallet; supports Lightning with custom nodes.</li>
+            </ul>
+            <p class="mt-4 text-xs text-gray-500">We do not receive affiliate commissions—these are community-trusted starters.</p>
+        </div>
+        <div class="card">
+            <div class="flex items-center justify-between mb-3">
+                <h2 class="text-2xl font-bold">Where to buy Bitcoin</h2>
+                <span class="text-xs uppercase tracking-wide text-gray-500">do your own research</span>
+            </div>
+            <div class="grid sm:grid-cols-2 gap-3 text-gray-700 text-sm">
+                <div class="p-3 rounded-lg border border-gray-200 bg-gray-50 space-y-1">
+                    <p class="font-semibold text-gray-900">Coinbase (US)</p>
+                    <p>Publicly listed; easy interface; higher fees for one-time buys but simple to withdraw.</p>
+                    <p class="text-xs text-gray-500">Tip: use “Advanced” trades for lower fees.</p>
+                </div>
+                <div class="p-3 rounded-lg border border-gray-200 bg-gray-50 space-y-1">
+                    <p class="font-semibold text-gray-900">Kraken (US/EU)</p>
+                    <p>Regulated exchange with strong security track record and transparent proof-of-reserves audits.</p>
+                    <p class="text-xs text-gray-500">Offers instant ACH in the US.</p>
+                </div>
+                <div class="p-3 rounded-lg border border-gray-200 bg-gray-50 space-y-1">
+                    <p class="font-semibold text-gray-900">Cash App (US/UK)</p>
+                    <p>Beginner-friendly; lets you withdraw to self-custody easily and supports Lightning payments.</p>
+                </div>
+                <div class="p-3 rounded-lg border border-gray-200 bg-gray-50 space-y-1">
+                    <p class="font-semibold text-gray-900">Swan Bitcoin (US)</p>
+                    <p>Auto dollar-cost averaging (DCA) into Bitcoin with scheduled withdrawals to your wallet.</p>
+                </div>
+                <div class="p-3 rounded-lg border border-gray-200 bg-gray-50 space-y-1">
+                    <p class="font-semibold text-gray-900">Bitstamp (EU/Global)</p>
+                    <p>Oldest running exchange with low trading fees and reputable banking partners.</p>
+                </div>
+                <div class="p-3 rounded-lg border border-gray-200 bg-gray-50 space-y-1">
+                    <p class="font-semibold text-gray-900">Binance (Global)</p>
+                    <p>High liquidity and many pairs; ensure regional compliance and withdraw to your wallet promptly.</p>
+                </div>
+            </div>
+            <p class="mt-4 text-xs text-gray-500">Always withdraw to your own wallet after purchase to learn self-custody and reduce exchange risk.</p>
+        </div>
+    </div>
+</section>
+
+<section id="etf-basics" class="max-w-6xl mx-auto px-6 pb-10">
+    <div class="card space-y-5">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+            <h2 class="text-2xl font-bold">Bitcoin ETFs: convenient exposure, different trade-offs</h2>
+            <span class="text-xs uppercase tracking-wide text-gray-500">spot ETFs explained</span>
+        </div>
+
+        <p class="text-gray-700 text-[15px] leading-relaxed">Spot Bitcoin ETFs let you buy price exposure through a brokerage account. They are easier for retirement accounts and compliance, but they are not the same as holding Bitcoin yourself and they charge annual fees.</p>
+
+        <div class="grid md:grid-cols-3 gap-4 text-sm text-gray-800">
+            <div class="p-4 rounded-lg border border-blue-100 bg-blue-50">
+                <p class="font-semibold text-blue-900 mb-2">Notable U.S. tickers</p>
+                <ul class="list-disc list-inside space-y-1">
+                    <li>IBIT (BlackRock iShares Bitcoin Trust)</li>
+                    <li>FBTC (Fidelity Wise Origin Bitcoin Fund)</li>
+                    <li>HODL (VanEck Bitcoin Trust)</li>
+                </ul>
+                <p class="text-xs text-blue-900 mt-2">Check your broker’s availability and expense ratio.</p>
+            </div>
+            <div class="p-4 rounded-lg border border-amber-100 bg-amber-50">
+                <p class="font-semibold text-amber-900 mb-2">Pros</p>
+                <ul class="list-disc list-inside space-y-1">
+                    <li>Use existing brokerage or retirement accounts.</li>
+                    <li>1099 tax documents simplify reporting in the U.S.</li>
+                    <li>No private key management required to start.</li>
+                </ul>
+            </div>
+            <div class="p-4 rounded-lg border border-rose-100 bg-rose-50">
+                <p class="font-semibold text-rose-900 mb-2">Cons</p>
+                <ul class="list-disc list-inside space-y-1">
+                    <li>Expense ratios (often 0.19–0.39%) reduce returns.</li>
+                    <li>Trades only during market hours; can’t send or spend.</li>
+                    <li>Issuer holds the Bitcoin—no self-custody or Lightning.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="p-4 rounded-lg border border-gray-200 bg-gray-50 text-sm text-gray-800 space-y-2">
+            <p class="font-semibold text-gray-900">When to consider an ETF vs. buying Bitcoin directly</p>
+            <p>ETFs can be a bridge if you’re limited to brokerage accounts, need simplified tax forms, or want to ease in before learning self-custody. If you want permissionless payments, global access, or to minimize custodial risk, learn to withdraw to your own wallet. We can help you design a transition plan.</p>
+            <div class="flex flex-wrap gap-3">
+                <a class="btn-primary" href="mailto:admin@adapt-btc.com?subject=ETF%20or%20self-custody">Ask for guidance</a>
+                <a class="btn-ghost" href="consulting.html#treasury">See how we coach on ETFs → self-custody</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="security" class="max-w-6xl mx-auto px-6 py-10">
+    <div class="card">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-5">
+            <h2 class="text-2xl font-bold">Security essentials for new Bitcoiners</h2>
+            <span class="text-xs uppercase tracking-wide text-gray-500">protect your keys</span>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-4 text-sm text-gray-700">
+            <div class="p-4 rounded-lg border border-gray-200 bg-gray-50">
+                <p class="font-semibold text-gray-900 mb-2">Backups</p>
+                <ul class="list-disc list-inside space-y-1">
+                    <li>Write down seed phrase offline—never store in email or photos.</li>
+                    <li>Keep two copies in separate, private locations.</li>
+                    <li>Practice restoring with a small amount before trusting large sums.</li>
+                </ul>
+            </div>
+            <div class="p-4 rounded-lg border border-gray-200 bg-gray-50">
+                <p class="font-semibold text-gray-900 mb-2">Avoid scams</p>
+                <ul class="list-disc list-inside space-y-1">
+                    <li>No support rep will ever ask for your seed phrase.</li>
+                    <li>Bookmark official sites; double-check download links.</li>
+                    <li>Use a hardware wallet for long-term holdings.</li>
+                </ul>
+            </div>
+            <div class="p-4 rounded-lg border border-gray-200 bg-gray-50">
+                <p class="font-semibold text-gray-900 mb-2">Online hygiene</p>
+                <ul class="list-disc list-inside space-y-1">
+                    <li>Use a password manager and enable 2FA (authenticator app, not SMS).</li>
+                    <li>Lock your phone and computer with strong passcodes.</li>
+                    <li>Avoid public Wi‑Fi for wallet activity when possible.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="newsletter" class="max-w-6xl mx-auto px-6 py-10">
+    <div class="card">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-4">
+            <div>
+                <h2 class="text-2xl font-bold">Get the AdaptBTC beginner newsletter</h2>
+                <p class="text-gray-700 text-sm mt-1">Monthly tips on safe self-custody, market basics, and new tutorials—no spam, unsubscribe anytime.</p>
+            </div>
+            <span class="text-xs uppercase tracking-wide text-gray-500">free, beginner-friendly</span>
+        </div>
+
+        <form class="grid md:grid-cols-2 gap-3 text-sm">
+            <label class="flex flex-col gap-1 md:col-span-2">
+                <span class="font-semibold text-gray-900">Email</span>
+                <input type="email" name="email" placeholder="you@example.com" class="input" required>
+            </label>
+            <label class="flex flex-col gap-1 md:col-span-2">
+                <span class="font-semibold text-gray-900">Topics you care about</span>
+                <div class="flex flex-wrap gap-2">
+                    <span class="inline-flex items-center gap-2 px-3 py-2 rounded-lg border border-gray-200 bg-gray-50">
+                        <input type="checkbox" name="topics" value="self-custody">
+                        <span>Self-custody</span>
+                    </span>
+                    <span class="inline-flex items-center gap-2 px-3 py-2 rounded-lg border border-gray-200 bg-gray-50">
+                        <input type="checkbox" name="topics" value="security">
+                        <span>Security tips</span>
+                    </span>
+                    <span class="inline-flex items-center gap-2 px-3 py-2 rounded-lg border border-gray-200 bg-gray-50">
+                        <input type="checkbox" name="topics" value="dca">
+                        <span>DCA strategies</span>
+                    </span>
+                    <span class="inline-flex items-center gap-2 px-3 py-2 rounded-lg border border-gray-200 bg-gray-50">
+                        <input type="checkbox" name="topics" value="lightning">
+                        <span>Lightning how-tos</span>
+                    </span>
+                </div>
+            </label>
+            <button type="submit" class="btn-primary md:col-span-2">Join the newsletter</button>
+        </form>
+        <p class="text-xs text-gray-500 mt-3">By subscribing, you agree to receive educational emails from AdaptBTC. No sharing of your address, ever.</p>
+    </div>
+</section>
+
+<section id="charts" class="max-w-6xl mx-auto px-6 py-10">
+    <div class="card">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-4">
+            <h2 class="text-2xl font-bold">Bitcoin supply & halving schedule</h2>
+            <span class="text-xs uppercase tracking-wide text-gray-500">illustrative, not exact</span>
+        </div>
+
+        <div class="flex flex-col gap-4 md:flex-row md:items-center">
+            <div class="md:w-2/3 bg-white rounded-lg border border-gray-200 p-4">
+                <svg viewBox="0 0 360 200" role="img" aria-label="Cumulative Bitcoin supply over time" class="w-full h-full">
+                    <defs>
+                        <linearGradient id="supplyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" stop-color="#f97316" stop-opacity="0.2" />
+                            <stop offset="100%" stop-color="#f97316" stop-opacity="0" />
+                        </linearGradient>
+                    </defs>
+                    <rect x="0" y="0" width="360" height="200" fill="#fff" rx="12" />
+                    <g transform="translate(40,20)">
+                        <polyline points="0,160 40,130 80,100 120,80 160,65 200,55 240,48 280,44" fill="none" stroke="#f97316" stroke-width="3" />
+                        <polygon points="0,160 40,130 80,100 120,80 160,65 200,55 240,48 280,44 280,160 0,160" fill="url(#supplyGradient)" />
+                        <g fill="#6b7280" font-size="10">
+                            <text x="-10" y="160" text-anchor="end">0</text>
+                            <text x="-10" y="90" text-anchor="end">10M</text>
+                            <text x="-10" y="20" text-anchor="end">20M</text>
+                            <text x="0" y="175">2009</text>
+                            <text x="80" y="175">2012</text>
+                            <text x="160" y="175">2016</text>
+                            <text x="240" y="175">2020</text>
+                            <text x="280" y="175">2024</text>
+                        </g>
+                        <g fill="#f97316">
+                            <circle cx="40" cy="130" r="4" />
+                            <circle cx="120" cy="80" r="4" />
+                            <circle cx="200" cy="55" r="4" />
+                            <circle cx="280" cy="44" r="4" />
+                        </g>
+                    </g>
+                </svg>
+                <p class="text-xs text-gray-500 mt-2">Each "halving" (approx. every 4 years) cuts new supply in half, slowing issuance toward the 21M cap.</p>
+            </div>
+
+            <div class="md:w-1/3 space-y-3 text-sm text-gray-700">
+                <div class="p-3 bg-gray-50 border border-gray-200 rounded-lg">
+                    <p class="font-semibold text-gray-900">Next halving</p>
+                    <p>Estimated: <span class="font-medium">April 2028</span></p>
+                    <p>Block height: ~ <span class="font-medium">1,050,000</span></p>
+                </div>
+                <div class="p-3 bg-gray-50 border border-gray-200 rounded-lg">
+                    <p class="font-semibold text-gray-900">Current supply</p>
+                    <p>~<span class="font-medium">19.6 million BTC</span> mined</p>
+                    <p class="text-xs text-gray-500">Approximate; check a live explorer for updates.</p>
+                </div>
+                <div class="p-3 bg-gray-50 border border-gray-200 rounded-lg">
+                    <p class="font-semibold text-gray-900">Track live data</p>
+                    <ul class="list-disc list-inside space-y-1">
+                        <li><a href="https://mempool.space/" class="link">Mempool.space dashboard</a></li>
+                        <li><a href="https://bitbo.io/" class="link">Bitbo supply clock</a></li>
+                        <li><a href="https://www.blockchain.com/explorer" class="link">Blockchain.com explorer</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="max-w-6xl mx-auto px-6 py-10">
+    <div class="card">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-4">
+            <h2 class="text-2xl font-bold">Useful reading & video primers</h2>
+            <span class="text-xs uppercase tracking-wide text-gray-500">trusted community links</span>
+        </div>
+        <div class="grid md:grid-cols-2 gap-4 text-sm text-gray-700">
+            <div class="p-4 rounded-lg border border-gray-200 bg-gray-50">
+                <p class="font-semibold text-gray-900 mb-2">Must-read articles</p>
+                <ul class="list-disc list-inside space-y-1">
+                    <li><a class="link" href="https://bitcoin.org/bitcoin.pdf">Bitcoin Whitepaper</a> (9-page original)</li>
+                    <li><a class="link" href="https://www.lopp.net/bitcoin.html">Jameson Lopp's Bitcoin resources</a></li>
+                    <li><a class="link" href="https://www.bitcoinops.org/en/">Bitcoin Optech newsletters</a> (technical but insightful)</li>
+                    <li><a class="link" href="https://nakamoto.com/bitcoin-is-like/">"Bitcoin is like…" analogies</a></li>
+                </ul>
+            </div>
+            <div class="p-4 rounded-lg border border-gray-200 bg-gray-50">
+                <p class="font-semibold text-gray-900 mb-2">Beginner-friendly videos</p>
+                <ul class="list-disc list-inside space-y-1">
+                    <li><a class="link" href="https://www.youtube.com/@BTCsessions">BTC Sessions tutorials</a></li>
+                    <li><a class="link" href="https://www.youtube.com/@aantonop">Andreas M. Antonopoulos talks</a></li>
+                    <li><a class="link" href="https://www.youtube.com/watch?v=bBC-nXj3Ng4">3Blue1Brown: Bitcoin explained</a></li>
+                    <li><a class="link" href="https://www.youtube.com/@LightningLabs">Lightning Labs demos</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="faq" class="max-w-6xl mx-auto px-6 py-10">
+    <div class="card">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-4">
+            <h2 class="text-2xl font-bold">Quick FAQ</h2>
+            <span class="text-xs uppercase tracking-wide text-gray-500">answers in plain English</span>
+        </div>
+        <dl class="space-y-4 text-gray-800">
+            <div>
+                <dt class="font-semibold">Do I need to buy a whole Bitcoin?</dt>
+                <dd class="text-gray-700">No. Bitcoin is divisible into 100,000,000 sats (satoshis). You can start with a few dollars.</dd>
+            </div>
+            <div>
+                <dt class="font-semibold">What are transaction fees?</dt>
+                <dd class="text-gray-700">Fees pay miners to include your transaction in a block. Higher fees = faster confirmation. Lightning offers low-fee, instant payments for daily use.</dd>
+            </div>
+            <div>
+                <dt class="font-semibold">How do I keep my coins safe?</dt>
+                <dd class="text-gray-700">Control your private keys, use hardware wallets for savings, keep multiple backups of your seed phrase, and avoid sharing it with anyone.</dd>
+            </div>
+            <div>
+                <dt class="font-semibold">Is Bitcoin legal?</dt>
+                <dd class="text-gray-700">Regulation varies by country. In most places it’s legal to hold, but tax and reporting rules differ—check your local guidance.</dd>
+            </div>
+        </dl>
     </div>
 </section>
 
