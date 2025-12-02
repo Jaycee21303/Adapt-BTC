@@ -1,42 +1,60 @@
 /* ========================================================
-   BITCOIN PRICE TICKER
+   BITCOIN PRICE TICKER (15-SECOND REFRESH)
+   Using CoinGecko (Reliable, No CORS Issues)
 ======================================================== */
 
 async function fetchBTCPrice() {
     try {
-        const res = await fetch("https://api.coindesk.com/v1/bpi/currentprice/USD.json");
+        const res = await fetch(
+            "https://api.coingecko.com/api/v3/coins/bitcoin?localization=false&tickers=false&market_data=true&community_data=false&developer_data=false&sparkline=false"
+        );
+
         const data = await res.json();
 
-        const price = data.bpi.USD.rate_float;
+        const price = data.market_data.current_price.usd;
+        const change24 = data.market_data.price_change_percentage_24h;
+
         const priceElement = document.getElementById("btc-price");
         const arrowElement = document.getElementById("btc-arrow");
+        const changeElement = document.getElementById("btc-change");
 
-        if (priceElement) {
-            let last = parseFloat(priceElement.getAttribute("data-last")) || price;
-            priceElement.setAttribute("data-last", price.toString());
+        if (!priceElement) return;
 
-            priceElement.textContent = `$${price.toLocaleString()}`;
+        // Previous price for arrow direction
+        let last = parseFloat(priceElement.getAttribute("data-last")) || price;
+        priceElement.setAttribute("data-last", price);
 
-            // Price arrow indicator
-            if (price > last) {
-                arrowElement.textContent = "↑";
-                arrowElement.style.color = "green";
-            } else if (price < last) {
-                arrowElement.textContent = "↓";
-                arrowElement.style.color = "red";
-            } else {
-                arrowElement.textContent = "→";
-                arrowElement.style.color = "#555";
-            }
+        // Update price text
+        priceElement.textContent = `$${price.toLocaleString()}`;
+
+        // Arrow logic
+        if (price > last) {
+            arrowElement.textContent = "↑";
+            arrowElement.style.color = "green";
+        } else if (price < last) {
+            arrowElement.textContent = "↓";
+            arrowElement.style.color = "red";
+        } else {
+            arrowElement.textContent = "→";
+            arrowElement.style.color = "#777";
         }
+
+        // 24H % CHANGE
+        const formattedChange = change24.toFixed(2);
+        changeElement.textContent = `${formattedChange}%`;
+
+        changeElement.style.color = change24 >= 0 ? "green" : "red";
+
     } catch (error) {
         console.log("BTC price fetch error:", error);
     }
 }
 
 // Update every 15 seconds
-setInterval(fetchBTCPrice, 15000);
 fetchBTCPrice();
+setInterval(fetchBTCPrice, 15000);
+
+
 
 /* ========================================================
    DCA CALCULATOR
@@ -68,6 +86,8 @@ function calculateDCA() {
         `Total BTC Accumulated: ${btcAccumulated.toFixed(6)} BTC`;
 }
 
+
+
 /* ========================================================
    INFLATION CALCULATOR
 ======================================================== */
@@ -82,7 +102,6 @@ function calculateInflation() {
         return;
     }
 
-    // Calculate future value under inflation
     const inflationFactor = Math.pow(1 + rate / 100, years);
     const realValue = amount / inflationFactor;
     const lostValue = amount - realValue;
@@ -94,12 +113,14 @@ function calculateInflation() {
         `Future Purchasing Power: $${realValue.toFixed(2)}`;
 }
 
+
+
 /* ========================================================
    BITCOIN HALVING COUNTDOWN (Next Halving April 2028)
 ======================================================== */
 
 function updateHalvingCountdown() {
-    const halvingDate = new Date("2028-04-12T00:00:00Z"); 
+    const halvingDate = new Date("2028-04-12T00:00:00Z");
     const now = new Date();
     const diff = halvingDate - now;
 
@@ -117,6 +138,5 @@ function updateHalvingCountdown() {
         `${days}d ${hours}h ${minutes}m ${seconds}s`;
 }
 
-// Update every second
 setInterval(updateHalvingCountdown, 1000);
 updateHalvingCountdown();
