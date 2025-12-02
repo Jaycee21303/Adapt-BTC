@@ -66,8 +66,8 @@ function calculateDCA() {
     const months = parseFloat(document.getElementById("dca-months").value);
     const currentPrice = parseFloat(document.getElementById("current-btc-price").value);
 
-    if (!amount || !months || !currentPrice) {
-        alert("Please complete all DCA fields.");
+    if (!amount || amount <= 0 || !months || months <= 0 || !currentPrice || currentPrice <= 0) {
+        alert("Please enter positive values for all DCA fields.");
         return;
     }
 
@@ -86,6 +86,218 @@ function calculateDCA() {
         `Total BTC Accumulated: ${btcAccumulated.toFixed(6)} BTC`;
 }
 
+function loadDCASample() {
+    const amount = document.getElementById("dca-amount");
+    const frequency = document.getElementById("dca-frequency");
+    const months = document.getElementById("dca-months");
+    const price = document.getElementById("current-btc-price");
+
+    if (!amount || !frequency || !months || !price) return;
+
+    amount.value = "200";
+    frequency.value = "weekly";
+    months.value = "12";
+    price.value = "50000";
+
+    calculateDCA();
+}
+
+
+/* ========================================================
+   LIGHTNING VS CARD SAVINGS
+======================================================== */
+
+function calculateLightningSavings() {
+    const volumeInput = document.getElementById("monthly-volume");
+    const cardFeeInput = document.getElementById("card-fee");
+    const lightningFeeInput = document.getElementById("lightning-fee");
+    const hardwareCostInput = document.getElementById("hardware-cost");
+
+    if (!volumeInput || !cardFeeInput || !lightningFeeInput || !hardwareCostInput) return;
+
+    const volume = parseFloat(volumeInput.value);
+    const cardFee = parseFloat(cardFeeInput.value);
+    const lightningFee = parseFloat(lightningFeeInput.value);
+    const hardwareCost = parseFloat(hardwareCostInput.value) || 0;
+
+    if (!volume || volume <= 0 || !cardFee || cardFee <= 0 || !lightningFee || lightningFee < 0) {
+        alert("Enter valid volume and fee assumptions to model savings.");
+        return;
+    }
+
+    const cardCost = volume * (cardFee / 100);
+    const lightningCost = volume * (lightningFee / 100);
+    const savings = cardCost - lightningCost;
+
+    document.getElementById("card-cost").textContent = `$${cardCost.toLocaleString(undefined, { maximumFractionDigits: 0 })}`;
+    document.getElementById("lightning-cost").textContent = `$${lightningCost.toLocaleString(undefined, { maximumFractionDigits: 0 })}`;
+
+    let paybackText = "No hardware spend";
+    let noteText = savings >= 0 ? `Saves ~$${savings.toLocaleString(undefined, { maximumFractionDigits: 0 })} per month.` : "Lightning costs exceed card fees with these inputs.";
+
+    if (hardwareCost > 0 && savings > 0) {
+        const monthsToPayback = hardwareCost / savings;
+        paybackText = `${monthsToPayback.toFixed(1)} months`;
+    } else if (hardwareCost > 0 && savings <= 0) {
+        paybackText = "Revisit your fee assumptions";
+    }
+
+    document.getElementById("payback").textContent = paybackText;
+    document.getElementById("savings-note").textContent = noteText;
+}
+
+function loadLightningSample() {
+    const volumeInput = document.getElementById("monthly-volume");
+    const cardFeeInput = document.getElementById("card-fee");
+    const lightningFeeInput = document.getElementById("lightning-fee");
+    const hardwareCostInput = document.getElementById("hardware-cost");
+
+    if (!volumeInput || !cardFeeInput || !lightningFeeInput || !hardwareCostInput) return;
+
+    volumeInput.value = "50000";
+    cardFeeInput.value = "2.9";
+    lightningFeeInput.value = "0.2";
+    hardwareCostInput.value = "400";
+
+    calculateLightningSavings();
+}
+
+
+/* ========================================================
+   STRIKE INTEGRATION CHECKLIST
+======================================================== */
+
+function buildStrikePlan() {
+    const planContainer = document.getElementById("strike-plan");
+    if (!planContainer) return;
+
+    const businessType = document.getElementById("business-type").value;
+    const payout = document.getElementById("payout-cadence").value;
+    const split = document.getElementById("settlement-split").value;
+
+    const playbooks = {
+        cafe: [
+            "Map your busiest hours and set a fallback QR flow for offline moments.",
+            "Label staff devices with daily spending limits and auto-lock timers.",
+            "Print a single-page laminated SOP for opening/closing the node or POS app."
+        ],
+        ecommerce: [
+            "Add Lightning buttons next to Apple/Google Pay to test conversion uplifts.",
+            "Enable webhooks for order status and store invoice IDs in your ERP/CRM.",
+            "Spin up a staging store to test refunds and partial shipments." 
+        ],
+        services: [
+            "Issue time-bound Lightning invoices for deposits and milestones.",
+            "Offer auto-convert to USD for retainers with a clear FX policy.",
+            "Use memos to attach client/project codes for reconciliation." 
+        ],
+        nonprofit: [
+            "Display a static donation QR with on-chain fallback for large gifts.",
+            "Publish a transparency page showing BTC held vs converted.",
+            "Whitelist hardware wallets for board-level cold storage signers." 
+        ]
+    };
+
+    const payoutNotes = {
+        daily: "Daily payouts keep working capital flexible but create more ledger entries—sync with your accounting tool.",
+        weekly: "Weekly payouts balance fiat liquidity with fewer bank transactions.",
+        monthly: "Monthly payouts maximize BTC exposure; set thresholds for manual conversions during volatility." 
+    };
+
+    const custodyNote = parseInt(split, 10) > 0
+        ? `Hold ${split}% in BTC with documented signer roles and a quarterly key check.`
+        : "Convert 100% to fiat and audit settlement bank accounts monthly.";
+
+    const tacticalList = playbooks[businessType] || [];
+
+    planContainer.innerHTML = `
+        <div class="p-4 rounded-lg bg-slate-50 border border-slate-200">
+            <p class="text-sm font-semibold text-slate-800">Deployment steps</p>
+            <ul class="list-disc list-inside space-y-2 mt-2 text-gray-800">
+                ${tacticalList.map(item => `<li>${item}</li>`).join("")}
+            </ul>
+        </div>
+        <div class="p-4 rounded-lg bg-indigo-50 border border-indigo-100">
+            <p class="text-sm font-semibold text-indigo-800">Settlement policy</p>
+            <ul class="list-disc list-inside space-y-2 mt-2 text-gray-800">
+                <li>${payoutNotes[payout]}</li>
+                <li>${custodyNote}</li>
+                <li>Run a test payout and a test refund before going live.</li>
+            </ul>
+        </div>
+    `;
+}
+
+function loadStrikeSample() {
+    const businessType = document.getElementById("business-type");
+    const payout = document.getElementById("payout-cadence");
+    const split = document.getElementById("settlement-split");
+
+    if (!businessType || !payout || !split) return;
+
+    businessType.value = "ecommerce";
+    payout.value = "weekly";
+    split.value = "50";
+
+    buildStrikePlan();
+}
+
+
+/* ========================================================
+   CUSTODY RUNBOOK GENERATOR
+======================================================== */
+
+function generateCustodyRunbook() {
+    const output = document.getElementById("runbook-output");
+    if (!output) return;
+
+    const steps = [
+        "Verify latest firmware on all hardware wallets and document serial numbers.",
+        "Rotate spending wallet passphrases and ensure backups are in sealed envelopes.",
+        "Practice restoring from seed in a clean room device, then wipe it." 
+    ];
+
+    if (document.getElementById("multisig").checked) {
+        steps.push("Simulate a 2-of-3 (or your quorum) signing with one key offline.");
+    }
+
+    if (document.getElementById("travel").checked) {
+        steps.push("Create a travel wallet with capped limits and emergency contact tree.");
+    }
+
+    if (document.getElementById("incident").checked) {
+        steps.push("Run a phishing drill: report, revoke, and re-issue compromised device keys.");
+    }
+
+    if (document.getElementById("comms").checked) {
+        steps.push("Send an all-hands mock incident update to rehearse finance/legal messaging.");
+    }
+
+    output.innerHTML = `
+        <div class="p-4 rounded-lg bg-white border border-gray-200">
+            <p class="font-semibold text-gray-900">Next tabletop exercise</p>
+            <ol class="list-decimal list-inside space-y-2 mt-2 text-gray-800">
+                ${steps.map(step => `<li>${step}</li>`).join("")}
+            </ol>
+        </div>
+    `;
+}
+
+function loadRunbookSample() {
+    const multisig = document.getElementById("multisig");
+    const travel = document.getElementById("travel");
+    const incident = document.getElementById("incident");
+    const comms = document.getElementById("comms");
+
+    if (!multisig || !travel || !incident || !comms) return;
+
+    multisig.checked = true;
+    travel.checked = true;
+    incident.checked = true;
+    comms.checked = true;
+
+    generateCustodyRunbook();
+}
 
 
 /* ========================================================
