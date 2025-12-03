@@ -7,9 +7,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/global.css">
-    <link rel="stylesheet" href="/css/layout.css">
-    <link rel="stylesheet" href="/css/components.css">
+    <link rel="stylesheet" href="/styles/global.css">
+    <link rel="stylesheet" href="/styles/pages/tools.css">
 </head>
 <body>
     <div id="site-header"></div>
@@ -165,7 +164,7 @@
     <div id="site-footer" class="footer"></div>
 
     <script src="/js/chart.umd.min.js"></script>
-    <script type="module" src="/js/loadPartials.js"></script>
+    
     <script type="module">
         import { initAddressInspector, initTreasuryCalculator, initSavingsPlan, initExchangeComparison, initPriceWidget } from '/js/btcTools.js';
         import { initChannelPlanner, initRoutingHealth, initLightningWalletGuide } from '/js/lightningTools.js';
@@ -184,5 +183,6 @@
             initPriceWidget('#price-kpis');
         });
     </script>
+    <script type="module" src="/js/site.js"></script>
 </body>
 </html>
