@@ -1,1 +1,6 @@
+# Dependencies for the public web experience and backend API service
 Flask>=3.0
+requests>=2.31
+flask-cors>=4.0
+# Gunicorn serves backend.app:app in production
+gunicorn>=21.2
