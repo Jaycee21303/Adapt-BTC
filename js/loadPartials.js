@@ -11,6 +11,10 @@ export async function injectPartials() {
             const res = await fetch('/partials/footer.html');
             footerEl.innerHTML = await res.text();
         }
+
+        if (headerEl || footerEl) {
+            await import('/partials/nav.js');
+        }
     } catch (err) {
         console.error('Error loading partials', err);
     }
