@@ -6,29 +6,12 @@
     <title>AdaptBTC Engine Dashboard</title>
     <script src="https://cdn.tailwindcss.com" defer></script>
     <link rel="stylesheet" href="static/css/dashboard.css">
+    <link rel="stylesheet" href="/assets/css/system.css">
 </head>
 <body class="bg-gray-100 text-gray-900 font-inter">
     <a class="skip-link" href="#main-content">Skip to main content</a>
-    <header class="w-full bg-white shadow-sm">
-        <nav class="max-w-7xl mx-auto flex flex-wrap items-center gap-4 md:gap-6 justify-between py-3 px-6" role="navigation" aria-label="Primary">
-            <div class="flex items-center gap-3 flex-shrink-0">
-                <a href="index.html" class="brand-button" aria-label="AdaptBTC home">
-                    <span>Adapt</span><span class="brand-text-btc">BTC</span>
-                </a>
-            </div>
-
-            <div class="flex-1 flex flex-wrap justify-center gap-x-6 gap-y-2 text-gray-600 text-[15px]">
-                <a href="index.html" class="hover:text-black">Home</a>
-                <a href="education/bitcoin101.html" class="hover:text-black">Education</a>
-                <a href="adapt-tools.html" class="hover:text-black">Adapt Tools</a>
-                <a href="community.html" class="hover:text-black">Community</a>
-                <a href="adapt-lightning-tools.html" class="hover:text-black">Lightning Suite</a>
-                <a href="dashboard.html" class="text-black font-semibold">Engine Dashboard</a>
-            </div>
-        </nav>
-    </header>
-
-    <main id="main-content" class="max-w-6xl mx-auto px-6 py-10">
+    <div id="site-header" data-include="header"></div>
+<main id="main-content" class="max-w-6xl mx-auto px-6 py-10">
         <section class="space-y-6">
             <div class="space-y-2">
                 <p class="eyebrow">Engine</p>
@@ -85,5 +68,6 @@
     </main>
 
     <script src="static/js/dashboard.js" defer></script>
+<script src="/assets/js/layout.js" defer></script>
 </body>
 </html>

@@ -10,15 +10,22 @@
     <style>
         body { font-family: Inter, system-ui, -apple-system, sans-serif; background: #f3f4f6; color: #1f2937; padding: 48px; }
         .card { max-width: 640px; margin: 0 auto; background: white; border: 1px solid #e5e7eb; border-radius: 12px; padding: 28px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-        .btn { display: inline-block; margin-top: 16px; padding: 10px 16px; background: #0f172a; color: white; border-radius: 10px; text-decoration: none; font-weight: 600; }
+        .btn { display: inline-block; margin-top: 14px; padding: 10px 16px; background: #1E90FF; color: white; border-radius: 10px; text-decoration: none; box-shadow: 0 0 20px rgba(0,148,255,0.45); }
     </style>
+    <link rel="stylesheet" href="/assets/css/system.css">
 </head>
 <body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+<div id="site-header" data-include="header"></div>
+<main id="main-content">
     <div class="card">
         <p class="eyebrow" style="text-transform: uppercase; letter-spacing: 0.08em; font-size: 12px; color: #6b7280; margin: 0 0 8px 0;">Engine</p>
         <h1 style="margin: 0 0 10px 0; font-size: 24px;">Redirecting to the Engine dashboard</h1>
         <p style="margin: 0; line-height: 1.6;">If you are not redirected automatically, use the button below to launch the full dashboard experience.</p>
         <a class="btn" href="../dashboard.html">Go to Engine dashboard</a>
     </div>
+</main>
+<div id="site-footer" data-include="footer"></div>
+<script src="/assets/js/layout.js" defer></script>
 </body>
 </html>

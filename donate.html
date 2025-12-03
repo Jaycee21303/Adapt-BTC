@@ -8,7 +8,8 @@
     <title>AdaptBTC – Donate with Bitcoin</title>
 
     <script src="https://cdn.tailwindcss.com" defer></script>
-    <link rel="stylesheet" href="assets/css/global.css">
+    <link rel="stylesheet" href="/assets/css/system.css">
+    <link rel="stylesheet" href="/assets/css/global.css">
 </head>
 
 <body class="bg-gray-100 text-gray-900 font-inter">
@@ -16,26 +17,7 @@
 <a class="skip-link" href="#main-content">Skip to donation form</a>
 
 <!-- NAVBAR -->
-<header class="w-full bg-white shadow-sm">
-    <nav class="max-w-7xl mx-auto flex justify-between items-center py-3 px-6" role="navigation" aria-label="Primary">
-        <div class="flex items-center gap-3">
-            <a href="index.html" class="brand-button" aria-label="AdaptBTC home">
-                <span>Adapt</span><span class="brand-text-btc">BTC</span>
-            </a>
-        </div>
-
-        <div class="hidden md:flex gap-8 text-gray-600 text-[15px]">
-            <a href="index.html" class="hover:text-black">Home</a>
-            <a href="beginner.html" class="hover:text-black">Beginner Guide</a>
-            <a href="education/bitcoin101.html" class="hover:text-black">Education</a>
-            <a href="consulting.html" class="hover:text-black">Work With Us</a>
-            <a href="our-mission.html" class="hover:text-black">Our Mission</a>
-            <a href="community.html" class="hover:text-black">Community</a>
-            <a href="adapt-tools.html" class="hover:text-black">Adapt Tools</a>
-        </div>
-    </nav>
-</header>
-
+<div id="site-header" data-include="header"></div>
 <!-- HERO -->
 <section class="max-w-6xl mx-auto px-6 pt-12 pb-6" id="main-content">
     <h1 class="text-4xl md:text-5xl font-bold">Donate with Bitcoin</h1>
@@ -166,19 +148,10 @@
 </section>
 
 <!-- FOOTER -->
-<footer class="w-full border-t border-gray-300 py-8 text-center text-gray-600">
-    <p>AdaptBTC • Los Angeles, CA</p>
-
-    <div class="mt-3 flex justify-center gap-6 text-sm">
-        <a href="mailto:admin@adapt-btc.com" class="hover:text-black">Contact</a>
-        <a href="privacy.html" class="hover:text-black">Privacy Policy</a>
-        <a href="terms.html" class="hover:text-black">Terms</a>
-        <a href="https://twitter.com/AdaptBTC" class="hover:text-black">X (Twitter)</a>
-    </div>
-</footer>
-
+<div id="site-footer" data-include="footer"></div>
 <script src="https://cdn.jsdelivr.net/npm/qrious@4.0.2/dist/qrious.min.js" defer></script>
 <script src="assets/js/donate.js" defer></script>
 
+<script src="/assets/js/layout.js" defer></script>
 </body>
 </html>
