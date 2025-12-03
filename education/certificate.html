@@ -1,13 +1,28 @@
 
-<html>
-<head><link rel='stylesheet' href='css/education.css'></head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bitcoin 101 Certificate</title>
+<link rel='stylesheet' href='css/education.css'>
+</head>
 <body>
-<header><div class='logo'>AdaptBTC</div></header>
+<header>
+    <a class='logo' href='../index.html'>AdaptBTC</a>
+    <nav class='nav-links' aria-label='Education navigation'>
+        <a href='../index.html'>Home</a>
+        <a href='../beginner.html'>Beginner Guide</a>
+        <a href='bitcoin101.html' class='active'>Education</a>
+        <a href='../adapt-tools.html'>Adapt Tools</a>
+    </nav>
+    <a class='nav-button' href='../dashboard.html'>Engine</a>
+</header>
 <div class='lesson'>
 <h1>Bitcoin 101 Certificate</h1>
 <p>Enter your name:</p>
 <input id='name' placeholder='Your Name' style='padding:14px;width:65%;border-radius:10px;border:1px solid #bbb;'>
-<a class='button' href='#'>Download Certificate PDF</a>
+<button id='download-certificate' class='button' type='button'>Download Certificate PDF</button>
 </div>
 <script src='js/certificate.js'></script>
 </body>
