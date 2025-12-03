@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Lightning Usage | AdaptBTC</title>
+    <link rel='preconnect' href='https://fonts.googleapis.com'>
+    <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
+    <link href='https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap' rel='stylesheet'>
+    <link rel='stylesheet' href='/css/global.css'>
+    <link rel='stylesheet' href='/css/layout.css'>
+    <link rel='stylesheet' href='/css/components.css'>
+    <link rel='stylesheet' href='/css/education.css'>
+</head>
+<body>
+    <div id='site-header'></div>
+    <main class='container section lesson-page'>
+        <div class='breadcrumbs'>Education / Lightning Usage</div>
+        <h1>Lightning Usage</h1>
+        <p class='subtitle'>Invoices, keysend, liquidity management, and merchant flows.</p>
+        <div class='lesson-content'>
+            <div class='lesson-block'>
+                <h2>Key concepts</h2>
+                <p>How Bitcoin claims neutrality while coordinating strangers.</p>
+                <ul><li>Hard money properties: fixed supply, difficulty adjustment.</li><li>The role of nodes in enforcing consensus rules.</li><li>Proof-of-work as a civil resistance tool.</li><li>Block structure: headers, Merkle trees, and transactions.</li></ul>
+            </div>
+            <div class='lesson-block'>
+                <h2>Implementation guidance</h2>
+                <p>Translate the principles into checklists for wallets, backups, and network participation.</p>
+                <ul><li>Choose wallets that let you export keys and operate on-chain and Lightning.</li><li>Use testnet to rehearse spending and recovery before mainnet.</li><li>Measure fee rates and mempool depth before broadcasting transactions.</li><li>Segment cold, warm, and hot storage by policy.</li></ul>
+            </div>
+            <div class='lesson-block'>
+                <h2>Field notes</h2>
+                <p>Translate the principles into checklists for wallets, backups, and network participation.</p>
+                <div class='callout'>Every operational shortcut compounds risk; automation should never hide keys from you.</div>
+            </div>
+            <div class='quiz-block'>
+                <h3>Check your understanding</h3>
+                <div id='quiz'></div>
+                <form id='certificate-form' class='certificate-form'>
+                    <label for='student-name'>Name for certificate</label>
+                    <input id='student-name' name='name' type='text' placeholder='Enter your full name'>
+                    <button class='button' type='submit' disabled>Generate certificate</button>
+                </form>
+            </div>
+        </div>
+        <div class='lesson-nav'>
+            <a class='button secondary' href='/education/courses/lightning-wallets.html'>← Previous</a>
+            <a class='button' href='/education/courses/bitcoin-business-101.html'>Next →</a>
+        </div>
+    </main>
+    <div id='site-footer' class='footer'></div>
+    <script type='module' src='/js/loadPartials.js'></script>
+    <script type='module'>
+        import { renderQuiz } from '/js/quizEngine.js';
+        import quiz from '/education/quizzes/lightning-usage.js';
+        import { initCertificate } from '/js/certificate.js';
+        document.addEventListener('partials:loaded', () => {
+            renderQuiz(document.getElementById('quiz'), quiz, () => {
+                document.querySelector('#certificate-form button').disabled = false;
+            });
+            initCertificate('#certificate-form', 'Lightning Usage');
+        });
+    </script>
+</body>
+</html>

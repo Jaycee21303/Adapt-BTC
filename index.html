@@ -3,505 +3,170 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="AdaptBTC is a public-good Bitcoin onboarding system with open education, treasury frameworks, and safety tools for individuals and businesses.">
-    <link rel="canonical" href="https://adaptbtc.com/">
-    <title>AdaptBTC – Why Bitcoin Matters</title>
-
-    <script src="https://cdn.tailwindcss.com" defer></script>
-    <link rel="stylesheet" href="/assets/css/system.css">
-    <link rel="stylesheet" href="/assets/css/global.css">
+    <title>AdaptBTC | Bitcoin education and tools</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/layout.css">
+    <link rel="stylesheet" href="/css/components.css">
 </head>
+<body>
+    <div id="site-header"></div>
 
-<body class="bg-gray-100 text-gray-900 font-inter">
-<a class="skip-link" href="#main-content">Skip to content</a>
-<div id="site-header" data-include="header"></div>
-
-<!-- PRICE TICKER -->
-<section class="page-section pt-10 pb-6 flex justify-center" id="main-content">
-    <div class="price-ticker-card">
-        <div class="ticker-label">Live Bitcoin Price</div>
-        <div id="price-ticker" class="flex items-center gap-3" aria-live="polite" aria-atomic="true">
-            <span id="btc-price" data-last="0">$0</span>
-            <span id="btc-arrow">→</span>
-            <span id="btc-change" class="ticker-change">0.00%</span>
-        </div>
-        <p class="ticker-subtext">Auto-refreshes every 15 seconds using CoinGecko market data.</p>
-    </div>
-</section>
-
-<!-- HERO SECTION -->
-<section class="page-section pt-6 pb-12">
-    <div class="hero-panel p-8 md:p-10">
-        <div class="grid lg:grid-cols-2 gap-10 items-center">
+    <main>
+        <section class="hero container">
             <div>
-                <p class="eyebrow">Open Bitcoin Safety & Business Onboarding System</p>
-                <h1 class="text-4xl md:text-6xl font-bold leading-tight">AdaptBTC: clean, professional guidance for real people</h1>
-
-                <p class="mt-6 text-lg text-gray-800 max-w-2xl leading-7">
-                    AdaptBTC is a public-good project that removes friction from Bitcoin adoption. We publish
-                    open-access education, standardized treasury frameworks, and integration playbooks so
-                    individuals and businesses can self-custody confidently and settle over Lightning with
-                    clear procedures.
-                </p>
-
-                <div class="mt-8 flex flex-wrap gap-4">
-                    <a href="education/bitcoin101.html" class="btn-primary">Start Learning</a>
-                    <a href="consulting.html" class="btn-primary bg-gray-700 hover:bg-gray-800">Work With Us →</a>
-                    <a href="our-mission.html" class="btn-ghost">See our mission</a>
+                <div class="badge">Bitcoin-native training and tooling</div>
+                <h1>Ship Bitcoin experiences with confidence.</h1>
+                <p>AdaptBTC is the professional education and tooling hub for teams launching Bitcoin and Lightning products. We combine structured curriculum, live dashboards, and battle-tested utilities in a single, modern platform.</p>
+                <div class="quiz-actions">
+                    <a class="button" href="/education/index.html">Start the education suite</a>
+                    <a class="button secondary" href="/tools/index.html">Explore the tool stack</a>
                 </div>
-
-                <div class="mt-6 flex flex-wrap gap-3 text-sm text-gray-700">
-                    <span class="pill">21M fixed supply</span>
-                    <span class="pill">Self-custody not bank IOUs</span>
-                    <span class="pill">Borderless final settlement</span>
+                <div class="hero-metrics">
+                    <div class="metric-card"><div class="text-muted">Lessons</div><strong>20+ expert tracks</strong></div>
+                    <div class="metric-card"><div class="text-muted">Labs</div><strong>8 production tools</strong></div>
+                    <div class="metric-card"><div class="text-muted">Certificates</div><strong>jsPDF digital creds</strong></div>
+                    <div class="metric-card"><div class="text-muted">Community</div><strong>Consulting + dashboards</strong></div>
                 </div>
             </div>
-
-            <div class="highlight-card">
-                <h3 class="text-xl font-semibold mb-3">Real-world resilience</h3>
-                <ul class="space-y-3 text-gray-800 leading-6">
-                    <li><strong>Bank stress scenarios:</strong> Depositors in 1930s America and 2023 regional banks faced withdrawal limits—cold storage Bitcoin remained liquid.</li>
-                    <li><strong>Currency erosion:</strong> USD money supply expanded by trillions after 2020; Bitcoin issuance halves every ~4 years, enforcing predictable scarcity.</li>
-                    <li><strong>Small-business use:</strong> Lightning invoices can settle in seconds with near-zero fees, keeping margins intact while reducing chargeback risk.</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- LIGHTNING SUITE CALLOUT ON HOMEPAGE -->
-<section class="page-section pb-12">
-    <div class="card bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 text-white border-blue-200">
-        <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
-            <div class="space-y-3">
-                <p class="pill bg-white/10 text-white border-white/20">Lightning toolkit</p>
-                <h2 class="text-3xl font-bold">Lightning Adoption Suite</h2>
-                <p class="text-blue-50 leading-7">Launch the dashboards, routing simulator, and profitability calculator directly from the homepage. Model channel revenue, explore node health, and plan hardware spend with real-time data.</p>
-                <div class="flex flex-wrap gap-3">
-                    <a href="tools/lightning-suite-landing.html" class="btn-ghost text-white border-white/40 hover:border-white" aria-label="Read the Lightning suite overview">Overview</a>
-                    <a href="adapt-lightning-tools.html" target="_blank" rel="noopener noreferrer" class="btn-primary bg-white text-blue-900 hover:bg-blue-50" aria-label="Launch the Lightning Adoption Suite">Launch the suite</a>
+            <div class="card">
+                <div class="section-header">
+                    <div>
+                        <div class="badge">Live stack</div>
+                        <h3>Operations at a glance</h3>
+                        <p class="text-muted">Track treasury exposure, Lightning health, and education progress from a single unified panel.</p>
+                    </div>
+                    <div class="tag">No custodial risk</div>
+                </div>
+                <div class="grid responsive-grid-3">
+                    <div class="kpi">
+                        <div class="text-muted">BTC Treasury</div>
+                        <strong>127.4 BTC</strong>
+                        <div class="text-muted">On cold storage with segmented policy</div>
+                    </div>
+                    <div class="kpi">
+                        <div class="text-muted">Lightning Uptime</div>
+                        <strong>99.4%</strong>
+                        <div class="text-muted">Active peers: ACINQ, Voltage, Breez</div>
+                    </div>
+                    <div class="kpi">
+                        <div class="text-muted">Team readiness</div>
+                        <strong>14 graduates</strong>
+                        <div class="text-muted">Certificates issued this quarter</div>
+                    </div>
+                </div>
+                <div class="banner" style="margin-top:16px;">
+                    <div class="icon-circle">LN</div>
+                    <div><strong>Lightning playbooks</strong><div class="text-muted">Hands-on channel sizing, liquidity flows, and fee modeling.</div></div>
+                    <a class="button secondary" href="/tools/index.html#lightning">Open tools</a>
                 </div>
             </div>
-            <div class="p-6 bg-white/10 border border-white/20 rounded-xl shadow-lg max-w-sm w-full">
-                <p class="text-sm uppercase tracking-wide text-blue-100">Real-time network data</p>
-                <ul class="mt-3 space-y-2 text-blue-50 leading-6">
-                    <li>Mempool and routing visibility for rollout planning</li>
-                    <li>Profitability modeling with card fee comparisons</li>
-                    <li>Pre-flight liquidity checks before deploying capital</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</section>
+        </section>
 
-<!-- ADAPTBTC SYSTEM OVERVIEW -->
-<section class="page-section pb-12">
-    <div class="card space-y-5">
-        <p class="eyebrow">Grant-ready public good</p>
-        <h2 class="text-3xl font-bold">The open-access Bitcoin Safety & Business Onboarding System</h2>
-        <p class="text-lg text-gray-800 leading-7">
-            We are standardizing Bitcoin education and operational playbooks so anyone can adopt safely.
-            Everything is free to use, remix, and translate—built as a public good for communities, schools,
-            and small businesses worldwide.
-        </p>
-
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4 text-gray-900">
-            <div class="p-4 rounded-lg bg-white border border-gray-200 shadow-sm">
-                <p class="text-sm font-semibold text-orange-700">1. Universal Beginner Curriculum</p>
-                <ul class="list-disc list-inside space-y-1 mt-2 text-gray-800 text-sm leading-6">
-                    <li>Plain-language modules on money, decentralization, and consensus</li>
-                    <li>Guides for buying, avoiding scams, and moving to self-custody</li>
-                    <li>Printable PDFs, glossary, and multilingual versions</li>
-                </ul>
-            </div>
-
-            <div class="p-4 rounded-lg bg-white border border-gray-200 shadow-sm">
-                <p class="text-sm font-semibold text-emerald-700">2. Self-Custody Readiness & Safety Tools</p>
-                <ul class="list-disc list-inside space-y-1 mt-2 text-gray-800 text-sm leading-6">
-                    <li>Readiness score with next steps</li>
-                    <li>Universal safety checklist and backup models</li>
-                    <li>Recovery and inheritance templates</li>
-                </ul>
-            </div>
-
-            <div class="p-4 rounded-lg bg-white border border-gray-200 shadow-sm">
-                <p class="text-sm font-semibold text-blue-700">3. Bitcoin for Business Framework</p>
-                <ul class="list-disc list-inside space-y-1 mt-2 text-gray-800 text-sm leading-6">
-                    <li>Treasury policy template and allocation calculator</li>
-                    <li>Lightning vendor rollout and compliance checklist</li>
-                    <li>Custody and security patterns for multisig</li>
-                </ul>
-            </div>
-
-            <div class="p-4 rounded-lg bg-white border border-gray-200 shadow-sm">
-                <p class="text-sm font-semibold text-slate-700">4. Bitcoin Safety Standard v1.0</p>
-                <ul class="list-disc list-inside space-y-1 mt-2 text-gray-800 text-sm leading-6">
-                    <li>Minimum security requirements for new users</li>
-                    <li>Backup, redundancy, and recovery guidelines</li>
-                    <li>Business-grade treasury procedures</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="grid md:grid-cols-3 gap-4 text-sm text-gray-800">
-            <div class="p-4 rounded-lg bg-blue-50 border border-blue-100">
-                <p class="font-semibold text-blue-900">Open-access commitment</p>
-                <p class="mt-1 leading-6">All curriculum, templates, and tools are published under a permissive license—no paywalls, no gated downloads.</p>
-            </div>
-            <div class="p-4 rounded-lg bg-emerald-50 border border-emerald-100">
-                <p class="font-semibold text-emerald-900">Global reach</p>
-                <p class="mt-1 leading-6">Designed for community reuse: printable kits, translation-ready content, and quarterly updates.</p>
-            </div>
-            <div class="p-4 rounded-lg bg-amber-50 border border-amber-100">
-                <p class="font-semibold text-amber-900">Impact tracking</p>
-                <p class="mt-1 leading-6">We report on curriculum completions, checklist downloads, and businesses using the treasury framework.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- BITCOIN TREASURY & DIVERSIFICATION FOR BUSINESSES -->
-<section class="page-section pb-12">
-    <div class="card grid lg:grid-cols-2 gap-6 items-start">
-        <div>
-            <p class="eyebrow">Treasury strategy</p>
-            <h2 class="text-3xl font-bold">Why businesses are adding Bitcoin to diversify reserves</h2>
-            <p class="text-lg text-gray-800 leading-7">Adding a measured Bitcoin allocation gives companies exposure to a scarce, global asset that isn’t tied to one banking system. It can complement cash and short-term treasuries while improving liquidity options across borders.</p>
-            <ul class="mt-4 space-y-2 text-gray-800 text-sm list-disc list-inside">
-                <li>Reduce single-currency risk by holding a digitally scarce reserve that cannot be diluted.</li>
-                <li>Keep optionality: cold storage for long-term runway plus Lightning or exchange liquidity for operational needs.</li>
-                <li>Documented policies—allocation bands, signers, and rebalancing rules—help boards and finance teams stay aligned.</li>
-            </ul>
-        </div>
-        <div class="highlight-card space-y-3">
-            <h3 class="text-xl font-semibold">How AdaptBTC can help</h3>
-            <div class="p-3 rounded-lg bg-white/70 border border-gray-200 text-sm text-gray-700 space-y-2">
-                <p class="font-semibold text-gray-900">Treasury templates</p>
-                <p>Use our policy frameworks, allocation calculator, and multisig guides to formalize Bitcoin alongside your existing cash, bonds, or stable reserves.</p>
-            </div>
-            <div class="p-3 rounded-lg bg-white/70 border border-gray-200 text-sm text-gray-700 space-y-2">
-                <p class="font-semibold text-gray-900">Portfolio conversations</p>
-                <p>We model how small allocations (1–5%) may improve risk-adjusted returns without overexposing the business to volatility.</p>
-            </div>
-            <a href="consulting.html#treasury" class="btn-primary inline-flex w-max">Discuss a treasury plan →</a>
-        </div>
-    </div>
-</section>
-
-<!-- WHY BITCOIN -->
-<section class="page-section py-10">
-    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div class="card">
-            <h3 class="text-xl font-semibold mb-2">Inflation Protection</h3>
-            <p class="text-gray-700">Bitcoin’s supply is capped at 21 million, unlike fiat currencies.</p>
-        </div>
-
-        <div class="card">
-            <h3 class="text-xl font-semibold mb-2">True Ownership</h3>
-            <p class="text-gray-700">No bank controls your Bitcoin. You hold it directly.</p>
-        </div>
-
-        <div class="card">
-            <h3 class="text-xl font-semibold mb-2">Borderless Money</h3>
-            <p class="text-gray-700">Send value globally in minutes without intermediaries.</p>
-        </div>
-
-        <div class="card">
-            <h3 class="text-xl font-semibold mb-2">Secure Network</h3>
-            <p class="text-gray-700">Secured by the most powerful decentralized network ever created.</p>
-        </div>
-    </div>
-</section>
-
-<!-- BITCOIN: SAVINGS ASSET VS DAILY PAYMENTS -->
-<section class="page-section py-10">
-    <div class="card grid lg:grid-cols-2 gap-6 items-start">
-        <div>
-            <p class="eyebrow">Two complementary roles</p>
-            <h2 class="text-3xl font-bold mb-3">Bitcoin works as both a long-term asset and everyday payments rail</h2>
-            <p class="text-lg text-gray-800 leading-7">Some people view Bitcoin primarily as a scarce savings asset—digital property that protects wealth over decades. Others focus on its utility as fast, final settlement for day-to-day payments, especially over the Lightning Network. Both viewpoints are correct, and they reinforce each other.</p>
-            <ul class="mt-4 space-y-2 text-gray-800 text-sm list-disc list-inside">
-                <li><span class="font-semibold">Asset lens:</span> The 21M cap and global liquidity make Bitcoin a modern reserve asset that resists debasement and travels across borders in minutes.</li>
-                <li><span class="font-semibold">Payments lens:</span> Instant, low-fee transfers let shoppers and vendors avoid card fees and chargebacks while settling directly.</li>
-                <li><span class="font-semibold">Why both matter:</span> Savings demand strengthens network security, while real-world payments prove usefulness and keep liquidity flowing.</li>
-            </ul>
-        </div>
-        <div class="highlight-card space-y-4">
-            <h3 class="text-xl font-semibold">How to balance both</h3>
-            <div class="p-3 rounded-lg bg-white/70 border border-gray-200">
-                <p class="font-semibold text-gray-900">For individuals</p>
-                <p class="text-sm text-gray-700">Hold long-term savings in cold storage while keeping a small Lightning balance for daily purchases or peer-to-peer transfers.</p>
-            </div>
-            <div class="p-3 rounded-lg bg-white/70 border border-gray-200">
-                <p class="font-semibold text-gray-900">For businesses</p>
-                <p class="text-sm text-gray-700">Maintain a treasury allocation for diversification, plus a controlled operating float for Lightning payments and instant settlement.</p>
-            </div>
-            <div class="p-3 rounded-lg bg-amber-50 border border-amber-200 text-sm text-gray-800">
-                <p class="font-semibold text-amber-900">Bottom line</p>
-                <p>Bitcoin’s strength comes from being both durable savings and spendable money—adopt it in the way that fits your time horizon.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- BITCOIN ETF SPOTLIGHT -->
-<section class="page-section pb-4">
-    <div class="card grid lg:grid-cols-2 gap-6 items-start">
-        <div>
-            <p class="eyebrow">Mainstream access</p>
-            <h2 class="text-3xl font-bold mb-3">Bitcoin ETFs make exposure easier—know the trade-offs</h2>
-            <p class="text-lg text-gray-800 leading-7">Spot Bitcoin ETFs now trade on major U.S. exchanges. They offer familiar brokerage access but have fees and only move during market hours. Holding your own keys remains the gold standard for censorship-resistance.</p>
-
-            <div class="mt-5 grid sm:grid-cols-2 gap-3 text-sm text-gray-800">
-                <div class="p-3 rounded-lg bg-blue-50 border border-blue-100">
-                    <p class="font-semibold text-blue-900">Popular issuers</p>
-                    <ul class="list-disc list-inside space-y-1">
-                        <li><a class="text-blue-700 hover:text-blue-800 font-semibold" href="https://www.ishares.com/us/products/333332/ishares-bitcoin-trust" target="_blank" rel="noreferrer">iShares Bitcoin Trust</a> (BlackRock)</li>
-                        <li><a class="text-blue-700 hover:text-blue-800 font-semibold" href="https://www.fidelity.com/etfs/bitcoin-etf" target="_blank" rel="noreferrer">Fidelity Wise Origin</a></li>
-                        <li><a class="text-blue-700 hover:text-blue-800 font-semibold" href="https://www.vaneck.com/us/en/investments/bitcoin-trust-etf/" target="_blank" rel="noreferrer">VanEck Bitcoin Trust</a></li>
-                    </ul>
+        <section class="section" id="education">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Education suite</h2>
+                    <a class="button secondary" href="/education/index.html">View curriculum</a>
                 </div>
-                <div class="p-3 rounded-lg bg-amber-50 border border-amber-100">
-                    <p class="font-semibold text-amber-900">What to keep in mind</p>
-                    <ul class="list-disc list-inside space-y-1">
-                        <li>Expense ratios, brokerage commissions, and taxable events apply.</li>
-                        <li>Trading halts and market hours can limit exits during volatility.</li>
-                        <li>ETF shares ≠ self-custodied Bitcoin—you can’t spend or withdraw them.</li>
+                <div class="grid course-grid">
+                    <div class="course-card">
+                        <h3>Bitcoin foundations</h3>
+                        <p class="text-muted">Learn consensus, keys, transactions, and the security assumptions that keep Bitcoin unstoppable.</p>
+                        <div class="meta">
+                            <span>6 lessons</span>
+                            <span>Quiz + certificate</span>
+                        </div>
+                        <a class="button" href="/education/courses/bitcoin-101.html">Start track</a>
+                    </div>
+                    <div class="course-card">
+                        <h3>Lightning delivery</h3>
+                        <p class="text-muted">Operational playbooks for channel strategy, routing reliability, and customer-grade wallets.</p>
+                        <div class="meta">
+                            <span>5 lessons</span>
+                            <span>Hands-on labs</span>
+                        </div>
+                        <a class="button" href="/education/courses/lightning-intro.html">Build Lightning</a>
+                    </div>
+                    <div class="course-card">
+                        <h3>Business and policy</h3>
+                        <p class="text-muted">Treasury governance, tax scenarios, risk modeling, and rollout guidance for leadership teams.</p>
+                        <div class="meta">
+                            <span>4 lessons</span>
+                            <span>Compliance primers</span>
+                        </div>
+                        <a class="button" href="/education/courses/bitcoin-business-101.html">Guide leadership</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="tools">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Tools rebuilt for production</h2>
+                    <a class="button secondary" href="/tools/index.html">Open tool suite</a>
+                </div>
+                <div class="tool-grid">
+                    <div class="tool-card">
+                        <header><h3>Treasury calculator</h3><span class="badge">Balance</span></header>
+                        <p>Model treasury allocations, spot values, and rebalance triggers with offline-friendly math.</p>
+                        <a class="button secondary" href="/tools/index.html#treasury">Plan treasury</a>
+                    </div>
+                    <div class="tool-card">
+                        <header><h3>Lightning operations</h3><span class="badge">Channels</span></header>
+                        <p>Size channels, benchmark peers, and manage inbound/outbound liquidity targets.</p>
+                        <a class="button secondary" href="/tools/index.html#lightning">Open Lightning suite</a>
+                    </div>
+                    <div class="tool-card">
+                        <header><h3>Node explorer</h3><span class="badge">Visibility</span></header>
+                        <p>Search curated node metadata to plan connectivity and redundancy strategies.</p>
+                        <a class="button secondary" href="/tools/index.html#nodes">Inspect peers</a>
+                    </div>
+                    <div class="tool-card">
+                        <header><h3>Address inspector</h3><span class="badge">Safety</span></header>
+                        <p>Validate base58 and bech32 formats to catch typos before signing transactions.</p>
+                        <a class="button secondary" href="/tools/index.html#address">Verify address</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="consulting">
+            <div class="container split">
+                <div>
+                    <div class="badge">Adoption services</div>
+                    <h2>Need hands-on help? We ship Bitcoin products end-to-end.</h2>
+                    <p class="text-muted">Pair with AdaptBTC instructors and engineers to launch Lightning payments, secure treasury policies, and train your team. Engagements include architecture reviews, customer testing, and runbooks tailored to your stack.</p>
+                    <div class="badge-row">
+                        <span class="tag">Architecture</span>
+                        <span class="tag">Security reviews</span>
+                        <span class="tag">Compliance notes</span>
+                    </div>
+                    <div class="lesson-actions">
+                        <a class="button" href="/consulting.html">Book consulting</a>
+                        <a class="button secondary" href="/get-involved.html">Join community</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>Engagement blueprint</h3>
+                    <ul class="list">
+                        <li><strong>Discovery:</strong> Align on outcomes, regions, and compliance constraints.</li>
+                        <li><strong>Design:</strong> Wallet UX, fee models, liquidity plans, and fraud controls.</li>
+                        <li><strong>Delivery:</strong> Integration pair sessions, testnet rehearsals, cutover plan.</li>
+                        <li><strong>Enablement:</strong> Team training, certificate issuance, and operational dashboards.</li>
                     </ul>
                 </div>
             </div>
-        </div>
+        </section>
+    </main>
 
-        <div class="highlight-card">
-            <h3 class="text-xl font-semibold mb-3">How to use them wisely</h3>
-            <ul class="space-y-3 text-gray-800 leading-6">
-                <li><strong>Try-before-self-custody:</strong> ETFs can be a first step for newcomers who already have a brokerage account; plan a migration to holding keys when comfortable.</li>
-                <li><strong>Keep fees in check:</strong> Compare annual expense ratios (many range from 0.19–0.39%) and watch bid/ask spreads on low-volume tickers.</li>
-                <li><strong>Stay in control:</strong> For censorship resistance and global spending, move to a wallet you control. Our beginner guide walks through the transition.</li>
-            </ul>
-            <div class="mt-5 flex flex-wrap gap-3">
-                <a href="beginner.html#etf-basics" class="btn-primary">Read ETF basics</a>
-                <a href="consulting.html#treasury" class="btn-ghost">Get a plan for your situation</a>
-            </div>
-        </div>
-    </div>
-</section>
+    <div id="site-footer" class="footer"></div>
 
-<!-- ADAPT TOOLS TEASER -->
-<section class="page-section py-12">
-    <div class="card grid lg:grid-cols-2 gap-6 items-center">
-        <div>
-            <p class="eyebrow">Built for doers</p>
-            <h2 class="text-3xl font-bold mb-3">Adapt Tools: calculators and playbooks to implement Bitcoin fast</h2>
-            <p class="text-lg text-gray-800 leading-7">Move from theory to action with our new Adapt Tools workspace. Track DCA habit performance, model Lightning fee savings versus card processors, and generate integration runbooks for Strike and custody drills.</p>
-
-            <div class="mt-6 flex flex-wrap gap-3">
-                <a href="adapt-tools.html" class="btn-primary">Open Adapt Tools</a>
-                <a href="consulting.html" class="btn-ghost">Get expert guidance</a>
-            </div>
-        </div>
-
-        <div class="highlight-card">
-            <h3 class="text-xl font-semibold mb-3">What’s inside</h3>
-            <ul class="space-y-3 text-gray-800 leading-6">
-                <li><strong>DCA tracker:</strong> Visualize total invested and BTC accumulated with your assumptions.</li>
-                <li><strong>Lightning savings model:</strong> Estimate margin you gain by replacing card fees with Lightning.</li>
-                <li><strong>Strike + custody runbooks:</strong> Auto-generate steps tailored to your business type and risk controls.</li>
-            </ul>
-        </div>
-    </div>
-</section>
-
-<!-- OPERATIONS & TOOLS SHOWCASE -->
-<section class="page-section pb-14">
-    <div class="card space-y-6">
-        <p class="eyebrow">Prove it to investors and partners</p>
-        <h2 class="text-3xl font-bold">A homepage cockpit that shows you’re production-ready</h2>
-        <p class="text-lg text-gray-800 leading-7">Adapt Tools isn’t just a calculator page—it’s a live demo environment. Use the
-            Lightning Adoption Suite to export uptime, routing quality, and drill completion rates. Drop these screenshots into
-            your next update and make the operational rigor obvious.</p>
-
-        <div class="grid lg:grid-cols-3 gap-4 text-sm text-gray-800">
-            <div class="p-4 rounded-lg bg-white border border-gray-200">
-                <p class="font-semibold text-blue-900">Data room bundle</p>
-                <ul class="list-disc list-inside space-y-1 mt-2 leading-6">
-                    <li>Mempool and fee heatmaps for big event days.</li>
-                    <li>Channel profitability snapshots with card-fee deltas.</li>
-                    <li>Uptime probes and SLA targets with time stamps.</li>
-                </ul>
-            </div>
-            <div class="p-4 rounded-lg bg-white border border-gray-200">
-                <p class="font-semibold text-emerald-900">Operations narrative</p>
-                <ul class="list-disc list-inside space-y-1 mt-2 leading-6">
-                    <li>Explain routing diversity (3+ high-uptime peers).</li>
-                    <li>Show your rebalancing cadence and on-call rotation.</li>
-                    <li>Highlight drills: stuck HTLC, device loss, payout audit.</li>
-                </ul>
-            </div>
-            <div class="p-4 rounded-lg bg-white border border-gray-200">
-                <p class="font-semibold text-amber-900">Team commitments</p>
-                <ul class="list-disc list-inside space-y-1 mt-2 leading-6">
-                    <li>Dual-control on key material with quarterly restore tests.</li>
-                    <li>Hardware patching schedule and signer rotation.</li>
-                    <li>Audit log of channel opens/closes with signer initials.</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="grid lg:grid-cols-2 gap-6 items-start">
-            <div class="highlight-card space-y-3">
-                <h3 class="text-xl font-semibold">Lightning readiness checklist</h3>
-                <ul class="space-y-3 text-gray-800 leading-6">
-                    <li><strong>Capacity mapped:</strong> channel sizes sized for peak-hour throughput with one hosted fallback.</li>
-                    <li><strong>Observability:</strong> uptime probes every 10 minutes with SMS/email alerts for failures.</li>
-                    <li><strong>Incident drills:</strong> quarterly stuck-HTLC and lost-device walkthroughs documented in your wiki.</li>
-                    <li><strong>Custody hygiene:</strong> cold storage signers tracked with patch schedules and rotation notes.</li>
-                </ul>
-            </div>
-            <div class="p-5 rounded-xl bg-gradient-to-br from-indigo-50 via-white to-indigo-50 border border-indigo-100 shadow-sm space-y-3">
-                <h3 class="text-xl font-semibold">How to present it</h3>
-                <ol class="list-decimal list-inside space-y-2 text-gray-800 leading-6">
-                    <li>Load the Lightning suite demo and export routing + uptime panels.</li>
-                    <li>Capture the savings model comparing card fees vs Lightning.</li>
-                    <li>Add drill results (stuck HTLC, device loss) with owners and timestamps.</li>
-                    <li>Share a short Loom tour of your SOPs using the generated runbooks.</li>
-                </ol>
-                <p class="text-sm text-gray-600 leading-6">This is the evidence package boards and grant-makers care about: repeatable
-                    operations, measured savings, and clear owners.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ROADMAP + RIGOR -->
-<section class="page-section pb-16">
-    <div class="card grid lg:grid-cols-3 gap-6 items-start">
-        <div class="lg:col-span-2 space-y-3">
-            <p class="eyebrow">Roadmap</p>
-            <h2 class="text-3xl font-bold">What we’re building next</h2>
-            <p class="text-lg text-gray-800 leading-7">The suite will keep growing—more dashboards, deeper reliability metrics, and
-                additional export formats for diligence. Share this roadmap with investors to show continuous improvement.</p>
-
-            <div class="grid md:grid-cols-2 gap-3 text-sm text-gray-800">
-                <div class="p-3 rounded-lg bg-white border border-gray-200">
-                    <p class="font-semibold text-blue-900">Near term</p>
-                    <ul class="list-disc list-inside space-y-1 mt-2 leading-6">
-                        <li>Offline-ready bundle for community workshops.</li>
-                        <li>CSV/JSON export for uptime, drills, and savings models.</li>
-                        <li>Template injector for SOPs and signer rotations.</li>
-                    </ul>
-                </div>
-                <div class="p-3 rounded-lg bg-white border border-gray-200">
-                    <p class="font-semibold text-emerald-900">Next up</p>
-                    <ul class="list-disc list-inside space-y-1 mt-2 leading-6">
-                        <li>API bridges to Voltage, Umbrel, and Greenlight nodes.</li>
-                        <li>Localization kits for Spanish, French, and Swahili.</li>
-                        <li>Printable runbook PDFs with QR links back to live dashboards.</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <div class="p-5 rounded-xl bg-gradient-to-br from-slate-900 to-slate-800 text-white shadow-lg space-y-3">
-            <p class="text-sm uppercase tracking-wide text-slate-200">Quality bar</p>
-            <ul class="space-y-2 text-sm leading-6">
-                <li>We publish changelogs for every dashboard and calculator tweak.</li>
-                <li>Security policy requires 2FA, signed commits, and dependency scanning.</li>
-                <li>Community testers validate flows monthly—join via the community page.</li>
-            </ul>
-            <p class="text-slate-50 text-sm leading-6">If you want to sponsor a module or request a feature, email
-                <a class="text-white font-semibold" href="mailto:admin@adapt-btc.com">admin@adapt-btc.com</a> and we’ll add it
-                to the roadmap.</p>
-            <p class="text-slate-200 text-xs leading-5">We welcome PRs that improve accessibility, localization, and reliability
-                for mission-critical merchants. Every release keeps the suite free and open as a public-good reference.</p>
-        </div>
-    </div>
-</section>
-
-<!-- INFLATION REALITY -->
-<section class="page-section py-14">
-    <div class="grid lg:grid-cols-2 gap-10 items-center">
-        <div>
-            <p class="eyebrow">Why fixed supply matters</p>
-            <h2 class="text-3xl md:text-4xl font-bold mb-4">Inflation isn’t abstract — it’s trillions of new dollars</h2>
-            <p class="text-lg text-gray-800 leading-7">
-                Since 2020, the U.S. expanded its money supply by trillions of dollars to fund stimulus and bailouts.
-                That dilution shows up as higher grocery bills, rising rent, and shrinking savings rates. Bitcoin’s
-                21 million cap is a counterweight: issuance is pre-programmed, visible, and cannot be changed by a
-                vote or emergency meeting.
-            </p>
-            <div class="mt-5 space-y-3 text-gray-800 leading-6">
-                <div class="flex gap-3">
-                    <span class="stat-pill">$5T+</span>
-                    <p><strong>Pandemic-era printing</strong> swelled the U.S. monetary base in 2020–2021, a shock that fueled 40-year-high CPI readings.</p>
-                </div>
-                <div class="flex gap-3">
-                    <span class="stat-pill">Bank runs</span>
-                    <p><strong>Regional bank failures in 2023</strong> showed how quickly withdrawal limits and weekend closures appear; self-custodied BTC remained accessible 24/7.</p>
-                </div>
-                <div class="flex gap-3">
-                    <span class="stat-pill">Hard cap</span>
-                    <p><strong>Bitcoin enforces scarcity</strong> with a predictable halving schedule—no surprise issuance, no dilution when governments overspend.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="card inflation-panel">
-            <h3 class="text-xl font-semibold mb-3">Spot the difference</h3>
-            <ul class="space-y-3 text-gray-800 leading-7">
-                <li><strong>Fiat playbook:</strong> Central banks expand balance sheets in crises, often adding hundreds of billions in weeks.</li>
-                <li><strong>Bitcoin playbook:</strong> Supply growth halves every ~210,000 blocks; anyone can audit issuance in real time.</li>
-                <li><strong>What it means for you:</strong> Savings held in cash or low-yield accounts get quietly diluted—sats in cold storage do not.</li>
-            </ul>
-            <p class="mt-4 text-sm text-gray-600">Want to dig deeper? Our beginner guide covers self-custody, setting up hardware wallets, and planning a disciplined DCA strategy.</p>
-            <div class="mt-5 flex flex-wrap gap-3">
-                <a href="beginner.html" class="btn-primary">Go to Beginner Guide</a>
-                <a href="community.html#volunteer-projects" class="btn-ghost">Join a workshop</a>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- HALVING -->
-<section class="max-w-5xl mx-auto px-6 py-16">
-    <h2 class="text-3xl font-bold">Next Bitcoin Halving</h2>
-    <p id="halving-countdown" class="text-xl mt-3"></p>
-</section>
-
-<!-- TRUST & LEGITIMACY -->
-<section class="page-section pb-16">
-    <div class="grid lg:grid-cols-3 gap-6">
-        <div class="trust-card">
-            <span class="trust-chip">Real humans</span>
-            <h3 class="text-xl font-semibold mt-3">Talk to us directly</h3>
-            <p class="text-gray-700 leading-6 mt-2">We keep communication simple and traceable so you always know who you’re speaking with.</p>
-            <div class="soft-divider"></div>
-            <ul class="trust-list space-y-3">
-                <li><span class="check-dot">✓</span><span>Request a 15-minute intro via <a class="text-blue-700 font-semibold" href="consulting.html">Work With Us</a>.</span></li>
-                <li><span class="check-dot">✓</span><span>Email <a class="text-blue-700 font-semibold" href="mailto:admin@adapt-btc.com">admin@adapt-btc.com</a>; we aim to reply within one business day.</span></li>
-                <li><span class="check-dot">✓</span><span>We only message from this site or <a class="text-blue-700 font-semibold" href="https://twitter.com/AdaptBTC" target="_blank" rel="noreferrer">@AdaptBTC</a>; we never cold-DM for payments.</span></li>
-            </ul>
-        </div>
-
-        <div class="trust-card">
-            <span class="trust-chip" style="background:#eef2ff;color:#1d4ed8;">Safety first</span>
-            <h3 class="text-xl font-semibold mt-3">How we operate</h3>
-            <p class="text-gray-700 leading-6 mt-2">Education and planning only—your keys and cash stay in your control.</p>
-            <div class="soft-divider"></div>
-            <ul class="trust-list space-y-3">
-                <li><span class="check-dot">✓</span><span>We never ask for seed phrases, PINs, or remote access to your devices.</span></li>
-                <li><span class="check-dot">✓</span><span>Consulting sessions end with written next steps and checklists you can audit.</span></li>
-                <li><span class="check-dot">✓</span><span>Recommendations stay aligned to your risk tolerance, not hype.</span></li>
-            </ul>
-        </div>
-
-        
-    </div>
-</section>
-
-<div id="site-footer" data-include="footer"></div>
-
-<script src="/assets/js/layout.js" defer></script>
-<script src="/assets/js/main.js" defer></script>
+    <script type="module" src="/js/loadPartials.js"></script>
+    <script type="module" src="/js/theme.js"></script>
+    <script type="module" src="/js/ui.js"></script>
 </body>
 </html>

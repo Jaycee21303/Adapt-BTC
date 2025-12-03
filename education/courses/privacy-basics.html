@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Privacy Basics | AdaptBTC</title>
+    <link rel='preconnect' href='https://fonts.googleapis.com'>
+    <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
+    <link href='https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap' rel='stylesheet'>
+    <link rel='stylesheet' href='/css/global.css'>
+    <link rel='stylesheet' href='/css/layout.css'>
+    <link rel='stylesheet' href='/css/components.css'>
+    <link rel='stylesheet' href='/css/education.css'>
+</head>
+<body>
+    <div id='site-header'></div>
+    <main class='container section lesson-page'>
+        <div class='breadcrumbs'>Education / Privacy Basics</div>
+        <h1>Privacy Basics</h1>
+        <p class='subtitle'>Coin control, address reuse avoidance, and Lightning privacy tips.</p>
+        <div class='lesson-content'>
+            <div class='lesson-block'>
+                <h2>Key concepts</h2>
+                <p>Education and operations go hand in hand for business rollouts.</p>
+                <ul><li>Design training around decision trees: custody, geography, customer type.</li><li>Teach escalation paths for stuck transactions and channel issues.</li><li>Align accounting and product teams on invoice data models.</li><li>Run post-mortems for fee spikes and liquidity drains.</li></ul>
+            </div>
+            <div class='lesson-block'>
+                <h2>Implementation guidance</h2>
+                <p>Your payment experience must work offline and degrade gracefully.</p>
+                <ul><li>Cache critical data like exchange rates and fee policies.</li><li>Offer fallback on-chain payments when Lightning liquidity is constrained.</li><li>Plan monitoring for channel balances and HTLC failures.</li><li>Align customer support scripts with incident policies.</li></ul>
+            </div>
+            <div class='lesson-block'>
+                <h2>Field notes</h2>
+                <p>Your payment experience must work offline and degrade gracefully.</p>
+                <div class='callout'>Security reviews should include human processes, not just code.</div>
+            </div>
+            <div class='quiz-block'>
+                <h3>Check your understanding</h3>
+                <div id='quiz'></div>
+                <form id='certificate-form' class='certificate-form'>
+                    <label for='student-name'>Name for certificate</label>
+                    <input id='student-name' name='name' type='text' placeholder='Enter your full name'>
+                    <button class='button' type='submit' disabled>Generate certificate</button>
+                </form>
+            </div>
+        </div>
+        <div class='lesson-nav'>
+            <a class='button secondary' href='/education/courses/running-node.html'>← Previous</a>
+            <a class='button' href='/education/courses/lightning-intro.html'>Next →</a>
+        </div>
+    </main>
+    <div id='site-footer' class='footer'></div>
+    <script type='module' src='/js/loadPartials.js'></script>
+    <script type='module'>
+        import { renderQuiz } from '/js/quizEngine.js';
+        import quiz from '/education/quizzes/privacy-basics.js';
+        import { initCertificate } from '/js/certificate.js';
+        document.addEventListener('partials:loaded', () => {
+            renderQuiz(document.getElementById('quiz'), quiz, () => {
+                document.querySelector('#certificate-form button').disabled = false;
+            });
+            initCertificate('#certificate-form', 'Privacy Basics');
+        });
+    </script>
+</body>
+</html>

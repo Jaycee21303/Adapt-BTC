@@ -1,0 +1,15 @@
+export default {
+    title: 'Buying Bitcoin',
+    questions: [
+        { prompt: 'What is the main benefit of dollar-cost averaging?', options: ['Maximizing short-term profits', 'Reducing timing risk by spreading purchases', 'Avoiding taxes', 'Increasing leverage'], answer: 1, explanation: 'DCA spreads entry points across time to reduce volatility risk.' },
+        { prompt: 'Why consider non-KYC sources for some funds?', options: ['To hide illegal activity', 'To preserve privacy and reduce honeypot risk', 'To lower mining difficulty', 'To earn rewards'], answer: 1, explanation: 'Non-KYC options can improve privacy when used responsibly and legally.' },
+        { prompt: 'What should you do after purchasing on an exchange?', options: ['Leave coins on the exchange', 'Withdraw to self-custody and verify receipt', 'Send to random addresses', 'Share screenshots online'], answer: 1, explanation: 'Self-custody removes exchange risk; verify with your node or block explorer.' },
+        { prompt: 'Why split purchases across platforms?', options: ['To increase fees', 'To diversify counterparty and jurisdiction risk', 'To speed confirmations', 'To mine blocks'], answer: 1, explanation: 'Multiple onramps reduce single-point failure and regulatory exposure.' },
+        { prompt: 'What is a liquidity check before large purchases?', options: ['Refreshing the page', 'Reviewing order book depth and slippage', 'Calling support', 'Waiting for halving'], answer: 1, explanation: 'Depth checks ensure execution quality and fair pricing.' },
+        { prompt: 'Why understand withdrawal limits?', options: ['To bypass compliance', 'To plan settlement into cold storage without delays', 'To change mempool policy', 'To increase leverage'], answer: 1, explanation: 'Limits affect how quickly you can move funds into secure custody.' },
+        { prompt: 'What is the role of stablecoins in acquisition?', options: ['They replace Bitcoin', 'They can stage capital before buying and reduce bank settlement friction', 'They generate blocks', 'They mine transactions'], answer: 1, explanation: 'Stablecoins can stage liquidity before executing BTC buys, then withdraw to self-custody.' },
+        { prompt: 'Why avoid screenshots of balances?', options: ['They are heavy files', 'They leak sensitive financial data and attack surfaces', 'They improve privacy', 'They speed trades'], answer: 1, explanation: 'Screenshots can expose holdings and account identifiers.' },
+        { prompt: 'How should you test a new onramp?', options: ['Send entire treasury', 'Run a small withdrawal to self-custody and confirm', 'Trust marketing only', 'Skip KYC requirements'], answer: 1, explanation: 'Test small amounts to verify withdrawal reliability and address whitelists.' },
+        { prompt: 'Why align accounting early?', options: ['To slow growth', 'To map invoices, lot tracking, and cost basis to acquisition flows', 'To increase fees', 'To avoid backups'], answer: 1, explanation: 'Clean accounting supports compliance and later tax reporting.' }
+    ]
+};
