@@ -1,0 +1,36 @@
+{
+  "name": "adapt-btc",
+  "version": "1.0.0",
+  "description": "AdaptBTC education and Bitcoin tools platform backend and frontend assets",
+  "main": "backend/server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "dev": "nodemon backend/server.js",
+    "test": "jest",
+    "db:migrate": "node backend/scripts/migrate.js",
+    "db:seed": "node backend/scripts/seed.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "express-rate-limit": "^7.0.0",
+    "helmet": "^7.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "morgan": "^1.10.0",
+    "pg": "^8.11.3",
+    "pg-mem": "^3.0.3",
+    "sanitize-html": "^2.11.0",
+    "uuid": "^9.0.1",
+    "winston": "^3.10.0",
+    "zod": "^3.23.8",
+    "pdfkit": "^0.14.0",
+    "dotenv": "^16.4.1"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "nodemon": "^3.0.1",
+    "supertest": "^6.3.3"
+  }
+}
