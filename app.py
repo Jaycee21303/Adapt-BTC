@@ -23,6 +23,7 @@ def create_app() -> Flask:
         return send_from_directory(".", "index.html")
 
     @app.route("/dashboard")
+    @app.route("/dashboard.html")
     def dashboard():
         return render_template("dashboard.html")
 
