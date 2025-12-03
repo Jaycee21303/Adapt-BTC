@@ -1,1 +1,141 @@
-/* dashboard.css full code */
+body {
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #6366f1;
+    font-weight: 700;
+    font-size: 0.75rem;
+}
+
+.card {
+    background: white;
+    border-radius: 18px;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+    border: 1px solid #e5e7eb;
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.card h2 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.pill {
+    background: #111827;
+    color: #f3f4f6;
+    padding: 6px 10px;
+    border-radius: 999px;
+    font-size: 0.85rem;
+}
+
+.pill-secondary {
+    background: #0f766e;
+}
+
+.pill-accent {
+    background: #7c3aed;
+}
+
+.meta {
+    color: #6b7280;
+    font-size: 0.85rem;
+}
+
+.list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 8px;
+}
+
+.list li {
+    padding: 12px;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    background: #f9fafb;
+}
+
+.list li .title {
+    font-weight: 700;
+}
+
+.badge {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 10px;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.badge.ok {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.badge.attention {
+    background: #fef9c3;
+    color: #854d0e;
+}
+
+.stack {
+    display: grid;
+    gap: 8px;
+}
+
+.metric {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 12px;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+}
+
+.metric .label {
+    color: #6b7280;
+}
+
+.metric .value {
+    font-weight: 700;
+}
+
+.roadmap {
+    display: grid;
+    gap: 12px;
+}
+
+.roadmap-phase {
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    padding: 14px 16px;
+    background: linear-gradient(120deg, #f8fafc, #eef2ff);
+}
+
+.roadmap-phase.complete {
+    background: linear-gradient(120deg, #ecfdf3, #f0fdf4);
+    border-color: #bbf7d0;
+}
+
+.roadmap-phase h3 {
+    margin: 0 0 6px 0;
+    font-size: 1rem;
+}
+
+.milestones {
+    margin: 0;
+    padding-left: 20px;
+    color: #4b5563;
+}

@@ -1,1 +1,58 @@
-<!-- dashboard full code -->
+{% extends 'base.html' %}
+{% block title %}AdaptBTC Engine Dashboard{% endblock %}
+{% block content %}
+<section class="space-y-6">
+    <div class="space-y-2">
+        <p class="eyebrow">Engine</p>
+        <h1 class="text-3xl font-bold text-gray-900">Operational dashboard</h1>
+        <p class="text-gray-700 max-w-3xl">Live readiness, Lightning health, financing guidance, and roadmap milestones pulled from the new Python engine.</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6" id="summary-cards">
+        <div class="card" id="readiness-card">
+            <div class="card-header">
+                <h2>Readiness</h2>
+                <span class="pill" id="readiness-status">Loading...</span>
+            </div>
+            <ul class="list" id="readiness-list" aria-live="polite"></ul>
+        </div>
+
+        <div class="card" id="finance-card">
+            <div class="card-header">
+                <h2>Treasury</h2>
+                <span class="pill pill-secondary" id="finance-runway">—</span>
+            </div>
+            <div class="stack" id="finance-details"></div>
+        </div>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6">
+        <div class="card" id="lightning-card">
+            <div class="card-header">
+                <h2>Lightning peers</h2>
+                <span class="meta" id="lightning-updated">—</span>
+            </div>
+            <ul class="list" id="lightning-list"></ul>
+            <div class="stack" id="lightning-actions"></div>
+        </div>
+
+        <div class="card" id="borrow-card">
+            <div class="card-header">
+                <h2>Borrowing rails</h2>
+                <span class="pill pill-accent">Alpha</span>
+            </div>
+            <ul class="list" id="borrow-list"></ul>
+            <p class="text-gray-700" id="borrow-recommendation"></p>
+        </div>
+    </div>
+
+    <div class="card" id="roadmap-card">
+        <div class="card-header">
+            <h2>Roadmap</h2>
+            <span class="meta">Auto-generated from engine data</span>
+        </div>
+        <div class="roadmap" id="roadmap-list"></div>
+    </div>
+</section>
+<script src="{{ url_for('static', filename='js/dashboard.js') }}" defer></script>
+{% endblock %}
