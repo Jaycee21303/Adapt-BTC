@@ -1,0 +1,72 @@
+.dashboard-shell {
+    background: #ffffff;
+    color: var(--text);
+}
+
+.dashboard-hero {
+    padding: 40px 0 24px;
+}
+
+.dashboard-hero .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 12px;
+    margin-bottom: 8px;
+}
+
+.dashboard-hero p { max-width: 720px; }
+
+.dash-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 18px;
+}
+
+.dash-card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 24px;
+    box-shadow: var(--shadow);
+    border: 1px solid #eef1f8;
+}
+
+.dash-card .card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.dash-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: #e8edff;
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.dash-pill.secondary { background: #eef7ff; color: #1a1a1a; }
+.dash-pill.accent { background: #e9f8f1; color: #0d7a4d; }
+
+.dash-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+.dash-list li { padding: 14px; border-radius: 12px; border: 1px solid #e6e9f2; background: #f7f9fc; }
+.dash-list .title { font-weight: 700; color: var(--text); }
+.dash-list p { margin: 6px 0 0; color: var(--muted); }
+
+.metric-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 14px; border-radius: 10px; border: 1px solid #e6e9f2; background: #f7f9fc; }
+.metric-row .label { color: var(--muted); }
+.metric-row .value { font-weight: 700; color: var(--text); }
+
+.roadmap { display: grid; gap: 12px; }
+.roadmap-phase { padding: 16px; border-radius: 12px; border: 1px solid #e6e9f2; background: #f7f9fc; box-shadow: var(--shadow); }
+.roadmap-phase.complete { background: #e9f8f1; border-color: #b5ebd3; }
+.roadmap-phase h3 { margin: 0 0 8px; }
+.milestones { margin: 0; padding-left: 20px; color: var(--muted); }
+
+.inline-note { color: var(--muted); font-size: 14px; }

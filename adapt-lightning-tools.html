@@ -4,12 +4,16 @@
 <meta charset="UTF-8">
 <title>AdaptBTC Lightning Suite</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="/assets/css/system.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/global.css">
+<link rel="stylesheet" href="/css/layout.css">
+<link rel="stylesheet" href="/css/components.css">
 <link rel="stylesheet" href="/assets/css/suite.css">
 <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
 <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
 <script src="https://unpkg.com/leaflet/dist/leaflet.js" defer></script>
-    <link rel="stylesheet" href="/assets/css/system.css">
 </head>
 
 <body>
@@ -252,7 +256,7 @@
         </div>
 
         <div class="card-grid">
-            <div class="card" style="text-align:left;">
+            <div class="card">
                 <h3>Out of the box</h3>
                 <p class="muted">Reads public mempool + Lightning stats and simulates node data for demos. Perfect for
                     workshops where you need to show concepts fast.</p>
@@ -262,7 +266,7 @@
                     <li>Leaflet map populated with public IP geodata.</li>
                 </ul>
             </div>
-            <div class="card" style="text-align:left;">
+            <div class="card">
                 <h3>Production wiring</h3>
                 <p class="muted">Connect your node’s API or Prometheus exporter to replace the demo payloads. Works with
                     LND, Core Lightning, Voltage, Umbrel, or Voltage dashboards.</p>
@@ -272,7 +276,7 @@
                     <li>Render private invoice stats without sharing secrets.</li>
                 </ul>
             </div>
-            <div class="card" style="text-align:left;">
+            <div class="card">
                 <h3>Evidence exports</h3>
                 <p class="muted">Screenshots and JSON dumps that answer diligence questions. Keep a folder of these with
                     each board packet.</p>
@@ -284,8 +288,8 @@
             </div>
         </div>
 
-        <div class="grid-two" style="margin-top:18px;">
-            <div class="card" style="text-align:left;">
+        <div class="grid-two pad-top">
+            <div class="card">
                 <h3>API endpoints to consider</h3>
                 <ul class="bullet">
                     <li><strong>/v1/getinfo</strong> for node alias, pubkey, and version control.</li>
@@ -295,7 +299,7 @@
                     <li><strong>Audit webhooks</strong> to record who touched liquidity and when.</li>
                 </ul>
             </div>
-            <div class="card" style="text-align:left;">
+            <div class="card">
                 <h3>Shareable stories</h3>
                 <ul class="bullet">
                     <li>“We rebalanced before the concert rush—0 failed invoices.”</li>
@@ -457,8 +461,8 @@
             understand each part of the process.
         </p>
 
-        <div class="card-grid" style="margin-top:18px;">
-            <div class="card" style="text-align:left;">
+        <div class="card-grid pad-top">
+            <div class="card">
                 <h3>1) Open a channel</h3>
                 <p class="muted">Two peers lock BTC in a 2-of-2 multi-sig. Think of it as a joint tab that can be
                     updated instantly without touching the base chain.</p>
@@ -468,7 +472,7 @@
                     <li>Peers charge a base fee and ppm (parts-per-million) per forward.</li>
                 </ul>
             </div>
-            <div class="card" style="text-align:left;">
+            <div class="card">
                 <h3>2) Route the payment</h3>
                 <p class="muted">Your wallet finds a path of online, funded nodes. Each hop forwards the payment and
                     collects a small fee. The simulator above shows how hops string together.</p>
@@ -478,7 +482,7 @@
                     <li>HTLCs protect funds during the in-flight state.</li>
                 </ul>
             </div>
-            <div class="card" style="text-align:left;">
+            <div class="card">
                 <h3>3) Close or rebalance</h3>
                 <p class="muted">Channels can be rebalanced to restore outbound capacity or closed to reclaim funds on
                     chain. Use the operations tower to decide when and where to move liquidity.</p>
@@ -496,8 +500,8 @@
 <div id="site-footer" data-include="footer"></div>
 
 <script src="/assets/js/tooltips.js" defer></script>
-<script src="/assets/js/suite.js" defer></script>
-
-<script src="/assets/js/layout.js" defer></script>
+<script type="module" src="/assets/js/suite.js"></script>
+<script type="module" src="/js/loadPartials.js"></script>
+<script type="module" src="/js/ui.js"></script>
 </body>
 </html>

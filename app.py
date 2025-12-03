@@ -20,6 +20,10 @@ def create_app() -> Flask:
 
     @app.route("/")
     def serve_home():
+        return send_from_directory(".", "adapt-lightning-tools.html")
+
+    @app.route("/overview")
+    def serve_overview():
         return send_from_directory(".", "index.html")
 
     @app.route("/dashboard")

@@ -10,11 +10,11 @@ function renderReadiness(data) {
     data.checks.forEach((check) => {
         const li = document.createElement('li');
         li.innerHTML = `
-            <div class="flex justify-between items-start gap-3">
+            <div class="card-header">
                 <span class="title">${check.title}</span>
-                <span class="badge ${check.status}">${check.status}</span>
+                <span class="dash-pill">${check.status}</span>
             </div>
-            <p class="text-gray-700">${check.details}</p>
+            <p>${check.details}</p>
         `;
         list.appendChild(li);
     });
@@ -37,7 +37,7 @@ function renderFinance(finance) {
 
     metrics.forEach((metric) => {
         const row = document.createElement('div');
-        row.className = 'metric';
+        row.className = 'metric-row';
         row.innerHTML = `<span class="label">${metric.label}</span><span class="value">${metric.value}</span>`;
         details.appendChild(row);
     });
@@ -50,11 +50,11 @@ function renderLightning(lightning) {
     lightning.peers.forEach((peer) => {
         const li = document.createElement('li');
         li.innerHTML = `
-            <div class="flex justify-between items-center">
+            <div class="card-header">
                 <span class="title">${peer.name}</span>
-                <span class="badge ok">${peer.status}</span>
+                <span class="dash-pill">${peer.status}</span>
             </div>
-            <p class="text-gray-700">Score ${peer.score} · Capacity ${peer.capacity_btc} BTC</p>
+            <p>Score ${peer.score} · Capacity ${peer.capacity_btc} BTC</p>
         `;
         list.appendChild(li);
     });
@@ -64,7 +64,7 @@ function renderLightning(lightning) {
     lightning.recommended_actions.forEach((action) => {
         const p = document.createElement('p');
         p.textContent = action;
-        p.className = 'text-gray-700';
+        p.className = 'text-muted';
         actions.appendChild(p);
     });
 }
@@ -75,11 +75,11 @@ function renderBorrow(borrow) {
     borrow.lenders.forEach((lender) => {
         const li = document.createElement('li');
         li.innerHTML = `
-            <div class="flex justify-between items-center">
+            <div class="card-header">
                 <span class="title">${lender.name}</span>
-                <span class="badge">${(lender.rate).toFixed(1)}% APR</span>
+                <span class="dash-pill">${(lender.rate).toFixed(1)}% APR</span>
             </div>
-            <p class="text-gray-700">LTV ${(lender.ltv * 100).toFixed(0)}% · ${lender.notes}</p>
+            <p>LTV ${(lender.ltv * 100).toFixed(0)}% · ${lender.notes}</p>
         `;
         list.appendChild(li);
     });
@@ -96,11 +96,11 @@ function renderRoadmap(roadmap) {
         div.className = `roadmap-phase ${phase.complete ? 'complete' : ''}`;
         const items = phase.milestones.map((m) => `<li>${m}</li>`).join('');
         div.innerHTML = `
-            <div class="flex justify-between items-center">
+            <div class="card-header">
                 <h3>${phase.name}</h3>
-                <span class="badge ${phase.complete ? 'ok' : 'attention'}">${phase.complete ? 'Done' : 'Planned'}</span>
+                <span class="dash-pill ${phase.complete ? 'accent' : ''}">${phase.complete ? 'Done' : 'Planned'}</span>
             </div>
-            <p class="text-gray-700">Target ${phase.target}</p>
+            <p class="text-muted">Target ${phase.target}</p>
             <ul class="milestones">${items}</ul>
         `;
         container.appendChild(div);
@@ -119,7 +119,7 @@ async function hydrate() {
         console.error(err);
         document.getElementById('summary-cards').insertAdjacentHTML(
             'beforeend',
-            '<p class="text-red-600">Unable to load engine data right now.</p>'
+            '<p class="text-danger">Unable to load engine data right now.</p>'
         );
     }
 }
