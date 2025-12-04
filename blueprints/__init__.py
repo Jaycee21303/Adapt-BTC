@@ -1,9 +1,9 @@
-"""Blueprint package placeholder for future expansion."""
-from flask import Blueprint
+"""Blueprint registrations for AdaptBTC."""
+from flask import Flask
 
 
-def register_blueprints(app):
-    """Register application blueprints."""
-    # Future blueprints will be registered here.
-    pass
+def register_blueprints(app: Flask) -> None:
+    from learning_portal.portal_routes import portal
+
+    app.register_blueprint(portal)
 

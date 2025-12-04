@@ -1,10 +1,15 @@
 from pathlib import Path
+import os
 
 from flask import Flask, abort, render_template
+from flask_session import Session
 
 from blueprints import register_blueprints
 
 app = Flask(__name__, static_folder="static", template_folder="templates")
+app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY", "dev-secret-key")
+app.config["SESSION_TYPE"] = "filesystem"
+Session(app)
 
 register_blueprints(app)
 
@@ -93,3 +98,4 @@ def handle_500(error):
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=True)
+

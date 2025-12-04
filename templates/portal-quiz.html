@@ -1,0 +1,27 @@
+{% include 'components/header.html' %}
+<link rel="stylesheet" href="{{ url_for('portal.static', filename='css/portal.css') }}">
+<div class="navbar">
+  <div>{{ course.title }} Quiz</div>
+  <div>
+    <a href="{{ url_for('portal.lesson', course_id=course.id, order=1) }}">Lessons</a>
+    <a href="{{ url_for('portal.logout') }}">Logout</a>
+  </div>
+</div>
+<div class="container">
+  <h2>Quiz</h2>
+  <p>Earn 80% or higher to pass. Your attempts are saved.</p>
+  <form method="post">
+    {% for question in questions %}
+    <div class="card">
+      <p><strong>Q{{ loop.index }}.</strong> {{ question.prompt }}</p>
+      {% for option in question.options %}
+      <label class="quiz-option">
+        <input type="radio" name="q{{ loop.parent.index0 }}" value="{{ loop.index0 }}" required> {{ option }}
+      </label>
+      {% endfor %}
+    </div>
+    {% endfor %}
+    <button class="btn" type="submit">Submit Quiz</button>
+  </form>
+</div>
+{% include 'components/footer.html' %}

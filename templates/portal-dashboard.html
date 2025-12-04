@@ -1,0 +1,31 @@
+{% include 'components/header.html' %}
+<link rel="stylesheet" href="{{ url_for('portal.static', filename='css/portal.css') }}">
+<div class="navbar">
+  <div>Welcome, {{ username }}</div>
+  <div>
+    <a href="{{ url_for('portal.courses') }}">Courses</a>
+    <a href="{{ url_for('portal.progress') }}">Progress</a>
+    <a href="{{ url_for('portal.logout') }}">Logout</a>
+  </div>
+</div>
+<div class="container">
+  <h2>Learning Dashboard</h2>
+  <p>Track your AdaptBTC learning journey and pick up where you left off.</p>
+  <div class="dashboard-grid">
+    {% for course in courses %}
+    {% set summary = course_summary.get(course.id, {}) %}
+    <div class="card">
+      <h3>{{ course.title }}</h3>
+      <p>{{ course.summary }}</p>
+      <div class="progress">
+        {% set completed = summary.get('lessons_completed', 0) %}
+        {% set pct = (completed / 15 * 100) if completed else 0 %}
+        <div class="bar" style="width: {{ pct }}%"></div>
+      </div>
+      <p>{{ completed }} lessons completed</p>
+      <a class="btn" href="{{ url_for('portal.course_detail', course_id=course.id) }}">Go to course</a>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% include 'components/footer.html' %}

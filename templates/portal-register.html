@@ -1,0 +1,19 @@
+{% include 'components/header.html' %}
+<link rel="stylesheet" href="{{ url_for('portal.static', filename='css/portal.css') }}">
+<div class="container">
+  <h2>Create Your AdaptBTC Account</h2>
+  {% if error %}<div class="alert danger">{{ error }}</div>{% endif %}
+  <form method="post">
+    <div class="card">
+      <label>Username</label>
+      <input type="text" name="username" required>
+    </div>
+    <div class="card">
+      <label>Password</label>
+      <input type="password" name="password" minlength="8" required>
+    </div>
+    <button class="btn" type="submit">Register</button>
+    <a class="btn secondary" href="{{ url_for('portal.login') }}">Already registered?</a>
+  </form>
+</div>
+{% include 'components/footer.html' %}

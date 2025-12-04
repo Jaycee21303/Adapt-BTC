@@ -1,4 +1,8 @@
 Flask
+Flask-Session
 Gunicorn
-Jinja2
+bcrypt
 python-dotenv
+Pillow
+qrcode
+requests
