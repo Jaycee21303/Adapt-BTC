@@ -3,6 +3,12 @@ from datetime import datetime
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 
+from backend.logic.content_library import (
+    BITCOIN_101_LESSONS,
+    COURSE_LIBRARY,
+    SECURITY_ESSENTIALS_LESSONS,
+)
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 DB_PATH = BASE_DIR / "database" / "lessons.db"
 
@@ -10,122 +16,14 @@ CourseInfo = Dict[str, object]
 Lesson = Dict[str, object]
 
 
-COURSE_TOPICS: Dict[str, Dict[str, List[str]]] = {
-    "bitcoin-101": {
-        "title": "Bitcoin 101 Fundamentals",
-        "topics": [
-            "What is Bitcoin?",
-            "Keys and Addresses",
-            "Transactions and UTXOs",
-            "Proof-of-Work Mining",
-            "Blocks and Consensus",
-            "Running a Full Node",
-            "Addresses and Privacy",
-            "Fees and Mempool Dynamics",
-            "Layered Ecosystem",
-            "Digital Scarcity and Issuance",
-            "Nodes, Miners, and Users",
-            "Multisignature and Script",
-            "Networking and Propagation",
-            "Operational Best Practices",
-            "Review and Practical Checklist",
-        ],
-    },
-    "security-essentials": {
-        "title": "Bitcoin Security Essentials",
-        "topics": [
-            "Threat Modeling",
-            "Seed Phrase Protection",
-            "Hardware Wallets",
-            "Multisig Strategies",
-            "Passphrases and Plausible Deniability",
-            "Network Hygiene",
-            "Physical Security",
-            "Incident Response",
-            "Custody Models",
-            "Security for Lightning",
-            "Regulatory Considerations",
-            "Operational Maturity",
-            "Backups and Recovery",
-            "Security Culture",
-            "Applied Security Labs",
-        ],
-    },
-    "lightning-basics": {
-        "title": "Lightning Network Basics",
-        "topics": [
-            "Why Lightning",
-            "Opening Channels",
-            "Routing Basics",
-            "Invoices and LNURL",
-            "Channel Updates",
-            "Closing Channels",
-            "Lightning Privacy",
-            "Liquidity Management",
-            "Lightning UX Patterns",
-            "Operating a Routing Node",
-            "Lightning Security",
-            "Future of Lightning",
-            "Building Lightning Apps",
-            "Developer Tooling",
-            "Performance Monitoring",
-        ],
-    },
-    "bitcoin-business": {
-        "title": "Bitcoin for Businesses",
-        "topics": [
-            "Treasury Strategy",
-            "Custody and Governance",
-            "Accounting Basics",
-            "Payments and Invoicing",
-            "Lightning for Commerce",
-            "Tax and Reporting",
-            "Payroll and Benefits",
-            "Vendor Management",
-            "Risk and Hedging",
-            "Community and Brand",
-            "Operational Resilience",
-            "Bitcoin for Global Operations",
-            "Customer Support",
-            "Compliance Operations",
-            "Executive Playbooks",
-        ],
-    },
-    "bitcoin-economics": {
-        "title": "Bitcoin Economics",
-        "topics": [
-            "Supply Curve",
-            "Halvings and Market Cycles",
-            "Difficulty and Security Budget",
-            "Incentive Alignment",
-            "Game Theory",
-            "Network Effects",
-            "Adoption Curves",
-            "Mining Economics",
-            "Fee Markets",
-            "Macroeconomic Comparisons",
-            "Global Liquidity",
-            "Regulatory Impacts",
-            "Derivatives and Hedging",
-            "Capital Allocation",
-            "Long-Term Valuation Models",
-        ],
-    },
+LESSON_SETS: Dict[str, List[Lesson]] = {
+    "bitcoin-101": BITCOIN_101_LESSONS,
+    "security-essentials": SECURITY_ESSENTIALS_LESSONS,
 }
 
-
-PARAGRAPH_TEMPLATE = (
-    "{topic} is explored through the lens of practical Bitcoin operations, combining conceptual clarity with lived examples. "
-    "Learners see how the concept impacts real wallets, node operators, and businesses facing market pressure."
-)
-
-DETAIL_TEMPLATE = (
-    "We examine the moving parts, common pitfalls, and mitigation strategies. The lesson links back to AdaptBTC best practices, "
-    "inviting learners to interact with diagrams, glossaries, and checklists that mirror real-world deployments."
-)
-
-EXAMPLE_TEMPLATE = "Example: {topic} applied to a day-to-day decision shows why intentional design matters."
-
+COURSE_TOPICS: Dict[str, Dict[str, List[str]]] = {
+    key: {"title": value["title"], "topics": []} for key, value in COURSE_LIBRARY.items()
+}
 
 
 def init_db() -> None:
@@ -160,57 +58,45 @@ def init_db() -> None:
     seed_data()
 
 
+def _lesson_payload(course_id: str, lesson: Lesson, lesson_order: int) -> Tuple:
+    paragraphs = lesson.get("paragraphs", [])
+    examples = lesson.get("examples", [])
+    glossary = lesson.get("glossary", {})
+    takeaways = lesson.get("takeaways", [])
+    diagram = lesson.get(
+        "diagram",
+        f"<div class='diagram'>Visualization of {lesson.get('title', 'Lesson')} with timelines and arrows.</div>",
+    )
+    return (
+        course_id,
+        lesson_order,
+        lesson.get("title", f"Lesson {lesson_order}"),
+        "\n\n".join(paragraphs),
+        "\n".join(examples),
+        "\n".join([f"{k}:{v}" for k, v in glossary.items()]),
+        "\n".join(takeaways),
+        diagram,
+    )
+
+
 def seed_data() -> None:
     with sqlite3.connect(DB_PATH) as conn:
         conn.row_factory = sqlite3.Row
-        cur = conn.execute("SELECT COUNT(*) FROM courses")
-        count = cur.fetchone()[0]
-        if count:
-            return
-        for course_id, meta in COURSE_TOPICS.items():
+        for course_id, meta in COURSE_LIBRARY.items():
+            conn.execute("DELETE FROM lessons WHERE course_id = ?", (course_id,))
             conn.execute(
-                "INSERT OR IGNORE INTO courses (id, title, summary) VALUES (?, ?, ?)",
-                (
-                    course_id,
-                    meta["title"],
-                    f"A guided journey through {meta['title'].lower()} with AdaptBTC standards.",
-                ),
+                "INSERT OR REPLACE INTO courses (id, title, summary) VALUES (?, ?, ?)",
+                (course_id, meta["title"], meta["summary"]),
             )
-            for idx, topic in enumerate(meta["topics"], start=1):
-                paragraphs = [
-                    PARAGRAPH_TEMPLATE.format(topic=topic),
-                    DETAIL_TEMPLATE,
-                    "Learners get step-by-step walkthroughs, layered diagrams, and vocabulary to support conversations with peers and clients.",
-                ]
-                examples = [
-                    EXAMPLE_TEMPLATE.format(topic=topic),
-                    "Applied checklist: students record their own environment settings and share insights with the portal community feed.",
-                ]
-                glossary = {
-                    "Key Term": f"Definition contextualized for {topic.lower()} operations.",
-                    "Metric": f"A measurable signal to evaluate {topic.lower()} success.",
-                }
-                takeaways = [
-                    f"{topic} connects to AdaptBTC risk controls and user empowerment.",
-                    "Students leave with actionable next steps and reading references.",
-                ]
-                diagram = f"<div class='diagram'>Visualization of {topic} with arrows and callouts.</div>"
+            lessons = LESSON_SETS.get(course_id, [])
+            for idx, lesson in enumerate(lessons, start=1):
                 conn.execute(
                     """
-                    INSERT OR IGNORE INTO lessons (
+                    INSERT OR REPLACE INTO lessons (
                         course_id, lesson_order, title, content, examples, glossary, takeaways, diagram
                     ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
                     """,
-                    (
-                        course_id,
-                        idx,
-                        topic,
-                        "\n\n".join(paragraphs),
-                        "\n".join(examples),
-                        "\n".join([f"{k}:{v}" for k, v in glossary.items()]),
-                        "\n".join(takeaways),
-                        diagram,
-                    ),
+                    _lesson_payload(course_id, lesson, idx),
                 )
         conn.commit()
 
@@ -271,5 +157,3 @@ def next_prev(course_id: str, lesson_order: int) -> Tuple[Optional[int], Optiona
     prev_order = orders[idx - 1] if idx > 0 else None
     next_order = orders[idx + 1] if idx + 1 < len(orders) else None
     return prev_order, next_order
-
-
