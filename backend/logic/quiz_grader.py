@@ -2,65 +2,18 @@ import sqlite3
 from pathlib import Path
 from typing import Dict, List, Tuple
 
+from backend.logic.content_library import BITCOIN_101_QUIZ, SECURITY_ESSENTIALS_QUIZ
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 DB_PATH = BASE_DIR / "database" / "quizzes.db"
 
 Question = Dict[str, object]
 QUIZZES: Dict[str, List[Question]] = {}
 
-
-BASE_QUESTIONS = [
-    {
-        "prompt": "Which statement best describes the course theme of {course}?",
-        "options": [
-            "It covers unrelated technologies.",
-            "It gives practical, security-first Bitcoin guidance.",
-            "It only focuses on altcoins.",
-            "It is solely about legacy finance.",
-        ],
-        "answer": 1,
-    },
-    {
-        "prompt": "What is the passing score for quizzes in this portal?",
-        "options": ["50%", "60%", "80%", "100%"],
-        "answer": 2,
-    },
-    {
-        "prompt": "How are explanations delivered after grading?",
-        "options": [
-            "A random guess is shown.",
-            "Detailed rationales for each question are stored with the attempt.",
-            "No feedback is provided.",
-            "Only incorrect answers are hidden.",
-        ],
-        "answer": 1,
-    },
-]
-
-
-COURSE_SPECIFICS = {
-    "bitcoin-101": [
-        ("What secures Bitcoin transaction history?", ["Trusted validators", "Proof-of-work and nodes", "Central bank approvals", "Private committees"], 1),
-        ("Why avoid address reuse?", ["It is illegal", "It harms privacy", "It slows the network", "It changes fees"], 1),
-    ],
-    "security-essentials": [
-        ("Why use multisig?", ["To lower fees", "To distribute key control", "To speed confirmations", "To print coins"], 1),
-        ("What protects seeds from fire?", ["Paper", "SMS backups", "Metal backups", "Email copies"], 2),
-    ],
-    "lightning-basics": [
-        ("What is a payment channel?", ["An email server", "A bidirectional ledger between peers", "A mining pool", "A VPN"], 1),
-        ("What enables privacy along routes?", ["Plaintext routing", "Onion routing", "HTTP proxies", "DNS"], 1),
-    ],
-    "bitcoin-business": [
-        ("Why segregate duties?", ["To slow teams", "To improve fraud resistance", "To increase noise", "To hide data"], 1),
-        ("What documents exchange rates?", ["Rumors", "Audits", "Pricing oracles", "Unsigned notes"], 2),
-    ],
-    "bitcoin-economics": [
-        ("What limits supply?", ["A vote", "Central decree", "Protocol halving schedule", "Gold reserves"], 2),
-        ("Why do fees matter long term?", ["They don't", "They replace subsidies", "They break consensus", "They ban mining"], 1),
-    ],
+QUIZ_BANK: Dict[str, List[Question]] = {
+    "bitcoin-101": BITCOIN_101_QUIZ,
+    "security-essentials": SECURITY_ESSENTIALS_QUIZ,
 }
-
 
 PASSING_SCORE = 0.8
 
@@ -88,42 +41,7 @@ def init_db() -> None:
 def build_questions() -> None:
     if QUIZZES:
         return
-    for course, specifics in COURSE_SPECIFICS.items():
-        questions: List[Question] = []
-        for base in BASE_QUESTIONS:
-            questions.append(
-                {
-                    "prompt": base["prompt"].format(course=course.replace("-", " ").title()),
-                    "options": base["options"],
-                    "answer": base["answer"],
-                    "explanation": "Core expectations for the AdaptBTC learning portal ensure consistent evaluation.",
-                }
-            )
-        for prompt, options, answer in specifics:
-            questions.append(
-                {
-                    "prompt": prompt,
-                    "options": options,
-                    "answer": answer,
-                    "explanation": f"The correct choice aligns with {course} principles and security best practices.",
-                }
-            )
-        # add filler scenarios to reach 12 questions
-        scenario_count = 12 - len(questions)
-        for i in range(scenario_count):
-            questions.append(
-                {
-                    "prompt": f"Scenario {i+1}: Apply {course} concepts to a real-world decision.",
-                    "options": [
-                        "Ignore risk signals",
-                        "Document assumptions, choose secure defaults",
-                        "Share keys publicly",
-                        "Delay decisions indefinitely",
-                    ],
-                    "answer": 1,
-                    "explanation": "Documented, secure defaults ensure resilient outcomes for learners and businesses.",
-                }
-            )
+    for course, questions in QUIZ_BANK.items():
         QUIZZES[course] = questions
 
 
@@ -159,10 +77,12 @@ def grade(course_id: str, submitted: List[int]) -> Tuple[int, int, float, List[D
 
 def save_attempt(username: str, course_id: str, correct: int, total: int, graded: List[Dict[str, object]]) -> None:
     init_db()
-    answers_blob = "\n".join([
-        f"{item['prompt']}|{item['user_answer']}|{item['correct_answer']}|{int(item['is_correct'])}"
-        for item in graded
-    ])
+    answers_blob = "\n".join(
+        [
+            f"{item['prompt']}|{item['user_answer']}|{item['correct_answer']}|{int(item['is_correct'])}"
+            for item in graded
+        ]
+    )
     with sqlite3.connect(DB_PATH) as conn:
         conn.execute(
             "INSERT INTO quiz_attempts (username, course_id, score, total, correct, answers) VALUES (?, ?, ?, ?, ?, ?)",
@@ -180,4 +100,3 @@ def get_attempts(username: str, course_id: str) -> List[Dict[str, object]]:
             (username, course_id),
         )
         return [dict(row) for row in cur.fetchall()]
-
