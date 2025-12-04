@@ -1,0 +1,21 @@
+{
+  "title": "Hardware Wallets",
+  "passingScore": 80,
+  "questions": [
+    {"q":"Hardware wallets secure keys by:","choices":["Keeping them offline","Sharing them with exchanges","Saving to browser","Printing on receipts"],"answer":0,"explanation":"Devices isolate keys from internet threats."},
+    {"q":"Trezor is known for:","choices":["Closed source","Open-source firmware","Bank ownership","Mining"],"answer":1,"explanation":"Trezor publishes open-source code."},
+    {"q":"Ledger uses:","choices":["Secure element chips","Paper backups only","No PIN","Browser storage"],"answer":0,"explanation":"Ledger stores secrets in secure hardware elements."},
+    {"q":"Coldcard focuses on:","choices":["Altcoins","Bitcoin-only and air-gapped workflows","Browser extensions","Custodial accounts"],"answer":1,"explanation":"Coldcard is a Bitcoin-only, security-first device."},
+    {"q":"Passphrases add:","choices":["Nothing","An extra secret creating hidden wallets","Automatic backups","Longer addresses"],"answer":1,"explanation":"Passphrase derives a different wallet from the seed."},
+    {"q":"PINs protect against:","choices":["Network fees","Physical access","Halving","Difficulty"],"answer":1,"explanation":"PINs limit device access if stolen."},
+    {"q":"Air-gapped signing means:","choices":["Device online","No battery","Transactions signed without direct USB network","Cloud backups"],"answer":2,"explanation":"Air-gapped devices sign via microSD/QR without network links."},
+    {"q":"Firmware updates should be:","choices":["Ignored","Verified and applied securely","Emailed","Random"],"answer":1,"explanation":"Authenticated firmware keeps devices secure."},
+    {"q":"Backup check involves:","choices":["Posting seed online","Restoring from seed to confirm it works","Sharing with support","Removing PIN"],"answer":1,"explanation":"A test restore ensures the backup is valid."},
+    {"q":"Using multiple hardware wallets can:","choices":["Decrease security","Enable multi-sig","Stop confirmations","Replace nodes"],"answer":1,"explanation":"Multi-sig with multiple devices distributes risk."},
+    {"q":"When entering seed on device you should:","choices":["Livestream it","Ensure private environment","Tell exchange","Store in email"],"answer":1,"explanation":"Keep recovery entry private and offline."},
+    {"q":"If a device vendor disappears:","choices":["Funds vanish","Seed restores funds on other compatible wallets","Mining stops","Nodes shut down"],"answer":1,"explanation":"Seed words follow open standards like BIP39."},
+    {"q":"Hidden wallet idea relates to:","choices":["PIN length","Passphrase-derived accounts","Exchange accounts","Lightning"],"answer":1,"explanation":"Passphrases can create plausible deniability wallets."},
+    {"q":"Main reason to avoid taking seed photos:","choices":["Blurry images","Cloud backup exposure","Camera battery","Printer ink"],"answer":1,"explanation":"Photos sync to cloud and are easily stolen."},
+    {"q":"Physical security includes:","choices":["Leaving device on desk","Safe storage of backups and device","Sharing with friends","Writing PIN on device"],"answer":1,"explanation":"Store device and backups safely."}
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "title": "How Bitcoin Works",
+  "passingScore": 80,
+  "questions": [
+    {"q":"Blocks are linked together using:","choices":["Passwords","Hashes","Emails","Barcodes"],"answer":1,"explanation":"Each block references the hash of the prior block."},
+    {"q":"UTXO stands for:","choices":["Universal Token Output","Unspent Transaction Output","User Transfer Option","Unified Transaction Order"],"answer":1,"explanation":"UTXOs represent spendable outputs."},
+    {"q":"Proof of Work requires:","choices":["Random passwords","Energy and computation","Government approval","Bank signatures"],"answer":1,"explanation":"Miners expend energy to find valid hashes."},
+    {"q":"Who validates consensus rules?","choices":["Miners only","Developers","Full nodes","Wallet vendors"],"answer":2,"explanation":"Full nodes enforce all rules and reject invalid blocks."},
+    {"q":"Difficulty adjusts every:","choices":["2016 blocks","10 blocks","1 block","100 blocks"],"answer":0,"explanation":"Approximately every two weeks (2016 blocks)."},
+    {"q":"Hash functions are:","choices":["Reversible","One-way","Random number generators","Encryption keys"],"answer":1,"explanation":"SHA-256 is a one-way function used for mining."},
+    {"q":"Finality increases with:","choices":["Fewer confirmations","More confirmations","Fee size","Wallet brand"],"answer":1,"explanation":"Additional blocks make reorgs exponentially harder."},
+    {"q":"A block header does NOT include:","choices":["Merkle root","Nonce","Previous block hash","User password"],"answer":3,"explanation":"Passwords are never stored in blocks."},
+    {"q":"If a miner proposes an invalid block, nodes:","choices":["Auto-fix it","Reject it","Pay a fine","Pause the network"],"answer":1,"explanation":"Nodes simply discard invalid blocks."},
+    {"q":"UTXOs help keep Bitcoin:","choices":["Centralized","Auditable","Offline","Anonymous"],"answer":1,"explanation":"UTXO accounting lets anyone verify total supply."},
+    {"q":"Which component chooses which UTXOs to spend?","choices":["Wallet software","Miners","Banks","Exchanges"],"answer":0,"explanation":"Wallets construct transactions using local UTXOs."},
+    {"q":"Why do miners compete?","choices":["To store passwords","To earn block rewards and fees","To set interest rates","To censor nodes"],"answer":1,"explanation":"Rewards and fees incentivize honest participation."},
+    {"q":"Blockchain immutability relies on:","choices":["Legal contracts","Economic cost to rewrite history","Government policy","Password resets"],"answer":1,"explanation":"Rewriting many PoW blocks is prohibitively expensive."},
+    {"q":"A transaction becomes valid when:","choices":["Wallet sends it","Miner sees it","Nodes verify it meets rules","Price increases"],"answer":2,"explanation":"Nodes check signatures, inputs, and amounts against rules."},
+    {"q":"10-minute block cadence is maintained by:","choices":["Manual timing","Difficulty adjustment","Bank scheduling","UTC clock"],"answer":1,"explanation":"Difficulty retargeting keeps average block time near 10 minutes."}
+  ]
+}

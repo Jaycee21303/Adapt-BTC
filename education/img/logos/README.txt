@@ -1,1 +1,0 @@
-Insert final polished graphics here.

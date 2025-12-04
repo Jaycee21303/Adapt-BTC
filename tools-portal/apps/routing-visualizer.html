@@ -1,0 +1,26 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Routing Visualizer</title><link rel="stylesheet" href="/assets/css/main.css"></head>
+<body>
+<div class="container">
+  <div class="navbar"><div class="logo-text">Adapt<span>BTC</span></div><div class="nav-links"><a class="btn btn-secondary" href="/tools-portal/dashboard.html">Back</a></div></div>
+  <div class="card">
+    <div class="badge">Routing Visualizer</div>
+    <p>Simulate Lightning paths across a small network.</p>
+    <div class="grid-two">
+      <div class="field"><label>Payment Amount (sats)</label><input id="amt" type="number" value="5000"></div>
+      <div class="field"><label>Reliability preference</label><select id="reliability"><option value="balanced">Balanced</option><option value="fast">Fastest</option><option value="cheap">Cheapest</option></select></div>
+    </div>
+    <button class="btn" onclick="compute()">Compute Route</button>
+    <pre id="viz" style="background:#f3f3f3; padding:12px; border-radius:10px; margin-top:12px;">Awaiting input...</pre>
+  </div>
+</div>
+<script>
+function compute(){
+  const amt=document.getElementById('amt').value;
+  const pref=document.getElementById('reliability').value;
+  const templates={fast:['Node A','Hub X','Node Z'],cheap:['Node A','Hub Budget','Node Z'],balanced:['Node A','Hub Balanced','Node Z']};
+  const path=templates[pref];
+  const fee = pref==='cheap'?5:pref==='fast'?20:10;
+  document.getElementById('viz').textContent=`Route: ${path.join(' -> ')}\nAmount: ${amt} sats\nEstimated fee: ${fee} sats\nNotes: ${pref} route chosen.`;
+}
+</script>
+</body></html>

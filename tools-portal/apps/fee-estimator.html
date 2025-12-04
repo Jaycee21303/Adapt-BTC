@@ -1,0 +1,24 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Fee Estimator</title><link rel="stylesheet" href="/assets/css/main.css"></head>
+<body>
+<div class="container">
+  <div class="navbar"><div class="logo-text">Adapt<span>BTC</span></div><div class="nav-links"><a class="btn btn-secondary" href="/tools-portal/dashboard.html">Back</a></div></div>
+  <div class="card">
+    <div class="badge">Fee Estimator</div>
+    <p>Choose a target speed to view estimated sats/vbyte.</p>
+    <div class="grid">
+      <div class="card"><h3>Low</h3><p id="low"></p></div>
+      <div class="card"><h3>Medium</h3><p id="med"></p></div>
+      <div class="card"><h3>High</h3><p id="high"></p></div>
+    </div>
+  </div>
+</div>
+<script>
+  function estimate(){
+    const base=5+Math.random()*5;
+    document.getElementById('low').textContent=`${base.toFixed(1)} sats/vbyte`;
+    document.getElementById('med').textContent=`${(base*1.8).toFixed(1)} sats/vbyte`;
+    document.getElementById('high').textContent=`${(base*2.5).toFixed(1)} sats/vbyte`;
+  }
+  estimate();
+</script>
+</body></html>

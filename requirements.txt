@@ -1,6 +1,0 @@
-Flask
-Flask-Cors
-requests
-python-dotenv
-gunicorn
-jinja2

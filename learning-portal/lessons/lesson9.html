@@ -1,0 +1,13 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Lesson 9 – Keys, Sats, Addresses</title><link rel="stylesheet" href="/learning-portal/assets/css/portal.css"></head>
+<body data-lesson="9"><div class="main-shell"><div class="navbar"><div class="logo-text">Adapt<span style="color:#1e88e5;">BTC</span></div><div class="nav-links"><a class="btn btn-secondary" href="/learning-portal/dashboard.html">Dashboard</a></div></div>
+<div class="card"><div class="badge">Lesson 9</div><h1>Keys, Sats, Addresses</h1>
+<p>Understanding keys and address formats is essential for safe transactions.</p>
+<h3>Private/public keys</h3><p>The private key signs; the public key verifies and derives addresses.</p>
+<h3>Address types</h3><p>Legacy (P2PKH), SegWit (P2SH/P2WPKH), and Taproot (P2TR) differ in efficiency and features.</p>
+<h3>Bech32</h3><p>SegWit bech32 addresses start with bc1 and reduce errors with checksum encoding.</p>
+<h3>Taproot</h3><p>Taproot addresses enable key and script path spending with better privacy.</p>
+<h3>Derivation paths</h3><p>BIP32/44/84 define how wallets derive many addresses from one seed.</p>
+<div class="card" style="background:#f3f3f3;"><h3>Summary</h3><ul><li>Keep private keys secret; share only addresses.</li><li>Use bech32 or Taproot for efficiency.</li><li>HD wallets derive fresh addresses to protect privacy.</li></ul></div>
+<a class="btn" href="/learning-portal/quizzes/quiz9.html">Take Quiz 9</a></div></div>
+<script type="module">import { sessionGuard, loadProgress, saveProgress } from '../assets/js/portal-auth.js'; await sessionGuard('learning'); const progress = await loadProgress(); progress.lessons = progress.lessons || {}; progress.lessons['9'] = 'complete'; await saveProgress(progress);</script>
+</body></html>

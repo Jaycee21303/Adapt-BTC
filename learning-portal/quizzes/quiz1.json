@@ -1,0 +1,21 @@
+{
+  "title": "What Is Bitcoin?",
+  "passingScore": 80,
+  "questions": [
+    {"q":"Bitcoin is best described as:","choices":["A bank app","Digital property","A physical coin","A corporate network"],"answer":1,"explanation":"Bitcoin is scarce digital property secured by cryptography."},
+    {"q":"The maximum bitcoin supply is:","choices":["Unlimited","50 million","21 million","210 million"],"answer":2,"explanation":"Protocol rules cap supply at 21 million."},
+    {"q":"Which component controls ownership?","choices":["Email address","Private key","Government ID","Phone number"],"answer":1,"explanation":"Private keys sign transactions proving control."},
+    {"q":"Why was Bitcoin created?","choices":["To centralize banking","To enable peer-to-peer money","To replace the internet","To build social media"],"answer":1,"explanation":"Bitcoin removes reliance on trusted third parties for digital value transfer."},
+    {"q":"Satoshis (sats) are:","choices":["Fractional bitcoin units","Mining machines","Wallet backups","Hardware wallets"],"answer":0,"explanation":"Sats are the smallest unit of bitcoin (1 BTC = 100,000,000 sats)."},
+    {"q":"Bitcoin vs fiat: the key difference is:","choices":["Central bank control","Fixed supply and open rules","Physical backing by gold","Paper issuance"],"answer":1,"explanation":"Bitcoin issuance is algorithmic and capped; fiat is discretionary."},
+    {"q":"Bitcoin vs gold: Bitcoin is","choices":["Harder to verify","Borderless and easily auditable","Heavier to store","Only physical"],"answer":1,"explanation":"Bitcoin can be moved globally and verified digitally."},
+    {"q":"Who maintains the Bitcoin ledger?","choices":["One company","A single government","A global network of nodes","The stock market"],"answer":2,"explanation":"Thousands of nodes collectively enforce the ledger rules."},
+    {"q":"Digital scarcity is possible because:","choices":["Images are copyrighted","Proof-of-Work and consensus rules","Central bank limits","Physical metals"],"answer":1,"explanation":"Consensus plus PoW enforce the 21M cap and valid transactions."},
+    {"q":"Bitcoin runs:","choices":["Bank hours","Only weekdays","24/7 globally","Only in the US"],"answer":2,"explanation":"The network is online worldwide at all times."},
+    {"q":"Owning bitcoin without holding keys means:","choices":["You self-custody","A custodian controls access","You mine blocks","You run a node"],"answer":1,"explanation":"If another party holds keys, they can restrict your access."},
+    {"q":"Inflation resistance comes from:","choices":["Unlimited issuance","Political votes","Protocol-enforced supply cap","Marketing"],"answer":2,"explanation":"Rules enforce a fixed schedule immune to politics."},
+    {"q":"Which term describes Bitcoin's lack of central control?","choices":["Privatized","Decentralized","Nationalized","Licensed"],"answer":1,"explanation":"Bitcoin is decentralized across many participants."},
+    {"q":"A key benefit of sats pricing is:","choices":["Larger numbers for marketing","Simpler small payments","More inflation","Slower confirmation"],"answer":1,"explanation":"Sats make micro-amounts intuitive."},
+    {"q":"Transparency of supply is provided by:","choices":["Auditing firms","Open-source code and public ledger","Central banks","Paper statements"],"answer":1,"explanation":"Anyone can verify issuance rules and chain data."}
+  ]
+}

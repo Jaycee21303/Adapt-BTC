@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Certificates</title>
+  <link rel="stylesheet" href="/learning-portal/assets/css/portal.css">
+</head>
+<body>
+  <div class="main-shell">
+    <div class="navbar">
+      <div class="logo-text">Adapt<span style="color:#1e88e5;">BTC</span></div>
+      <div class="nav-links"><a class="btn btn-secondary" href="/learning-portal/dashboard.html">Dashboard</a></div>
+    </div>
+    <div class="card">
+      <div class="badge">Certificates</div>
+      <h2>Generate your certificate</h2>
+      <form id="certificate-form">
+        <label class="label">Certificate type</label>
+        <select name="certType">
+          <option value="course">Course</option>
+          <option value="lesson">Lesson</option>
+          <option value="quiz">Quiz</option>
+        </select>
+        <label class="label">Lesson / Quiz #</label>
+        <input name="lesson" type="number" min="1" max="12" value="1" />
+        <button class="btn" type="submit">Generate & Download</button>
+      </form>
+      <canvas id="certCanvas" width="900" height="600" style="width:100%; margin-top:20px; border:1px solid #e5e7eb; border-radius:12px;"></canvas>
+    </div>
+  </div>
+  <script type="module" src="/learning-portal/assets/js/certificate-engine.js"></script>
+</body>
+</html>

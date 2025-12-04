@@ -1,0 +1,30 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Invoice Generator</title><link rel="stylesheet" href="/assets/css/main.css"></head>
+<body>
+<div class="container">
+  <div class="navbar"><div class="logo-text">Adapt<span>BTC</span></div><div class="nav-links"><a class="btn btn-secondary" href="/tools-portal/dashboard.html">Back</a></div></div>
+  <div class="card">
+    <div class="badge">Lightning Invoice</div>
+    <div class="grid-two">
+      <div>
+        <div class="field"><label>Amount (sats)</label><input id="amount" type="number" value="1000"></div>
+        <div class="field"><label>Memo</label><input id="memo" placeholder="Coffee"></div>
+        <button class="btn" onclick="generateInvoice()">Generate Invoice</button>
+      </div>
+      <div>
+        <p id="invoice-text">No invoice yet.</p>
+        <canvas id="qr" width="200" height="200" style="background:#f3f3f3; border-radius:12px;"></canvas>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/qrious@4.0.2/dist/qrious.min.js"></script>
+<script>
+  function generateInvoice(){
+    const amt=document.getElementById('amount').value||0;
+    const memo=document.getElementById('memo').value||'AdaptBTC Invoice';
+    const invoice=`lnbc${amt}n1${Math.random().toString(36).slice(2)}`;
+    document.getElementById('invoice-text').textContent=`Invoice: ${invoice}\nMemo: ${memo}`;
+    new QRious({element:document.getElementById('qr'),value:invoice,size:200});
+  }
+</script>
+</body></html>

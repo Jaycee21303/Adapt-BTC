@@ -1,0 +1,33 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Accounting Tool</title><link rel="stylesheet" href="/assets/css/main.css"></head>
+<body>
+<div class="container">
+  <div class="navbar"><div class="logo-text">Adapt<span>BTC</span></div><div class="nav-links"><a class="btn btn-secondary" href="/tools-portal/dashboard.html">Back</a></div></div>
+  <div class="card">
+    <div class="badge">Income & Expense</div>
+    <form id="entry-form" class="grid-two">
+      <div class="field"><label>Type</label><select name="type"><option>Income</option><option>Expense</option></select></div>
+      <div class="field"><label>Amount (sats)</label><input name="amount" type="number" required></div>
+      <div class="field" style="grid-column:1/3;"><label>Note</label><input name="note"></div>
+      <button class="btn" type="submit">Add</button>
+    </form>
+    <table class="table" id="entries"></table>
+    <button class="btn btn-secondary" onclick="exportCSV()">Export CSV</button>
+  </div>
+</div>
+<script>
+  const entries = JSON.parse(localStorage.getItem('adaptbtc-accounting')||'[]');
+  const table=document.getElementById('entries');
+  const form=document.getElementById('entry-form');
+  function render(){
+    table.innerHTML='<tr><th>Type</th><th>Amount (sats)</th><th>Note</th></tr>'+entries.map(e=>`<tr><td>${e.type}</td><td>${e.amount}</td><td>${e.note||''}</td></tr>`).join('');
+    localStorage.setItem('adaptbtc-accounting',JSON.stringify(entries));
+  }
+  form.addEventListener('submit',e=>{e.preventDefault(); const data=Object.fromEntries(new FormData(form).entries()); entries.push(data); render(); form.reset();});
+  function exportCSV(){
+    const rows=[['Type','Amount','Note'],...entries.map(e=>[e.type,e.amount,e.note||''])];
+    const csv=rows.map(r=>r.join(',')).join('\n');
+    const blob=new Blob([csv],{type:'text/csv'}); const url=URL.createObjectURL(blob); const a=document.createElement('a'); a.href=url; a.download='adaptbtc-accounting.csv'; a.click(); URL.revokeObjectURL(url);
+  }
+  render();
+</script>
+</body></html>

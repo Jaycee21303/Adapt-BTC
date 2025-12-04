@@ -1,0 +1,20 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Address Generator</title><link rel="stylesheet" href="/assets/css/main.css"></head>
+<body>
+<div class="container">
+  <div class="navbar"><div class="logo-text">Adapt<span>BTC</span></div><div class="nav-links"><a class="btn btn-secondary" href="/tools-portal/dashboard.html">Back</a></div></div>
+  <div class="card">
+    <div class="badge">BTC Address</div>
+    <button class="btn" onclick="gen()">Generate bech32 address</button>
+    <p id="addr">No address yet.</p>
+    <canvas id="addr-qr" width="200" height="200" style="background:#f3f3f3; border-radius:12px;"></canvas>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/qrious@4.0.2/dist/qrious.min.js"></script>
+<script>
+function gen(){
+  const addr=`bc1q${Math.random().toString(36).slice(2,12)}${Math.random().toString(36).slice(2,12)}`;
+  document.getElementById('addr').textContent=addr;
+  new QRious({element:document.getElementById('addr-qr'),value:addr,size:200});
+}
+</script>
+</body></html>

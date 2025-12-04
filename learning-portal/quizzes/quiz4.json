@@ -1,0 +1,21 @@
+{
+  "title": "Self-Custody",
+  "passingScore": 80,
+  "questions": [
+    {"q":"Self-custody means:","choices":["Exchanges hold keys","You control private keys","Government holds coins","Bank stores BTC"],"answer":1,"explanation":"Owning keys = owning coins."},
+    {"q":"Seed phrase is:","choices":["A transaction","A 12–24 word backup","A miner ID","A QR fee code"],"answer":1,"explanation":"Seed encodes the master private key."},
+    {"q":"Sharing your seed phrase:","choices":["Is safe","Should never be done","Is required by miners","Is needed daily"],"answer":1,"explanation":"Anyone with the seed can spend your funds."},
+    {"q":"Recovery involves:","choices":["Calling bank","Importing seed into compatible wallet","Mining a block","Resetting password"],"answer":1,"explanation":"Seed restores wallet on any compatible software/hardware."},
+    {"q":"Custodial risk includes:","choices":["Exchange freezes","More privacy","Offline control","Faster confirmations"],"answer":0,"explanation":"Custodians can freeze or lose funds."},
+    {"q":"Best practice for seed storage:","choices":["Email it","Write and store securely offline","Store in downloads","Send to friend"],"answer":1,"explanation":"Keep offline backups in safe locations."},
+    {"q":"Wallets manage:","choices":["Node consensus","Keys, addresses, transactions","Mining pools","Exchanges"],"answer":1,"explanation":"Wallets construct and sign transactions using keys."},
+    {"q":"A watch-only wallet holds:","choices":["Private keys","Public keys only","Mining firmware","Seed phrases"],"answer":1,"explanation":"Watch-only sees balances but cannot spend."},
+    {"q":"If device is lost but seed is safe:","choices":["Funds lost","Funds recoverable","Blockchain reset","Halving stops"],"answer":1,"explanation":"Seed allows restoration on new device."},
+    {"q":"Passphrase usage:","choices":["Weakens security","Adds another secret to seed","Not allowed on hardware","Removes PIN"],"answer":1,"explanation":"Passphrase adds an extra layer on top of the seed."},
+    {"q":"Hot wallet risk:","choices":["Offline security","Exposure to malware","Guaranteed safety","Faster blocks"],"answer":1,"explanation":"Internet-connected devices face malware risk."},
+    {"q":"Cold storage means:","choices":["Keys kept offline","Keys stored in browser","Keys emailed","Keys printed on receipt"],"answer":0,"explanation":"Offline keys reduce attack surface."},
+    {"q":"Address reuse impacts:","choices":["Privacy negatively","Block time","Difficulty","Halving"],"answer":0,"explanation":"Reuse links transactions and reduces privacy."},
+    {"q":"Multi-sig helps by:","choices":["Reducing confirmations","Requiring multiple keys to spend","Speeding mining","Stopping halvings"],"answer":1,"explanation":"Multi-sig distributes signing authority."},
+    {"q":"Before sending large funds, you should:","choices":["Skip backups","Test with small amount","Share seed phrase","Disable PIN"],"answer":1,"explanation":"Test transactions validate addresses and flows."}
+  ]
+}

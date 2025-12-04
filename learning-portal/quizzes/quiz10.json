@@ -1,0 +1,21 @@
+{
+  "title": "Bitcoin Privacy",
+  "passingScore": 80,
+  "questions": [
+    {"q":"Address reuse affects:","choices":["Nothing","Privacy negatively","Block size","Difficulty"],"answer":1,"explanation":"Reuse links transactions and histories."},
+    {"q":"Coin control lets you:","choices":["Mine blocks","Choose which UTXOs to spend","Change halving","Set price"],"answer":1,"explanation":"Selecting UTXOs improves privacy management."},
+    {"q":"Lightning privacy comes from:","choices":["Transparent mempool","Encrypted hop-to-hop routing","Publishing invoices publicly","Seed sharing"],"answer":1,"explanation":"Lightning uses onion routing between hops."},
+    {"q":"Consolidating UTXOs when fees are low helps:","choices":["Reduce future footprint","Increase reuse","Stop mining","Break wallets"],"answer":0,"explanation":"Fewer UTXOs later reduces linkability and fees."},
+    {"q":"Best practice for receiving payments:","choices":["Reuse same address","Generate new address each time","Share seed","Use email"],"answer":1,"explanation":"New addresses avoid linking payers."},
+    {"q":"A large merged spend can:","choices":["Hide history","Link multiple histories together","Change block size","Lower hash"],"answer":1,"explanation":"Merging UTXOs connects histories on-chain."},
+    {"q":"Wallet labeling helps:","choices":["Track UTXO origins","Increase fees","Change difficulty","Halving"],"answer":0,"explanation":"Labels remind you which UTXOs relate to which source."},
+    {"q":"Lightning channel opens are:","choices":["On-chain and visible","Hidden forever","Free of fees","Private to bank"],"answer":0,"explanation":"Channel funding is an on-chain transaction."},
+    {"q":"Payjoin and coinjoin are:","choices":["Mining tools","Collaborative transaction types for privacy","Hardware wallets","Fee estimators"],"answer":1,"explanation":"They mix inputs to reduce heuristics."},
+    {"q":"Metadata leaks can occur via:","choices":["Network and device fingerprints","Only block headers","Only hardware","Halving"],"answer":0,"explanation":"Wallets should minimize network identifiers."},
+    {"q":"Lightning invoices should be shared:","choices":["Publicly forever","Only with payer and before expiry","On billboards","In email signatures"],"answer":1,"explanation":"Invoices contain hints; share minimally."},
+    {"q":"Zero-conf acceptance risk:","choices":["No risk","Double-spend risk","Guaranteed finality","Lower fees"],"answer":1,"explanation":"Without confirmations, double spends are possible."},
+    {"q":"VPN/Tor usage can:","choices":["Add network privacy","Change difficulty","Set fees","Alter supply"],"answer":0,"explanation":"Network privacy tools reduce IP linkage."},
+    {"q":"Best privacy posture combines:","choices":["Address reuse and no labels","Fresh addresses, coin control, cautious broadcasts","Public memos","Email backups"],"answer":1,"explanation":"Holistic hygiene improves privacy."},
+    {"q":"Lightning still requires:","choices":["No on-chain transactions","Channel on-chain anchors","Government license","Paper wallets"],"answer":1,"explanation":"Channels must be opened/closed on-chain."}
+  ]
+}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 1 – What Is Bitcoin?</title>
+  <link rel="stylesheet" href="/learning-portal/assets/css/portal.css">
+</head>
+<body data-lesson="1">
+  <div class="main-shell">
+    <div class="navbar">
+      <div class="logo-text">Adapt<span style="color:#1e88e5;">BTC</span></div>
+      <div class="nav-links"><a class="btn btn-secondary" href="/learning-portal/dashboard.html">Dashboard</a></div>
+    </div>
+    <div class="card">
+      <div class="badge">Lesson 1</div>
+      <h1>What Is Bitcoin?</h1>
+      <p>Bitcoin is the first widely adopted form of digital property—scarce, portable, and secured by an open network.</p>
+      <h3>Digital property</h3>
+      <p>Bitcoin exists as entries in a public ledger. Ownership is controlled by private keys rather than accounts at intermediaries.</p>
+      <h3>Scarcity (21M)</h3>
+      <p>The protocol caps supply at 21 million coins, released on a predictable schedule. This hard cap creates digital scarcity.</p>
+      <h3>Decentralization</h3>
+      <p>No single entity controls Bitcoin. Thousands of nodes validate rules, miners add blocks, and anyone can self-verify.</p>
+      <h3>Why Bitcoin was created</h3>
+      <p>Satoshi launched Bitcoin in 2009 as a response to fragile banking and to enable peer-to-peer money without trusted third parties.</p>
+      <h3>Importance of sats</h3>
+      <p>Each bitcoin splits into 100,000,000 satoshis (sats). Quoting values in sats makes small payments intuitive.</p>
+      <h3>Bitcoin vs fiat</h3>
+      <p>Fiat currencies inflate as supply expands. Bitcoin’s fixed supply and transparent issuance make it resistant to debasement.</p>
+      <h3>Bitcoin vs gold</h3>
+      <p>Gold is scarce but heavy to move and hard to audit. Bitcoin moves at internet speed and is auditable by anyone.</p>
+      <h3>Global network</h3>
+      <p>Bitcoin operates 24/7 with no borders. Anyone with internet access can send, receive, and validate transactions.</p>
+      <div class="card" style="background:#f3f3f3;">
+        <h3>Summary</h3>
+        <ul>
+          <li>Bitcoin is digital property with a fixed 21M supply.</li>
+          <li>Decentralized validation keeps it neutral and censorship-resistant.</li>
+          <li>Sats enable small, global payments.</li>
+        </ul>
+      </div>
+      <a class="btn" href="/learning-portal/quizzes/quiz1.html">Take Quiz 1</a>
+    </div>
+  </div>
+  <script type="module">
+    import { sessionGuard, loadProgress, saveProgress } from '../assets/js/portal-auth.js';
+    await sessionGuard('learning');
+    const progress = await loadProgress();
+    progress.lessons = progress.lessons || {};
+    progress.lessons['1'] = 'complete';
+    await saveProgress(progress);
+  </script>
+</body>
+</html>

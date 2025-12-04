@@ -1,0 +1,21 @@
+{
+  "title": "Bitcoin for Business",
+  "passingScore": 80,
+  "questions": [
+    {"q":"Business custody options include:","choices":["Only exchanges","Self-custody, collaborative custody, custodians","Paper only","SMS"],"answer":1,"explanation":"Businesses choose models based on capability and regulation."},
+    {"q":"Enterprise wallets often feature:","choices":["No logs","Role-based access and policies","Seed sharing","No approvals"],"answer":1,"explanation":"Policy engines and roles support governance."},
+    {"q":"Multi-sig reduces:","choices":["Need for backups","Single point of failure","Need for policies","On-chain fees"],"answer":1,"explanation":"Multiple keys are required to spend."},
+    {"q":"Regulatory basics include:","choices":["Ignoring AML","Understanding KYC/AML expectations","Halting mining","Changing difficulty"],"answer":1,"explanation":"Compliance awareness is necessary for businesses."},
+    {"q":"Incident response plan should cover:","choices":["Weather only","Key loss, compromise, communication","Marketing only","None"],"answer":1,"explanation":"Plans guide action during security events."},
+    {"q":"Signer rotation helps:","choices":["Increase risk","Maintain security over time","Remove backups","Stop fees"],"answer":1,"explanation":"Rotation limits long-term exposure of keys."},
+    {"q":"Treasury segregation means:","choices":["Mixing funds","Separating operational and reserve balances","No backups","Emailing seeds"],"answer":1,"explanation":"Segregation clarifies controls and risk."},
+    {"q":"When using a custodian, companies should:","choices":["Skip contracts","Review SLAs and security practices","Share seed","Avoid audits"],"answer":1,"explanation":"Due diligence on custodians is critical."},
+    {"q":"Compliance logging provides:","choices":["Entertainment","Audit trail of actions","Halving schedule","Difficulty data"],"answer":1,"explanation":"Logs support audits and accountability."},
+    {"q":"Policy documentation should include:","choices":["Signer rules, backups, approvals","Favorite memes","Sports schedule","None"],"answer":0,"explanation":"Clear documentation standardizes operations."},
+    {"q":"Travel rule generally concerns:","choices":["Large cash deposits","Sharing sender/receiver info above thresholds","Mining rewards","Wallet UIs"],"answer":1,"explanation":"Certain transfers require originator/beneficiary info."},
+    {"q":"Training staff helps:","choices":["Reduce operational errors","Increase hacks","Eliminate need for policies","Stop halving"],"answer":0,"explanation":"Educated staff follow procedures correctly."},
+    {"q":"Insurance may:","choices":["Be irrelevant","Provide coverage for certain losses","Guarantee price","Set block time"],"answer":1,"explanation":"Policies can offset certain custodial risks."},
+    {"q":"Business continuity planning ensures:","choices":["No backups","Operations can continue after disruption","No governance","Price increases"],"answer":1,"explanation":"BCP keeps services running after incidents."},
+    {"q":"Legal review is important because:","choices":["It is optional","Regulations vary by jurisdiction","Blocks need it","Nodes require it"],"answer":1,"explanation":"Rules differ; counsel tailors compliance."}
+  ]
+}

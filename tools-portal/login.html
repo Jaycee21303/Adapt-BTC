@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Tools Portal Login</title><link rel="stylesheet" href="/assets/css/main.css"></head>
+<body>
+<div class="container">
+  <div class="card">
+    <div class="badge">Tools Portal</div>
+    <h2>Login (optional)</h2>
+    <p class="tagline">Login to save preferences. You can still explore without an account.</p>
+    <div id="form-alert" class="alert" style="display:none;"></div>
+    <form id="tools-login">
+      <div class="field"><label>Username</label><input name="username" required></div>
+      <div class="field"><label>Password</label><input type="password" name="password" required></div>
+      <button class="btn" type="submit">Login</button>
+    </form>
+    <p>Need an account? <a href="/tools-portal/register.html">Register here</a>.</p>
+  </div>
+</div>
+<script>
+  const form = document.getElementById('tools-login');
+  const alertBox = document.getElementById('form-alert');
+  form.addEventListener('submit', async (e)=>{
+    e.preventDefault();
+    const data = Object.fromEntries(new FormData(form).entries());
+    const res = await fetch('/api/tools/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
+    const json = await res.json();
+    if(json.error){alertBox.textContent=json.error;alertBox.style.display='block';alertBox.style.background='#ffecec';alertBox.style.color='#c62828';}
+    else{window.location.href='/tools-portal/dashboard.html';}
+  });
+</script>
+</body></html>
