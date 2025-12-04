@@ -48,6 +48,11 @@ def dashboard() -> str:
     return render_template("dashboard.html")
 
 
+@app.route("/roadmap")
+def roadmap() -> str:
+    return render_template("roadmap.html", roadmap=get_roadmap())
+
+
 @app.route("/api/engine/summary")
 def engine_summary() -> Dict[str, Any]:
     return jsonify(
