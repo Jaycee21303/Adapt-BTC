@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block title %}AdaptBTC Engine{% endblock %}
+{% block content %}
+<section class="space-y-6">
+    <div class="space-y-2">
+        <p class="eyebrow">AdaptBTC</p>
+        <h1 class="text-3xl font-bold">Lightning, treasury, and readiness in one place.</h1>
+        <p class="text-gray-700 max-w-3xl">Use the links below to explore each part of the AdaptBTC engine or view the consolidated dashboard.</p>
+    </div>
+    <div class="grid md:grid-cols-2 gap-4">
+        <a class="card" href="{{ url_for('dashboard') }}">
+            <div class="card-header">
+                <h2>Dashboard</h2>
+                <span class="pill">Live</span>
+            </div>
+            <p>Live engine summary with readiness, Lightning peers, borrowing rails, and roadmap milestones.</p>
+        </a>
+        <a class="card" href="{{ url_for('tools') }}">
+            <div class="card-header">
+                <h2>Tools</h2>
+                <span class="pill pill-secondary">Suite</span>
+            </div>
+            <p>Navigate to the AdaptBTC tools suite for calculators, simulators, and rollout planners.</p>
+        </a>
+        <a class="card" href="{{ url_for('accounting') }}">
+            <div class="card-header">
+                <h2>Accounting</h2>
+                <span class="pill pill-accent">Finance</span>
+            </div>
+            <p>Snapshot of treasury holdings, cost basis, and projected runway for the organization.</p>
+        </a>
+        <a class="card" href="{{ url_for('lightning') }}">
+            <div class="card-header">
+                <h2>Lightning</h2>
+                <span class="pill">Network</span>
+            </div>
+            <p>Channel health, peer recommendations, and operational guardrails for the node.</p>
+        </a>
+        <a class="card" href="{{ url_for('borrow') }}">
+            <div class="card-header">
+                <h2>Borrow</h2>
+                <span class="pill pill-secondary">Rails</span>
+            </div>
+            <p>Recommended lenders, rates, and guidance for using BTC as collateral.</p>
+        </a>
+        <a class="card" href="https://adapt-btc.onrender.com/adapt-lightning-tools.html" target="_blank" rel="noreferrer">
+            <div class="card-header">
+                <h2>Legacy site</h2>
+                <span class="pill">External</span>
+            </div>
+            <p>Link to the previous static experience while the new Flask backend powers the data.</p>
+        </a>
+    </div>
+</section>
+{% endblock %}

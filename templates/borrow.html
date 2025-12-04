@@ -1,1 +1,30 @@
-<!-- borrow simulator full code -->
+{% extends 'base.html' %}
+{% block title %}Borrowing rails{% endblock %}
+{% block content %}
+<section class="space-y-4">
+    <div class="space-y-2">
+        <p class="eyebrow">Borrow</p>
+        <h1 class="text-3xl font-bold">BTC-backed credit options</h1>
+        <p class="text-gray-700 max-w-3xl">Evaluate lenders, APRs, and loan-to-value recommendations.</p>
+    </div>
+    <div class="grid md:grid-cols-2 gap-4">
+        {% for lender in borrow.lenders %}
+        <div class="card">
+            <div class="card-header">
+                <h2>{{ lender.name }}</h2>
+                <span class="pill">{{ '%.1f'|format(lender.rate) }}% APR</span>
+            </div>
+            <p>LTV {{ (lender.ltv * 100)|round|int }}%</p>
+            <p class="text-gray-700">{{ lender.notes }}</p>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <h2>Recommendation</h2>
+            <span class="pill pill-accent">Guidance</span>
+        </div>
+        <p>{{ borrow.recommendation }}</p>
+    </div>
+</section>
+{% endblock %}

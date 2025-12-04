@@ -1,1 +1,32 @@
-<!-- accounting full code -->
+{% extends 'base.html' %}
+{% block title %}Treasury accounting{% endblock %}
+{% block content %}
+<section class="space-y-4">
+    <div class="space-y-2">
+        <p class="eyebrow">Accounting</p>
+        <h1 class="text-3xl font-bold">Treasury snapshot</h1>
+        <p class="text-gray-700 max-w-3xl">Current holdings, cost basis, and projected runway pulled from the AdaptBTC engine.</p>
+    </div>
+    <div class="grid md:grid-cols-3 gap-4">
+        <div class="card">
+            <div class="card-header"><h2>Holdings</h2></div>
+            <p class="text-2xl font-semibold">{{ finance.holdings_btc }} BTC</p>
+        </div>
+        <div class="card">
+            <div class="card-header"><h2>Avg. cost basis</h2></div>
+            <p class="text-2xl font-semibold">${{ '{:,}'.format(finance.avg_cost_basis_usd) }}</p>
+        </div>
+        <div class="card">
+            <div class="card-header"><h2>Runway</h2></div>
+            <p class="text-2xl font-semibold">{{ finance.projected_runway_months }} months</p>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <h2>Notes</h2>
+            <span class="pill pill-secondary">Context</span>
+        </div>
+        <p>{{ finance.notes }}</p>
+    </div>
+</section>
+{% endblock %}

@@ -5,16 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}AdaptBTC Engine{% endblock %}</title>
     <link rel="stylesheet" href="https://cdn.tailwindcss.com">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
-    <link rel="stylesheet" href="/assets/css/system.css">
+    <link rel="stylesheet" href="{{ url_for('serve_static', filename='css/dashboard.css') }}">
+    <link rel="stylesheet" href="{{ url_for('serve_assets', filename='css/system.css') }}">
 </head>
 <body class="bg-gray-100 text-gray-900 font-inter">
     <a class="skip-link" href="#main-content">Skip to main content</a>
     <div id="site-header" data-include="header"></div>
 <main id="main-content" class="max-w-6xl mx-auto px-6 py-10">
-        {% block content %}{% endblock %}
-    </main>
+    {% block content %}{% endblock %}
+</main>
     <div id="site-footer" data-include="footer"></div>
-<script src="/assets/js/layout.js" defer></script>
+<script src="{{ url_for('serve_assets', filename='js/layout.js') }}" defer></script>
 </body>
 </html>

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}AdaptBTC Tools{% endblock %}
+{% block content %}
+<section class="space-y-4">
+    <div class="space-y-2">
+        <p class="eyebrow">Tools</p>
+        <h1 class="text-3xl font-bold">AdaptBTC toolkit</h1>
+        <p class="text-gray-700 max-w-3xl">Access calculators, rollout planners, and operational runbooks. The static suite remains available while this Python backend provides the live data feeds.</p>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <h2>Open suite</h2>
+            <span class="pill">Static</span>
+        </div>
+        <p>You can continue using the existing HTML experience while Render serves the backend from <code>app.py</code>.</p>
+        <a class="button" href="{{ url_for('serve_root_files', resource='adapt-lightning-tools.html') }}">Launch Lightning Suite</a>
+    </div>
+</section>
+{% endblock %}
