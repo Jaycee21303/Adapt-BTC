@@ -1,12 +1,17 @@
 from pathlib import Path
 import os
 
-from flask import Flask, abort, render_template
+from flask import Flask, abort, redirect, render_template, url_for
 from flask_session import Session
 
 from blueprints import register_blueprints
 
-app = Flask(__name__, static_folder="static", template_folder="templates")
+app = Flask(
+    __name__,
+    static_folder="assets",
+    static_url_path="/assets",
+    template_folder="templates",
+)
 app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY", "dev-secret-key")
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
@@ -28,47 +33,33 @@ def render_section(section: str, page: str):
 
 @app.route("/")
 def index():
-    return render_existing("main-site/index.html")
+    return render_existing("pages/index.html")
+
+
+@app.route("/learning")
+@app.route("/education")
+def learning():
+    return render_existing("pages/learning.html")
 
 
 @app.route("/tools")
 def tools():
-    return render_existing("main-site/tools.html")
+    return render_existing("pages/tools.html")
 
 
 @app.route("/consulting")
 def consulting():
-    return render_existing("consulting.html")
+    return render_existing("pages/consulting.html")
 
 
 @app.route("/donate")
 def donate():
-    return render_existing("donate.html")
-
-
-@app.route("/education")
-def education():
-    return render_existing("main-site/education.html")
-
-
-@app.route("/about")
-def about():
-    return render_existing("main-site/about.html")
-
-
-@app.route("/business")
-def business():
-    return render_existing("main-site/business.html")
-
-
-@app.route("/contact")
-def contact():
-    return render_existing("main-site/contact.html")
+    return render_existing("pages/donate.html")
 
 
 @app.route("/main-site/<path:page>")
 def main_site_page(page: str):
-    return render_section("main-site", page)
+    return redirect(url_for("index"))
 
 
 @app.route("/learning-portal/<path:page>")

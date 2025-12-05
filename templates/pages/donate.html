@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AdaptBTC | Support the Mission</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/global.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/donate.css') }}">
+  <script defer src="{{ url_for('static', filename='js/main.js') }}"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/qrious@4.0.2/dist/qrious.min.js"></script>
+  <script defer src="{{ url_for('static', filename='js/donate.js') }}"></script>
+</head>
+<body>
+  {% include 'components/navbar.html' %}
+  <main class="container">
+    <section class="section">
+      <div class="donate-hero" data-animate>
+        <div class="section-heading">
+          <div>
+            <div class="badge">Donate</div>
+            <h1>Support AdaptBTC’s Mission.</h1>
+            <p class="hero-sub">Your contribution fuels free education, premium tools, and community expansion.</p>
+          </div>
+          <a class="btn" href="#donation-card">Make a Contribution</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="donation-card" class="section" data-animate>
+      <div class="donation-card">
+        <div class="flex-between">
+          <div>
+            <h2>Bitcoin Donation</h2>
+            <p>Scan or copy the address to support the mission instantly.</p>
+          </div>
+          <span class="badge">Non-custodial</span>
+        </div>
+        <div class="qr-wrap">
+          <div class="qr-box">
+            <canvas id="donation-qr" width="200" height="200" aria-label="Bitcoin donation QR"></canvas>
+          </div>
+          <div style="flex:1; min-width:260px;">
+            <p class="label">BTC Address</p>
+            <div class="address-row">
+              <code id="donation-address"></code>
+              <button class="btn btn-outline" type="button" data-copy="donation-address">Copy</button>
+            </div>
+            <p class="label" style="margin-top:14px;">LNURL</p>
+            <div class="address-row">
+              <code id="lnurl-display"></code>
+              <button class="btn btn-outline" type="button" data-copy="lnurl-display">Copy</button>
+            </div>
+          </div>
+        </div>
+        <div class="invoice-box">
+          <div class="flex-between">
+            <div>
+              <p class="label">Lightning Invoice Generator</p>
+              <p>Generate a fresh invoice for a quick contribution.</p>
+            </div>
+            <div class="pill">Instant</div>
+          </div>
+          <div class="invoice-row">
+            <input id="invoice-amount" class="form-control" type="number" placeholder="Amount in sats" min="1" value="1000">
+            <button id="generate-invoice" class="btn" type="button">Generate Invoice</button>
+          </div>
+          <div class="address-row" style="margin-top:12px;">
+            <code id="invoice-field">lnbc10000n1padaptbtc</code>
+            <button class="btn btn-outline" type="button" data-copy="invoice-field">Copy Invoice</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" data-animate>
+      <div class="section-heading">
+        <h2>Why Donate</h2>
+      </div>
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="icon-circle">🛠</div>
+          <h3>Support tools</h3>
+          <p>Help us ship new features for the Lightning Suite and address generator.</p>
+        </div>
+        <div class="why-card">
+          <div class="icon-circle">🎓</div>
+          <h3>Support free education</h3>
+          <p>Keep the learning portal open, structured, and certification-ready.</p>
+        </div>
+        <div class="why-card">
+          <div class="icon-circle">🌍</div>
+          <h3>Help expand the mission</h3>
+          <p>Fuel new translations, community chapters, and global onboarding.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  {% include 'components/footer.html' %}
+</body>
+</html>

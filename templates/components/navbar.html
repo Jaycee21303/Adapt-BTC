@@ -1,0 +1,19 @@
+<nav class="global-nav shadow-soft">
+  <div class="nav-inner">
+    <a class="brand" href="{{ url_for('index') }}">
+      <img src="{{ url_for('static', filename='img/adaptbtc-logo.svg') }}" alt="AdaptBTC logo" class="brand-mark" />
+      <span class="brand-text">Adapt<span class="accent">BTC</span></span>
+    </a>
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links" data-nav-links>
+      <a href="{{ url_for('index') }}">Home</a>
+      <a href="{{ url_for('learning') }}">Learning</a>
+      <a href="{{ url_for('tools') }}">Tools</a>
+      <a href="{{ url_for('consulting') }}">Consulting</a>
+      <a href="{{ url_for('donate') }}">Donate</a>
+      <a class="pill-link" href="{{ url_for('portal.login') }}">Portal Login</a>
+    </div>
+  </div>
+</nav>

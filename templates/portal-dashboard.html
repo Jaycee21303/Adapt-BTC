@@ -1,31 +1,52 @@
-{% include 'components/header.html' %}
-<link rel="stylesheet" href="{{ url_for('portal.static', filename='css/portal.css') }}">
-<div class="navbar">
-  <div>Welcome, {{ username }}</div>
-  <div>
-    <a href="{{ url_for('portal.courses') }}">Courses</a>
-    <a href="{{ url_for('portal.progress') }}">Progress</a>
-    <a href="{{ url_for('portal.logout') }}">Logout</a>
-  </div>
-</div>
-<div class="container">
-  <h2>Learning Dashboard</h2>
-  <p>Track your AdaptBTC learning journey and pick up where you left off.</p>
-  <div class="dashboard-grid">
-    {% for course in courses %}
-    {% set summary = course_summary.get(course.id, {}) %}
-    <div class="card">
-      <h3>{{ course.title }}</h3>
-      <p>{{ course.summary }}</p>
-      <div class="progress">
-        {% set completed = summary.get('lessons_completed', 0) %}
-        {% set pct = (completed / 15 * 100) if completed else 0 %}
-        <div class="bar" style="width: {{ pct }}%"></div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AdaptBTC Portal | Dashboard</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/global.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/portal.css') }}">
+  <script defer src="{{ url_for('static', filename='js/main.js') }}"></script>
+</head>
+<body>
+  {% include 'components/navbar.html' %}
+  <main class="container">
+    <section class="section">
+      <div class="portal-shell" data-animate>
+        <div class="portal-toolbar">
+          <div>
+            <div class="badge">Dashboard</div>
+            <h2>Welcome, {{ username }}</h2>
+            <p class="hero-sub">Track your learning journey and jump into courses.</p>
+          </div>
+          <div class="portal-nav">
+            <a class="pill-tab active" href="{{ url_for('portal.dashboard') }}">Overview</a>
+            <a class="pill-tab" href="{{ url_for('portal.courses') }}">Courses</a>
+            <a class="pill-tab" href="{{ url_for('portal.progress') }}">Certificates</a>
+            <a class="pill-tab" href="{{ url_for('portal.logout') }}">Logout</a>
+          </div>
+        </div>
+
+        <div class="grid-three">
+          {% for course in courses %}
+          {% set summary = course_summary.get(course.id, {}) %}
+          {% set completed = summary.get('lessons_completed', 0) %}
+          {% set pct = (completed / 15 * 100) if completed else 0 %}
+          <div class="card">
+            <div class="flex-between">
+              <h3>{{ course.title }}</h3>
+              <span class="badge">{{ completed }} lessons</span>
+            </div>
+            <p>{{ course.summary }}</p>
+            <div class="progress-bar"><span style="width: {{ pct }}%"></span></div>
+            <p class="progress-text">{{ pct|round(0) }}% complete</p>
+            <a class="btn" href="{{ url_for('portal.course_detail', course_id=course.id) }}">Continue</a>
+          </div>
+          {% endfor %}
+        </div>
       </div>
-      <p>{{ completed }} lessons completed</p>
-      <a class="btn" href="{{ url_for('portal.course_detail', course_id=course.id) }}">Go to course</a>
-    </div>
-    {% endfor %}
-  </div>
-</div>
-{% include 'components/footer.html' %}
+    </section>
+  </main>
+  {% include 'components/footer.html' %}
+</body>
+</html>

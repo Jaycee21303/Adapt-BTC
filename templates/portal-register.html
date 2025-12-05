@@ -1,19 +1,44 @@
-{% include 'components/header.html' %}
-<link rel="stylesheet" href="{{ url_for('portal.static', filename='css/portal.css') }}">
-<div class="container">
-  <h2>Create Your AdaptBTC Account</h2>
-  {% if error %}<div class="alert danger">{{ error }}</div>{% endif %}
-  <form method="post">
-    <div class="card">
-      <label>Username</label>
-      <input type="text" name="username" required>
-    </div>
-    <div class="card">
-      <label>Password</label>
-      <input type="password" name="password" minlength="8" required>
-    </div>
-    <button class="btn" type="submit">Register</button>
-    <a class="btn secondary" href="{{ url_for('portal.login') }}">Already registered?</a>
-  </form>
-</div>
-{% include 'components/footer.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AdaptBTC Portal | Register</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/global.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/portal.css') }}">
+  <script defer src="{{ url_for('static', filename='js/main.js') }}"></script>
+</head>
+<body>
+  {% include 'components/navbar.html' %}
+  <main class="container">
+    <section class="section">
+      <div class="portal-auth" data-animate>
+        <div class="section-heading">
+          <div>
+            <div class="badge">Create Account</div>
+            <h2>Join the AdaptBTC Learning Portal</h2>
+            <p class="hero-sub">Set a username and password. No email required.</p>
+          </div>
+          <a href="{{ url_for('portal.login') }}" class="inline-link">Back to login →</a>
+        </div>
+        {% if error %}<div class="alert danger">{{ error }}</div>{% endif %}
+        <form method="post" class="grid-two">
+          <div class="labelled">
+            <label class="label">Username</label>
+            <input class="form-control" type="text" name="username" required>
+          </div>
+          <div class="labelled">
+            <label class="label">Password</label>
+            <input class="form-control" type="password" name="password" required>
+          </div>
+          <div class="auth-actions" style="grid-column: span 2;">
+            <button class="btn" type="submit">Create account</button>
+            <a class="btn btn-outline" href="{{ url_for('learning') }}">Return to site</a>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+  {% include 'components/footer.html' %}
+</body>
+</html>

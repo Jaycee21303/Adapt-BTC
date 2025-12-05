@@ -1,27 +1,48 @@
-{% include 'components/header.html' %}
-<link rel="stylesheet" href="{{ url_for('portal.static', filename='css/portal.css') }}">
-<div class="navbar">
-  <div>{{ course.title }} Quiz</div>
-  <div>
-    <a href="{{ url_for('portal.lesson', course_id=course.id, order=1) }}">Lessons</a>
-    <a href="{{ url_for('portal.logout') }}">Logout</a>
-  </div>
-</div>
-<div class="container">
-  <h2>Quiz</h2>
-  <p>Earn 80% or higher to pass. Your attempts are saved.</p>
-  <form method="post">
-    {% for question in questions %}
-    <div class="card">
-      <p><strong>Q{{ loop.index }}.</strong> {{ question.prompt }}</p>
-      {% for option in question.options %}
-      <label class="quiz-option">
-        <input type="radio" name="q{{ loop.parent.index0 }}" value="{{ loop.index0 }}" required> {{ option }}
-      </label>
-      {% endfor %}
-    </div>
-    {% endfor %}
-    <button class="btn" type="submit">Submit Quiz</button>
-  </form>
-</div>
-{% include 'components/footer.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AdaptBTC Portal | Quiz</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/global.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/portal.css') }}">
+  <script defer src="{{ url_for('static', filename='js/main.js') }}"></script>
+</head>
+<body>
+  {% include 'components/navbar.html' %}
+  <main class="container">
+    <section class="section">
+      <div class="portal-shell" data-animate>
+        <div class="portal-toolbar">
+          <div>
+            <div class="badge">Quiz</div>
+            <h2>{{ course.title }} Quiz</h2>
+            <p class="hero-sub">Earn 80% or higher to pass. Your attempts are saved.</p>
+          </div>
+          <div class="portal-nav">
+            <a class="pill-tab" href="{{ url_for('portal.lesson', course_id=course.id, order=1) }}">Lessons</a>
+            <a class="pill-tab active" href="{{ url_for('portal.quiz', course_id=course.id) }}">Quiz</a>
+            <a class="pill-tab" href="{{ url_for('portal.logout') }}">Logout</a>
+          </div>
+        </div>
+        <form method="post" class="grid-two">
+          {% for question in questions %}
+          <div class="card" style="grid-column: span 2;">
+            <p><strong>Q{{ loop.index }}.</strong> {{ question.prompt }}</p>
+            {% for option in question.options %}
+            <label class="quiz-option">
+              <input type="radio" name="q{{ loop.parent.index0 }}" value="{{ loop.index0 }}" required> {{ option }}
+            </label>
+            {% endfor %}
+          </div>
+          {% endfor %}
+          <div style="grid-column: span 2;">
+            <button class="btn" type="submit">Submit Quiz</button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+  {% include 'components/footer.html' %}
+</body>
+</html>
