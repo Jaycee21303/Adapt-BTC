@@ -82,11 +82,13 @@ def dashboard():
     username = current_user()
     course_summary = stats(username)
     courses = list_courses()
+    lesson_totals = {course["id"]: len(list_lessons(course["id"])) for course in courses}
     return render_template(
         "portal-dashboard.html",
         username=username,
         courses=courses,
         course_summary=course_summary,
+        lesson_totals=lesson_totals,
     )
 
 

@@ -6,6 +6,7 @@ from typing import Dict, List, Optional, Tuple
 from backend.logic.content_library import (
     BITCOIN_101_LESSONS,
     COURSE_LIBRARY,
+    OPERATIONS_LAB_LESSONS,
     SECURITY_ESSENTIALS_LESSONS,
 )
 
@@ -19,6 +20,7 @@ Lesson = Dict[str, object]
 LESSON_SETS: Dict[str, List[Lesson]] = {
     "bitcoin-101": BITCOIN_101_LESSONS,
     "security-essentials": SECURITY_ESSENTIALS_LESSONS,
+    "operations-lab": OPERATIONS_LAB_LESSONS,
 }
 
 COURSE_TOPICS: Dict[str, Dict[str, List[str]]] = {

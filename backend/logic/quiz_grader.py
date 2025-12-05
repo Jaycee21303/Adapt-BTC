@@ -2,7 +2,11 @@ import sqlite3
 from pathlib import Path
 from typing import Dict, List, Tuple
 
-from backend.logic.content_library import BITCOIN_101_QUIZ, SECURITY_ESSENTIALS_QUIZ
+from backend.logic.content_library import (
+    BITCOIN_101_QUIZ,
+    OPERATIONS_LAB_QUIZ,
+    SECURITY_ESSENTIALS_QUIZ,
+)
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 DB_PATH = BASE_DIR / "database" / "quizzes.db"
@@ -13,6 +17,7 @@ QUIZZES: Dict[str, List[Question]] = {}
 QUIZ_BANK: Dict[str, List[Question]] = {
     "bitcoin-101": BITCOIN_101_QUIZ,
     "security-essentials": SECURITY_ESSENTIALS_QUIZ,
+    "operations-lab": OPERATIONS_LAB_QUIZ,
 }
 
 PASSING_SCORE = 0.8

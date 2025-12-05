@@ -28,6 +28,13 @@ COURSE_LIBRARY: Dict[str, CourseContent] = {
             "and respond well to incidents without losing funds or critical data."
         ),
     },
+    "operations-lab": {
+        "title": "Operations Lab: Tools & Automation",
+        "summary": (
+            "Hands-on playbooks that connect AdaptBTC tools with production-ready workflows, "
+            "including wallet automation, reporting dashboards, and uptime checks."
+        ),
+    },
 }
 
 
@@ -855,6 +862,110 @@ SECURITY_ESSENTIALS_LESSONS: List[LessonContent] = [
 ]
 
 
+OPERATIONS_LAB_LESSONS: List[LessonContent] = [
+    {
+        "title": "Portal Accounts and Data Safety",
+        "paragraphs": [
+            "AdaptBTC’s learning portal keeps usernames and bcrypt-hashed passwords inside a SQLite database that is initialized automatically on first login or registration.",
+            "Session data is stored server-side, and Flask-Session ensures tokens cannot be tampered with from the browser.",
+            "Audit-friendly logging of quiz attempts and lesson completion provides a paper trail for compliance teams.",
+            "The stack is container-ready, making it simple to deploy behind a reverse proxy with HTTPS and environment-based secrets.",
+            "Students experience a real authentication flow instead of a mockup, reinforcing operational security fundamentals.",
+        ],
+        "examples": [
+            "Learners register, log out, and return later with their credentials preserved by the database.",
+            "Team leads export quiz scores to confirm onboarding milestones before provisioning production access.",
+        ],
+        "glossary": {
+            "Bcrypt": "Password hashing algorithm that applies adaptive work factors to resist brute force attacks.",
+            "Session": "Server-tracked state that maps a browser cookie to authenticated user data.",
+            "Persistent Store": "Database or disk-backed system that survives server restarts and redeployments.",
+        },
+        "takeaways": [
+            "The portal uses the same primitives you would deploy to production—hashing, sessions, and durable storage.",
+            "Visibility into attempts and completions makes the training auditable.",
+            "Secure defaults keep account data safe without extra configuration.",
+        ],
+        "diagram": "<div class='chart-card'><canvas class=\"lesson-chart\" data-points=\"35,62,88\" data-labels=\"Signups|Active|Certificates\" data-color=\"#2563eb\"></canvas><p class='chart-note'>Live enrollment metrics rendered from the same chart helper used across lessons.</p></div>",
+    },
+    {
+        "title": "Toolchain Tour: Wallets, Consoles, and Compliance",
+        "paragraphs": [
+            "The Wallet Generator on the tools page produces fresh bech32m addresses and QR codes, ideal for sandbox drills.",
+            "Console snippets walk through fee estimation, UTXO inspection, and Replace-By-Fee so learners can rehearse on testnet.",
+            "Structured lesson pages link directly to these utilities, encouraging immediate hands-on validation.",
+            "Charts and inline diagrams pair concepts (like UTXO sets) with the on-site explorers and calculators.",
+            "Compliance notes remind teams to log wallet derivations and keep descriptors alongside cold storage inventories.",
+        ],
+        "examples": [
+            "A student launches the wallet generator, sweeps a testnet faucet deposit, and watches confirmations from their dashboard.",
+            "A finance lead exports CSV data from the reporting console to reconcile payouts during a fee spike.",
+        ],
+        "glossary": {
+            "Descriptor": "Structured string that documents how addresses are derived and what scripts they use.",
+            "RBF": "Replace-By-Fee, a way to increase fees on unconfirmed transactions.",
+            "Console": "Browser-based command surface for quick tasks without a full local toolchain.",
+        },
+        "takeaways": [
+            "Every concept links to a working AdaptBTC tool to reinforce learning.",
+            "On-chain hygiene—like descriptor tracking—starts during training, not after deployment.",
+            "Small exercises build confidence before learners touch production wallets.",
+        ],
+        "diagram": "<div class='chart-card'><canvas class=\"lesson-chart\" data-points=\"15,40,68,92\" data-labels=\"Wallets|RBF Tests|Batching|Reports\" data-color=\"#7c3aed\"></canvas><p class='chart-note'>Feature usage across the AdaptBTC toolkit during live labs.</p></div>",
+    },
+    {
+        "title": "Interactive Labs and Visual Dashboards",
+        "paragraphs": [
+            "Each lesson page embeds charts that render client-side from structured data attributes, demonstrating progressive disclosure of analytics.",
+            "Learners can toggle overlay tips to reveal the rationale for privacy-friendly defaults or security guardrails.",
+            "Generated SVG timelines illustrate transaction lifecycles from mempool broadcast to block inclusion and settlement.",
+            "Callout boxes link back to your node monitoring dashboard so students correlate theory with real signals.",
+            "Consistency in typography, spacing, and gradients makes the portal feel premium while staying lightweight.",
+        ],
+        "examples": [
+            "A chart animates fee percentile changes after a simulated congestion event, prompting students to pick an RBF strategy.",
+            "Timeline graphics show how CPFP brings stuck transactions back into miner priority queues.",
+        ],
+        "glossary": {
+            "SVG": "Scalable Vector Graphics, ideal for crisp diagrams that adapt to screen sizes.",
+            "Progressive Disclosure": "Design approach where complex details appear once a learner is ready for them.",
+            "Mempool": "Set of unconfirmed transactions known to a node.",
+        },
+        "takeaways": [
+            "Visuals and interactivity make fee strategy and privacy topics stick.",
+            "Dashboards bridge classroom content with production monitoring.",
+            "Design polish reduces cognitive load so learners focus on the material.",
+        ],
+        "diagram": "<div class='chart-card'><canvas class=\"lesson-chart\" data-points=\"22,38,57,84\" data-labels=\"Mempool|RBF|CPFP|Settlement\" data-color=\"#0ea5e9\"></canvas><p class='chart-note'>Animated timelines pair with the embedded quiz to reinforce fee escalation paths.</p></div>",
+    },
+    {
+        "title": "Capstone: Automated Runbooks",
+        "paragraphs": [
+            "The capstone challenges learners to design a runbook that combines lesson checklists, wallet generator outputs, and quiz results into a repeatable workflow.",
+            "Students map each step to an AdaptBTC tool and identify where human review is required versus automation.",
+            "An example script demonstrates how to pull quiz history to verify readiness before granting hot wallet access.",
+            "Graphs summarize how long each step should take so teams can benchmark onboarding velocity.",
+            "Completion unlocks a certificate and a downloadable JSON template for reuse inside your organization.",
+        ],
+        "examples": [
+            "An operations lead builds a checklist that starts with portal registration, moves through wallet drills, and ends with a signed certificate.",
+            "A developer wraps wallet generator output into a deployment pipeline to seed staging environments nightly.",
+        ],
+        "glossary": {
+            "Runbook": "Detailed, repeatable instructions for executing operational tasks reliably.",
+            "Automation": "Use of scripts or tools to perform tasks with minimal manual intervention.",
+            "Benchmark": "Baseline measurement used to compare performance over time.",
+        },
+        "takeaways": [
+            "Runbooks keep production behavior aligned with training guidance.",
+            "Automation should still surface checkpoints for human approval where risk is high.",
+            "Capturing time-to-completion helps forecast staffing needs for new deployments.",
+        ],
+        "diagram": "<div class='chart-card'><canvas class=\"lesson-chart\" data-points=\"18,36,52,70,96\" data-labels=\"Register|Wallet Lab|Quiz|Runbook|Certificate\" data-color=\"#16a34a\"></canvas><p class='chart-note'>Step-by-step velocity chart to plan smooth onboarding.</p></div>",
+    },
+]
+
+
 BITCOIN_101_QUIZ: List[Question] = [
     {
         "prompt": "Why does Bitcoin use proof-of-work instead of a central timestamp server?",
@@ -1064,5 +1175,72 @@ SECURITY_ESSENTIALS_QUIZ: List[Question] = [
         "options": ["Peers set block rewards", "Reliable peers improve uptime, routing success, and reduce risk of bad states", "Peers change subsidies", "Peers sign your taxes"],
         "answer": 1,
         "explanation": "Stable, reputable peers lower the likelihood of channel disputes and failed payments.",
+    },
+]
+
+
+OPERATIONS_LAB_QUIZ: List[Question] = [
+    {
+        "prompt": "Why does the portal hash passwords with bcrypt instead of storing them directly?",
+        "options": [
+            "It makes logins faster",
+            "Hashing protects user secrets even if the database is copied",
+            "It avoids using HTTPS",
+            "It removes the need for backups",
+        ],
+        "answer": 1,
+        "explanation": "Bcrypt’s adaptive hashing slows brute force attempts and keeps raw passwords out of storage.",
+    },
+    {
+        "prompt": "What does the session manager store to keep users logged in?",
+        "options": ["Plaintext passwords", "A server-side key that maps the browser cookie to a username", "Seed phrases", "Hardware wallet firmware"],
+        "answer": 1,
+        "explanation": "The portal keeps login state on the server, avoiding sensitive data in the browser.",
+    },
+    {
+        "prompt": "How do lessons link to AdaptBTC tooling?",
+        "options": [
+            "They require a separate download",
+            "Each lesson embeds calls-to-action that open the wallet generator, fee consoles, or dashboards",
+            "They only show screenshots",
+            "They block navigation to tools",
+        ],
+        "answer": 1,
+        "explanation": "Inline tool links encourage immediate practice with the same utilities offered on the site.",
+    },
+    {
+        "prompt": "What powers the lesson graphs displayed under each chapter?",
+        "options": [
+            "Server-side PDFs",
+            "Client-side canvas rendering driven by data attributes on each lesson",
+            "Static images only",
+            "External analytics vendors",
+        ],
+        "answer": 1,
+        "explanation": "Lightweight canvas drawings give interactive visuals without extra dependencies.",
+    },
+    {
+        "prompt": "Why is it important to tie quiz history to onboarding runbooks?",
+        "options": ["To slow the process", "To prove readiness before granting wallet access", "To change consensus rules", "To avoid documentation"],
+        "answer": 1,
+        "explanation": "Quiz scores offer evidence that learners understand the safeguards before handling funds.",
+    },
+    {
+        "prompt": "What role do dashboards play in the Operations Lab course?",
+        "options": ["They replace backups", "They visualize mempool health, fee pressure, and enrollment metrics", "They mine new blocks", "They remove authentication"],
+        "answer": 1,
+        "explanation": "Dashboards bridge theory to real signals like confirmation targets and learner progress.",
+    },
+    {
+        "prompt": "How do interactive timelines help learners with fee management?",
+        "options": ["They slow confirmations", "They show how RBF and CPFP change transaction priority through each stage", "They disable nodes", "They hide mempool data"],
+        "answer": 1,
+        "explanation": "Timelines make the effect of fee bumping and package mining concrete and memorable.",
+    },
+    {
+        "prompt": "What makes the portal design feel consistent and premium?",
+        "options": ["Random fonts", "Aligned spacing, shared gradients, and reusable components across lessons and quizzes", "No CSS", "Hard-coded inline styles only"],
+        "answer": 1,
+        "explanation": "Shared design tokens and components keep the learning experience polished across pages.",
     },
 ]

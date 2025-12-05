@@ -150,6 +150,12 @@
 .steps-inline { display: flex; gap: 10px; align-items: center; }
 
 .portal-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+.portal-grid .card-head { display: grid; gap: 6px; }
+.chart-card { padding: 16px; border-radius: 16px; border: 1px solid #e5e7eb; background: #fff; box-shadow: var(--shadow-soft); display: grid; gap: 12px; }
+.chart-card canvas { width: 100%; height: 180px; }
+.chart-note { color: var(--gray-600); font-size: 14px; margin: 0; }
+.btn-light { background: #fff; color: var(--blue-700); border: 1px solid #dfe6ff; box-shadow: none; }
+.portal-cta-ghost .btn { box-shadow: none; }
 
 .lesson-footer { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
 

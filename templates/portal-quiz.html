@@ -31,7 +31,9 @@
             <p><strong>Q{{ loop.index }}.</strong> {{ question.prompt }}</p>
             {% for option in question.options %}
             <label class="quiz-option">
-              <input type="radio" name="q{{ loop.parent.index0 }}" value="{{ loop.index0 }}" required> {{ option }}
+              <input type="radio" name="q{{ loop.parent.index0 }}" value="{{ loop.index0 }}" required>
+              <span class="pill">{{ 'ABCD'[loop.index0] }}</span>
+              {{ option }}
             </label>
             {% endfor %}
           </div>
