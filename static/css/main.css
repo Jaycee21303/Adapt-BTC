@@ -151,7 +151,50 @@ footer {
   margin-top: 6px;
 }
 
+.bullets {
+  padding-left: 18px;
+  color: var(--muted);
+  display: grid;
+  gap: 6px;
+}
+
+.donation-box {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 16px;
+  align-items: center;
+}
+
+.address-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+code {
+  background: var(--gray);
+  padding: 8px 10px;
+  border-radius: 10px;
+  display: inline-block;
+  word-break: break-all;
+}
+
+.muted { color: var(--muted); margin: 6px 0; }
+
+.pill-row { display: flex; gap: 10px; flex-wrap: wrap; }
+
+.pill {
+  background: var(--gray);
+  color: var(--text);
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
 @media (max-width: 720px) {
   .navbar { flex-direction: column; align-items: flex-start; gap: 10px; }
   .nav-links { flex-wrap: wrap; }
+  .donation-box { grid-template-columns: 1fr; }
 }
