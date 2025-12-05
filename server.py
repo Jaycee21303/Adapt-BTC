@@ -46,11 +46,6 @@ def donate():
     return render_existing("donate.html")
 
 
-@app.route("/requirements")
-def requirements():
-    return render_existing("requirements.html")
-
-
 @app.route("/education")
 def education():
     return render_existing("main-site/education.html")

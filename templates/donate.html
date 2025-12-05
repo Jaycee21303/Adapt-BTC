@@ -18,21 +18,70 @@
     <section class="section grid-two">
       <div class="card">
         <h3>Partner with us</h3>
-        <p>Bring AdaptBTC content and lightning utilities to your community or organization.</p>
+        <p>Bring AdaptBTC content, lightning utilities, and training to your community or organization.</p>
+        <ul class="bullets">
+          <li>Host a workshop or webinar with our educators.</li>
+          <li>Pilot our learning portal with your internal team.</li>
+          <li>Co-build tooling that fills a gap for builders.</li>
+        </ul>
       </div>
       <div class="card">
         <h3>Contribute resources</h3>
         <p>Share feedback, curriculum ideas, or integrations that improve the learning portal.</p>
+        <ul class="bullets">
+          <li>Submit lesson ideas or share industry case studies.</li>
+          <li>Offer code reviews, UX feedback, or localization help.</li>
+          <li>Donate infrastructure credits to support our demos.</li>
+        </ul>
       </div>
     </section>
-    <section class="section">
+    <section class="section grid-two">
+      <div class="card">
+        <h3>Donate Bitcoin</h3>
+        <p>Fuel our mission directly with a Bitcoin contribution. Every sat helps us ship more education and tools.</p>
+        <div class="donation-box">
+          <canvas id="donation-qr" width="180" height="180" aria-label="Bitcoin donation QR"></canvas>
+          <div>
+            <p class="muted">Bitcoin address</p>
+            <div class="address-row">
+              <code id="donation-address">bc1qadaptbtc4community9support4m4j4l3fxkh8y3h</code>
+              <button class="btn btn-secondary" id="copy-address" type="button">Copy</button>
+            </div>
+            <p class="muted">Scan the QR or paste the address above to send a donation.</p>
+          </div>
+        </div>
+      </div>
       <div class="card">
         <h3>Stay in touch</h3>
         <p>We will reach out with ways to collaborate as new phases roll out.</p>
+        <div class="pill-row">
+          <span class="pill">Program pilots</span>
+          <span class="pill">Hackathons</span>
+          <span class="pill">Content reviews</span>
+        </div>
         <a class="btn" href="{{ url_for('contact') }}">Contact the team</a>
       </div>
     </section>
   </main>
+  <script src="https://cdn.jsdelivr.net/npm/qrious@4.0.2/dist/qrious.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const address = document.getElementById('donation-address').textContent.trim();
+      new QRious({ element: document.getElementById('donation-qr'), value: address, size: 180 });
+
+      document.getElementById('copy-address').addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(address);
+          const btn = document.getElementById('copy-address');
+          const original = btn.textContent;
+          btn.textContent = 'Copied!';
+          setTimeout(() => (btn.textContent = original), 1200);
+        } catch (err) {
+          console.error('Copy failed', err);
+        }
+      });
+    });
+  </script>
   {% include 'components/footer.html' %}
 </body>
 </html>
