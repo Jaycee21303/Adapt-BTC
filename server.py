@@ -50,7 +50,7 @@ def tools():
 @app.route("/wallet-generator")
 @app.route("/wallet-generator.html")
 def wallet_generator():
-    return send_from_directory(Path(__file__).parent, "wallet-generator.html")
+    return render_existing("wallet-generator.html")
 
 
 @app.route("/consulting")
