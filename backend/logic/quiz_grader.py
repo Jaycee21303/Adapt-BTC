@@ -1,5 +1,4 @@
-import sqlite3
-from pathlib import Path
+from datetime import datetime
 from typing import Dict, List, Tuple
 
 from backend.logic.content_library import (
@@ -7,9 +6,6 @@ from backend.logic.content_library import (
     OPERATIONS_LAB_QUIZ,
     SECURITY_ESSENTIALS_QUIZ,
 )
-
-BASE_DIR = Path(__file__).resolve().parent.parent
-DB_PATH = BASE_DIR / "database" / "quizzes.db"
 
 Question = Dict[str, object]
 QUIZZES: Dict[str, List[Question]] = {}
@@ -21,26 +17,6 @@ QUIZ_BANK: Dict[str, List[Question]] = {
 }
 
 PASSING_SCORE = 0.8
-
-
-def init_db() -> None:
-    DB_PATH.parent.mkdir(parents=True, exist_ok=True)
-    with sqlite3.connect(DB_PATH) as conn:
-        conn.execute(
-            """
-            CREATE TABLE IF NOT EXISTS quiz_attempts (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                username TEXT NOT NULL,
-                course_id TEXT NOT NULL,
-                score REAL NOT NULL,
-                total INTEGER NOT NULL,
-                correct INTEGER NOT NULL,
-                answers TEXT NOT NULL,
-                taken_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-            );
-            """
-        )
-        conn.commit()
 
 
 def build_questions() -> None:
@@ -81,27 +57,24 @@ def grade(course_id: str, submitted: List[int]) -> Tuple[int, int, float, List[D
 
 
 def save_attempt(username: str, course_id: str, correct: int, total: int, graded: List[Dict[str, object]]) -> None:
-    init_db()
-    answers_blob = "\n".join(
-        [
-            f"{item['prompt']}|{item['user_answer']}|{item['correct_answer']}|{int(item['is_correct'])}"
-            for item in graded
-        ]
+    from flask import session
+
+    session.setdefault("quiz_attempts", {})
+    attempts = session["quiz_attempts"].setdefault(course_id, [])
+    attempts.insert(
+        0,
+        {
+            "score": correct / total if total else 0,
+            "total": total,
+            "correct": correct,
+            "taken_at": datetime.utcnow().isoformat() + "Z",
+        },
     )
-    with sqlite3.connect(DB_PATH) as conn:
-        conn.execute(
-            "INSERT INTO quiz_attempts (username, course_id, score, total, correct, answers) VALUES (?, ?, ?, ?, ?, ?)",
-            (username, course_id, correct / total if total else 0, total, correct, answers_blob),
-        )
-        conn.commit()
+    session["quiz_attempts"][course_id] = attempts[:5]
+    session.modified = True
 
 
 def get_attempts(username: str, course_id: str) -> List[Dict[str, object]]:
-    init_db()
-    with sqlite3.connect(DB_PATH) as conn:
-        conn.row_factory = sqlite3.Row
-        cur = conn.execute(
-            "SELECT score, total, correct, taken_at FROM quiz_attempts WHERE username = ? AND course_id = ? ORDER BY taken_at DESC",
-            (username, course_id),
-        )
-        return [dict(row) for row in cur.fetchall()]
+    from flask import session
+
+    return session.get("quiz_attempts", {}).get(course_id, [])

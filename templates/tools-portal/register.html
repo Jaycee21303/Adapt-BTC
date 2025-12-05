@@ -4,28 +4,13 @@
 <div class="container">
   <div class="card">
     <div class="badge">Tools Portal</div>
-    <h2>Create account</h2>
-    <p class="tagline">Optional login for saving preferences.</p>
-    <div id="form-alert" class="alert" style="display:none;"></div>
-    <form id="tools-register">
-      <div class="field"><label>Username</label><input name="username" required></div>
-      <div class="field"><label>Password</label><input type="password" name="password" required></div>
-      <button class="btn" type="submit">Create</button>
-    </form>
-    <p>Have an account? <a href="/tools-portal/login.html">Login</a>.</p>
+    <h2>No sign-in needed</h2>
+    <p class="tagline">Use every calculator and workflow without creating or storing credentials.</p>
+    <div class="auth-actions">
+      <a class="btn" href="/tools">Open tools</a>
+      <a class="btn btn-outline" href="/">Back to site</a>
+    </div>
   </div>
 </div>
-<script>
-  const form = document.getElementById('tools-register');
-  const alertBox = document.getElementById('form-alert');
-  form.addEventListener('submit', async (e)=>{
-    e.preventDefault();
-    const data = Object.fromEntries(new FormData(form).entries());
-    const res = await fetch('/api/tools/register',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
-    const json = await res.json();
-    if(json.error){alertBox.textContent=json.error;alertBox.style.display='block';alertBox.style.background='#ffecec';alertBox.style.color='#c62828';}
-    else{window.location.href='/tools-portal/dashboard.html';}
-  });
-</script>
   {% include 'components/footer.html' %}
 </body></html>

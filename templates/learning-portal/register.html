@@ -13,27 +13,19 @@
     <div class="navbar">
       <div class="logo-text">Adapt<span style="color:#1e88e5;">BTC</span></div>
       <div class="nav-links">
-        <a class="btn btn-secondary" href="/learning-portal/login.html">Back to Login</a>
+        <a class="btn btn-secondary" href="/portal/dashboard">Open Portal</a>
       </div>
     </div>
     <div class="card">
       <div class="badge">Learning Portal</div>
-      <h2>Create account</h2>
-      <p class="tagline">No email required. Just choose a username and password.</p>
-      <div id="form-alert" class="alert" style="display:none;"></div>
-      <form id="register-form">
-        <label class="label">Username</label>
-        <input name="username" required placeholder="satoshi" />
-        <label class="label">Password</label>
-        <input name="password" type="password" required placeholder="••••••" />
-        <button class="btn" type="submit">Create account</button>
-      </form>
+      <h2>No registration needed</h2>
+      <p class="tagline">Every lesson and quiz is available without usernames, passwords, or stored data.</p>
+      <div class="auth-actions">
+        <a class="btn" href="/portal/dashboard">Open dashboard</a>
+        <a class="btn btn-outline" href="/">Return home</a>
+      </div>
     </div>
   </div>
-  <script type="module">
-    import { handleAuthForm } from '{{ url_for('static', filename='js/portal-auth.js') }}';
-    handleAuthForm('register-form', 'learning/register', '/learning-portal/dashboard.html');
-  </script>
   {% include 'components/footer.html' %}
 </body>
 </html>

@@ -1,12 +1,9 @@
-from functools import wraps
 from io import BytesIO
 from typing import List
+from uuid import uuid4
 
-from flask import Blueprint, Response, flash, redirect, render_template, request, send_file, url_for
+from flask import Blueprint, flash, redirect, render_template, request, send_file, session, url_for
 
-from backend.auth.login import verify_user
-from backend.auth.register import create_user
-from backend.auth.session_manager import clear_session, current_user, require_login, save_session
 from backend.logic.certificate_generator import generate_certificate
 from backend.logic.lesson_engine import get_course, get_lesson, list_courses, list_lessons, next_prev
 from backend.logic.progress_tracker import completed, get_last, mark_complete, record_last, stats
@@ -21,65 +18,33 @@ portal = Blueprint(
 )
 
 
-def login_required(view_func):
-    @wraps(view_func)
-    def wrapper(*args, **kwargs):
-        if not require_login():
-            flash("Please log in to access that page.", "warning")
-            return redirect(url_for("portal.login"))
-        return view_func(*args, **kwargs)
-
-    return wrapper
+def _visitor_name() -> str:
+    if "learner_alias" not in session:
+        session["learner_alias"] = f"Open Learner {uuid4().hex[:6]}"
+    return session.get("learner_alias", "Open Learner")
 
 
 @portal.route("/login", methods=["GET", "POST"])
 def login():
-    if current_user():
-        return redirect(url_for("portal.dashboard"))
-    error = None
-    if request.method == "POST":
-        username = request.form.get("username", "")
-        password = request.form.get("password", "")
-        ok, message = verify_user(username, password)
-        if ok:
-            save_session(username)
-            flash("Welcome back!", "success")
-            return redirect(url_for("portal.dashboard"))
-        error = message
-        flash(message, "danger")
-    return render_template("portal-login.html", error=error)
+    flash("Open access — no login required. Jump straight into the lessons.", "info")
+    return redirect(url_for("portal.dashboard"))
 
 
 @portal.route("/register", methods=["GET", "POST"])
 def register():
-    if current_user():
-        return redirect(url_for("portal.dashboard"))
-    error = None
-    if request.method == "POST":
-        username = request.form.get("username", "")
-        password = request.form.get("password", "")
-        ok, message = create_user(username, password)
-        if ok:
-            save_session(username)
-            flash("Account created!", "success")
-            return redirect(url_for("portal.dashboard"))
-        error = message
-        flash(message, "danger")
-    return render_template("portal-register.html", error=error)
+    flash("Accounts are disabled. The portal is free and open to everyone.", "info")
+    return redirect(url_for("portal.dashboard"))
 
 
 @portal.route("/logout")
-@login_required
 def logout():
-    clear_session()
-    flash("You have been logged out.", "info")
-    return redirect(url_for("portal.login"))
+    flash("No login needed — keep learning!", "info")
+    return redirect(url_for("portal.dashboard"))
 
 
 @portal.route("/dashboard")
-@login_required
 def dashboard():
-    username = current_user()
+    username = _visitor_name()
     course_summary = stats(username)
     courses = list_courses()
     lesson_totals = {course["id"]: len(list_lessons(course["id"])) for course in courses}
@@ -93,20 +58,18 @@ def dashboard():
 
 
 @portal.route("/courses")
-@login_required
 def courses():
     return render_template("portal-course.html", courses=list_courses())
 
 
 @portal.route("/courses/<course_id>")
-@login_required
 def course_detail(course_id):
     course = get_course(course_id)
     if not course:
         flash("Course not found.", "warning")
         return redirect(url_for("portal.courses"))
     lesson_list = list_lessons(course_id)
-    user = current_user()
+    user = _visitor_name()
     last = get_last(user, course_id)
     return render_template(
         "portal-lesson.html",
@@ -119,34 +82,31 @@ def course_detail(course_id):
 
 
 @portal.route("/courses/<course_id>/lesson/<int:order>")
-@login_required
 def lesson(course_id, order):
     course = get_course(course_id)
     lesson_data = get_lesson(course_id, order)
     if not course or not lesson_data:
         flash("Lesson not available.", "warning")
         return redirect(url_for("portal.courses"))
-    record_last(current_user(), course_id, order)
+    record_last(_visitor_name(), course_id, order)
     return render_template(
         "portal-lesson.html",
         course=course,
         lessons=list_lessons(course_id),
         current_lesson=lesson_data,
-        completed_lessons=completed(current_user(), course_id),
+        completed_lessons=completed(_visitor_name(), course_id),
         prev_next=next_prev(course_id, order),
     )
 
 
 @portal.route("/courses/<course_id>/lesson/<int:order>/complete", methods=["POST"])
-@login_required
 def complete_lesson(course_id, order):
-    mark_complete(current_user(), course_id, order, time_spent=120)
+    mark_complete(_visitor_name(), course_id, order, time_spent=120)
     flash("Lesson marked complete!", "success")
     return redirect(url_for("portal.lesson", course_id=course_id, order=order))
 
 
 @portal.route("/courses/<course_id>/quiz")
-@login_required
 def quiz(course_id):
     course = get_course(course_id)
     if not course:
@@ -157,14 +117,13 @@ def quiz(course_id):
 
 
 @portal.route("/courses/<course_id>/quiz", methods=["POST"])
-@login_required
 def submit_quiz(course_id):
     answers: List[int] = []
     questions = get_questions(course_id)
     for idx, _ in enumerate(questions):
         answers.append(int(request.form.get(f"q{idx}", -1)))
     correct, total, score, graded = grade(course_id, answers)
-    save_attempt(current_user(), course_id, correct, total, graded)
+    save_attempt(_visitor_name(), course_id, correct, total, graded)
     passed = score >= PASSING_SCORE
     if passed:
         flash("Great work! You passed the quiz.", "success")
@@ -182,14 +141,13 @@ def submit_quiz(course_id):
 
 
 @portal.route("/certificate/<course_id>")
-@login_required
 def certificate(course_id):
     course = get_course(course_id)
     if not course:
         flash("Course not found.", "warning")
         return redirect(url_for("portal.dashboard"))
     verification_url = url_for("portal.dashboard", _external=True)
-    png_bytes = generate_certificate(current_user(), course["title"], verification_url)
+    png_bytes = generate_certificate(_visitor_name(), course["title"], verification_url)
     return send_file(
         BytesIO(png_bytes),
         mimetype="image/png",
@@ -199,10 +157,11 @@ def certificate(course_id):
 
 
 @portal.route("/progress")
-@login_required
 def progress():
-    username = current_user()
+    username = _visitor_name()
     course_data = stats(username)
+    for course in list_courses():
+        course_data.setdefault(course["id"], {"lessons_completed": 0, "last_lesson": 1})
     attempts = {cid: get_attempts(username, cid) for cid in course_data.keys()}
     return render_template(
         "portal-certificate.html",

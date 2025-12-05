@@ -17,12 +17,11 @@
           <div>
             <div class="badge">Quiz</div>
             <h2>{{ course.title }} Quiz</h2>
-            <p class="hero-sub">Earn 80% or higher to pass. Your attempts are saved.</p>
+            <p class="hero-sub">Earn 80% or higher to pass. Attempts stay within this browser session.</p>
           </div>
           <div class="portal-nav">
             <a class="pill-tab" href="{{ url_for('portal.lesson', course_id=course.id, order=1) }}">Lessons</a>
             <a class="pill-tab active" href="{{ url_for('portal.quiz', course_id=course.id) }}">Quiz</a>
-            <a class="pill-tab" href="{{ url_for('portal.logout') }}">Logout</a>
           </div>
         </div>
         <form method="post" class="grid-two">

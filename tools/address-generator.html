@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AdaptBTC | Bitcoin Wallet Generator</title>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <style>
+    :root {
+      --primary: #0a4dff;
+      --primary-dark: #083fcf;
+      --bg: #f6f8fc;
+      --card: #ffffff;
+      --text: #0f172a;
+      --muted: #475569;
+      --border: #e2e8f0;
+      --shadow: 0 12px 30px rgba(10, 77, 255, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 760px;
+      background: var(--card);
+      border-radius: 18px;
+      padding: 32px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+    }
+
+    h2 {
+      margin: 0 0 8px;
+      font-size: 32px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: var(--text);
+      text-align: center;
+    }
+
+    h3 {
+      margin: 24px 0 8px;
+      font-size: 18px;
+      color: var(--text);
+    }
+
+    .warning {
+      background: #fff4e5;
+      color: #c05621;
+      border: 1px solid #f6ad55;
+      border-radius: 12px;
+      padding: 12px 14px;
+      margin: 6px 0 18px;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    .generate-btn, .download-btn, button[onclick^="copyText"] {
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      padding: 12px 18px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.16s ease, box-shadow 0.16s ease, background 0.16s ease;
+      box-shadow: 0 8px 22px rgba(10, 77, 255, 0.2);
+    }
+
+    .generate-btn:hover, .download-btn:hover, button[onclick^="copyText"]:hover {
+      transform: translateY(-1px);
+      background: var(--primary-dark);
+      box-shadow: 0 10px 24px rgba(10, 77, 255, 0.25);
+    }
+
+    .generate-btn:active, .download-btn:active, button[onclick^="copyText"]:active {
+      transform: translateY(0);
+      box-shadow: none;
+    }
+
+    .generate-btn {
+      width: 100%;
+      margin-bottom: 12px;
+    }
+
+    .output {
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px;
+      min-height: 48px;
+      line-height: 1.5;
+      font-weight: 600;
+      color: var(--text);
+      word-break: break-word;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    }
+
+    .output + button {
+      margin-top: 8px;
+      margin-bottom: 10px;
+    }
+
+    canvas#qr {
+      display: block;
+      margin: 14px auto 0;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 8px;
+      background: #ffffff;
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.06);
+    }
+
+    .download-btn {
+      width: 100%;
+      margin-top: 14px;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 22px;
+      }
+
+      h2 {
+        font-size: 26px;
+      }
+    }
+  </style>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-secp256k1/2.2.1/tiny-secp256k1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bitcoinjs-lib/6.1.5/bitcoinjs-lib.min.js"></script>
+  <script>
+    window.bitcoinjs.initEccLib(window.tinySecp256k1);
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bip39/3.1.0/bip39.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+</head>
+<body>
+  <div class="container">
+
+    <h2>Bitcoin Wallet Generator</h2>
+
+    <div class="warning">⚠️ Never share your seed phrase or private key with anyone.</div>
+
+    <button class="generate-btn" onclick="generateWallet()">Generate New Wallet</button>
+
+    <h3>Bitcoin Address</h3>
+    <div class="output" id="address"></div>
+    <button onclick="copyText('address')">Copy</button>
+    <canvas id="qr"></canvas>
+
+    <h3>12-Word Seed Phrase</h3>
+    <div class="output" id="seed"></div>
+    <button onclick="copyText('seed')">Copy</button>
+
+    <h3>Private Key (WIF)</h3>
+    <div class="output" id="private"></div>
+    <button onclick="copyText('private')">Copy</button>
+
+    <button class="download-btn" onclick="downloadBackup()">Download Backup</button>
+
+  </div>
+
+  <script>
+    const bitcoin = window.bitcoinjs;
+
+    async function generateWallet() {
+      const seedPhrase = bip39.generateMnemonic(128);
+      const seedBuffer = await bip39.mnemonicToSeed(seedPhrase);
+      const hash = bitcoin.crypto.sha256(seedBuffer);
+      const keyPair = bitcoin.ECPair.fromPrivateKey(hash);
+      const privateKeyWIF = keyPair.toWIF();
+      const { address } = bitcoin.payments.p2pkh({ pubkey: keyPair.publicKey });
+
+      document.getElementById("seed").textContent = seedPhrase;
+      document.getElementById("private").textContent = privateKeyWIF;
+      document.getElementById("address").textContent = address;
+
+      new QRious({
+        element: document.getElementById("qr"),
+        value: address,
+        size: 220
+      });
+    }
+
+    function copyText(id) {
+      const text = document.getElementById(id).textContent;
+      if (!text) return;
+      navigator.clipboard.writeText(text);
+    }
+
+    function downloadBackup() {
+      const seed = document.getElementById("seed").textContent;
+      const priv = document.getElementById("private").textContent;
+      const addr = document.getElementById("address").textContent;
+
+      const timestamp = new Date().toLocaleString();
+
+      const data = `AdaptBTC Wallet Backup
+-----------------------
+Address: ${addr}
+Seed Phrase: ${seed}
+Private Key (WIF): ${priv}
+
+Generated: ${timestamp}
+
+KEEP THIS FILE SECURE.`;
+
+      const blob = new Blob([data], { type: "text/plain" });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = "AdaptBTC-Wallet-Backup.txt";
+      link.click();
+    }
+  </script>
+</body>
+</html>

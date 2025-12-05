@@ -16,10 +16,9 @@
         <div>
           <div class="badge">Learning Portal</div>
           <h1>Master Bitcoin — From Zero to Expert.</h1>
-          <p class="hero-sub">A premium education journey inspired by Binance Academy and Stripe Docs. Save progress, earn certifications, and level up.</p>
+          <p class="hero-sub">A premium education journey inspired by Binance Academy and Stripe Docs—open access, no accounts, just straight into the lessons.</p>
           <div class="hero-cta">
-            <a class="btn" href="{{ url_for('portal.login') }}">Enter Learning Portal</a>
-            <a class="btn btn-outline" href="{{ url_for('portal.register') }}">Create account</a>
+            <a class="btn" href="{{ url_for('portal.dashboard') }}">Enter Learning Portal</a>
           </div>
           <div class="chip-row" style="margin-top:12px;">
             <span class="pill">No email required</span>
@@ -68,8 +67,8 @@
             <span>12 lessons</span>
           </div>
           <div class="progress-bar"><span style="width: 45%"></span></div>
-          <div class="progress-text">45% complete</div>
-          <a class="btn" href="{{ url_for('portal.login') }}">Start Course</a>
+          <div class="progress-text">Open access</div>
+          <a class="btn" href="{{ url_for('portal.course_detail', course_id='bitcoin-101') }}">Start Course</a>
         </div>
         <div class="course-card">
           <div class="icon-circle">②</div>
@@ -80,8 +79,8 @@
             <span>10 lessons</span>
           </div>
           <div class="progress-bar"><span style="width: 28%"></span></div>
-          <div class="progress-text">28% complete</div>
-          <a class="btn" href="{{ url_for('portal.login') }}">Resume</a>
+          <div class="progress-text">Open access</div>
+          <a class="btn" href="{{ url_for('portal.course_detail', course_id='security-essentials') }}">Start Secure Track</a>
         </div>
         <div class="course-card">
           <div class="icon-circle">③</div>
@@ -92,8 +91,8 @@
             <span>9 lessons</span>
           </div>
           <div class="progress-bar"><span style="width: 62%"></span></div>
-          <div class="progress-text">62% complete</div>
-          <a class="btn" href="{{ url_for('portal.login') }}">Continue</a>
+          <div class="progress-text">Open access</div>
+          <a class="btn" href="{{ url_for('portal.courses') }}">Browse Lessons</a>
         </div>
         <div class="course-card">
           <div class="icon-circle">④</div>
@@ -104,8 +103,8 @@
             <span>8 lessons</span>
           </div>
           <div class="progress-bar"><span style="width: 12%"></span></div>
-          <div class="progress-text">12% complete</div>
-          <a class="btn" href="{{ url_for('portal.login') }}">Start track</a>
+          <div class="progress-text">Open access</div>
+          <a class="btn" href="{{ url_for('portal.courses') }}">Start track</a>
         </div>
       </div>
     </section>
@@ -130,10 +129,10 @@
           </div>
         </div>
         <div class="benefit-card">
-          <div class="icon-circle">💾</div>
+          <div class="icon-circle">🌐</div>
           <div>
-            <strong>Save progress</strong>
-            <p>Your portal account remembers courses and attempts.</p>
+            <strong>Instant access</strong>
+            <p>No usernames, passwords, or databases required to start.</p>
           </div>
         </div>
         <div class="benefit-card">
@@ -141,13 +140,6 @@
           <div>
             <strong>Real quizzes</strong>
             <p>Scenario-based checks to verify understanding.</p>
-          </div>
-        </div>
-        <div class="benefit-card">
-          <div class="icon-circle">🔒</div>
-          <div>
-            <strong>Private sign-in</strong>
-            <p>No email required—just username and password.</p>
           </div>
         </div>
         <div class="benefit-card">
@@ -164,11 +156,10 @@
       <div class="portal-cta">
         <div>
           <h2>Enter Learning Portal →</h2>
-          <p>Maintain login inside the portal and continue exactly where you left off.</p>
+          <p>Dive into every lesson and quiz for free—no sign-up flow or saved passwords.</p>
         </div>
         <div class="hero-cta">
-          <a class="btn" href="{{ url_for('portal.login') }}">Launch Portal</a>
-          <a class="btn btn-outline" href="{{ url_for('portal.register') }}">Create account</a>
+          <a class="btn" href="{{ url_for('portal.dashboard') }}">Launch Portal</a>
         </div>
       </div>
     </section>

@@ -16,26 +16,16 @@
         <div class="section-heading">
           <div>
             <div class="badge">Learning Portal</div>
-            <h2>Welcome back</h2>
-            <p class="hero-sub">Sign in to continue where you left off.</p>
+            <h2>Open access</h2>
+            <p class="hero-sub">No login required. Jump straight into the lessons and quizzes.</p>
           </div>
-          <a href="{{ url_for('portal.register') }}" class="inline-link">Create account →</a>
+          <a href="{{ url_for('portal.dashboard') }}" class="inline-link">Go to dashboard →</a>
         </div>
-        {% if error %}<div class="alert danger">{{ error }}</div>{% endif %}
-        <form method="post" class="grid-two">
-          <div class="labelled">
-            <label class="label">Username</label>
-            <input class="form-control" type="text" name="username" required>
-          </div>
-          <div class="labelled">
-            <label class="label">Password</label>
-            <input class="form-control" type="password" name="password" required>
-          </div>
-          <div class="auth-actions" style="grid-column: span 2;">
-            <button class="btn" type="submit">Sign In</button>
-            <a class="btn btn-outline" href="{{ url_for('learning') }}">Back to site</a>
-          </div>
-        </form>
+        <div class="alert info">Lessons, quizzes, and certificates are available without accounts or saved passwords.</div>
+        <div class="auth-actions" style="grid-column: span 2;">
+          <a class="btn" href="{{ url_for('portal.dashboard') }}">Open dashboard</a>
+          <a class="btn btn-outline" href="{{ url_for('learning') }}">Back to site</a>
+        </div>
       </div>
     </section>
   </main>

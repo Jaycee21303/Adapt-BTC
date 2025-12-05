@@ -15,27 +15,17 @@
       <div class="portal-auth" data-animate>
         <div class="section-heading">
           <div>
-            <div class="badge">Create Account</div>
-            <h2>Join the AdaptBTC Learning Portal</h2>
-            <p class="hero-sub">Set a username and password. No email required.</p>
+            <div class="badge">Open Learning</div>
+            <h2>Nothing to register</h2>
+            <p class="hero-sub">All lessons and quizzes are unlocked—no usernames or passwords.</p>
           </div>
-          <a href="{{ url_for('portal.login') }}" class="inline-link">Back to login →</a>
+          <a href="{{ url_for('portal.dashboard') }}" class="inline-link">Go to dashboard →</a>
         </div>
-        {% if error %}<div class="alert danger">{{ error }}</div>{% endif %}
-        <form method="post" class="grid-two">
-          <div class="labelled">
-            <label class="label">Username</label>
-            <input class="form-control" type="text" name="username" required>
-          </div>
-          <div class="labelled">
-            <label class="label">Password</label>
-            <input class="form-control" type="password" name="password" required>
-          </div>
-          <div class="auth-actions" style="grid-column: span 2;">
-            <button class="btn" type="submit">Create account</button>
-            <a class="btn btn-outline" href="{{ url_for('learning') }}">Return to site</a>
-          </div>
-        </form>
+        <div class="alert info">Explore the dashboard, read every lesson, and take quizzes without saving any personal data.</div>
+        <div class="auth-actions" style="grid-column: span 2;">
+          <a class="btn" href="{{ url_for('portal.dashboard') }}">Open dashboard</a>
+          <a class="btn btn-outline" href="{{ url_for('learning') }}">Return to site</a>
+        </div>
       </div>
     </section>
   </main>

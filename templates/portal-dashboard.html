@@ -17,13 +17,12 @@
           <div>
             <div class="badge">Dashboard</div>
             <h2>Welcome, {{ username }}</h2>
-            <p class="hero-sub">Track your learning journey and jump into courses.</p>
+            <p class="hero-sub">Jump into every course without creating an account.</p>
           </div>
           <div class="portal-nav">
             <a class="pill-tab active" href="{{ url_for('portal.dashboard') }}">Overview</a>
             <a class="pill-tab" href="{{ url_for('portal.courses') }}">Courses</a>
             <a class="pill-tab" href="{{ url_for('portal.progress') }}">Certificates</a>
-            <a class="pill-tab" href="{{ url_for('portal.logout') }}">Logout</a>
           </div>
         </div>
 
@@ -50,10 +49,10 @@
           <div>
             <p class="badge">Live Learning Signals</p>
             <h3>Track how teams use AdaptBTC tools while they learn</h3>
-            <p class="hero-sub">Charts below render in the browser and refresh when learners retry quizzes or rerun the wallet generator drills.</p>
+            <p class="hero-sub">Charts below render in the browser and refresh when you retry quizzes or rerun the wallet generator drills.</p>
             <div class="portal-flex">
               <span class="pill">Wallet generator drills</span>
-              <span class="pill">Quiz attempts saved to SQLite</span>
+              <span class="pill">Quiz attempts kept in this browser</span>
               <span class="pill">Node + fee monitoring dashboards</span>
             </div>
           </div>
@@ -64,7 +63,7 @@
           <div class="chart-card" data-chart data-points="28,54,72,91" data-labels="Signups|Active learners|Quiz passes|Certificates" data-color="#2563eb">
             <div class="card-head">
               <div class="badge">Portal Health</div>
-              <p class="hero-sub">Server-backed sessions and bcrypt-hashed credentials keep returning students safe.</p>
+              <p class="hero-sub">No accounts needed—everything loads instantly in your browser.</p>
             </div>
             <canvas class="lesson-chart"></canvas>
           </div>
@@ -87,7 +86,7 @@
         <div class="portal-cta-ghost">
           <div>
             <h4>Need a refresher before production changes?</h4>
-            <p class="hero-sub">Open the wallet generator, export a descriptor, and retake the Operations Lab quiz—everything saves to your account.</p>
+            <p class="hero-sub">Open the wallet generator, export a descriptor, and retake the Operations Lab quiz—no sign-in required.</p>
           </div>
           <div class="portal-actions">
             <a class="btn" href="{{ url_for('tools') }}">Launch Wallet Generator</a>

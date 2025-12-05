@@ -2,17 +2,6 @@ const express = require('express');
 const session = require('express-session');
 const fs = require('fs');
 const path = require('path');
-const { registerLearning } = require('./auth-learning/register');
-const { loginLearning } = require('./auth-learning/login');
-const { logoutLearning } = require('./auth-learning/logout');
-const { sessionLearning } = require('./auth-learning/session');
-const { getProgress, saveProgress } = require('./auth-learning/progress');
-const { requireLearningSession } = require('./auth-learning/middleware');
-const { registerTools } = require('./auth-tools/register');
-const { loginTools } = require('./auth-tools/login');
-const { logoutTools } = require('./auth-tools/logout');
-const { sessionTools } = require('./auth-tools/session');
-
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -30,27 +19,20 @@ function saveDb(file, data) {
   fs.writeFileSync(path.join(__dirname, 'db', file), JSON.stringify(data, null, 2));
 }
 
-// Learning portal routes
-app.post('/api/learning/register', (req, res) => registerLearning(req, res, loadDb, saveDb));
-app.post('/api/learning/login', (req, res) => loginLearning(req, res, loadDb));
-app.post('/api/learning/logout', logoutLearning);
-app.get('/api/learning/session', sessionLearning);
-app.get('/api/learning/progress', (req, res) => getProgress(req, res, loadDb));
-app.post('/api/learning/progress', (req, res) => saveProgress(req, res, loadDb, saveDb));
+// Learning portal routes (auth disabled)
+app.post('/api/learning/register', (_req, res) => res.json({ message: 'Auth disabled: learning portal is open access.' }));
+app.post('/api/learning/login', (_req, res) => res.json({ message: 'Auth disabled: learning portal is open access.' }));
+app.post('/api/learning/logout', (_req, res) => res.json({ message: 'No login active.' }));
+app.get('/api/learning/session', (_req, res) => res.json({ loggedIn: false, note: 'Open access portal' }));
+app.get('/api/learning/progress', (_req, res) => res.json({ progress: 'client-side only' }));
+app.post('/api/learning/progress', (_req, res) => res.json({ saved: false, note: 'Progress stays in your browser' }));
 
-// Tools portal routes (optional login)
-app.post('/api/tools/register', (req, res) => registerTools(req, res, loadDb, saveDb));
-app.post('/api/tools/login', (req, res) => loginTools(req, res, loadDb));
-app.post('/api/tools/logout', logoutTools);
-app.get('/api/tools/session', sessionTools);
-app.post('/api/tools/preferences', (req, res) => {
-  if (!req.session.toolsUser) return res.status(401).json({ error: 'Login required to save preferences' });
-  const db = loadDb('users-tools.json');
-  const user = db.users.find(u => u.username === req.session.toolsUser);
-  user.preferences = req.body;
-  saveDb('users-tools.json', db);
-  res.json({ success: true });
-});
+// Tools portal routes (auth disabled)
+app.post('/api/tools/register', (_req, res) => res.json({ message: 'Auth disabled: tools are open access.' }));
+app.post('/api/tools/login', (_req, res) => res.json({ message: 'Auth disabled: tools are open access.' }));
+app.post('/api/tools/logout', (_req, res) => res.json({ message: 'No login active.' }));
+app.get('/api/tools/session', (_req, res) => res.json({ loggedIn: false, note: 'Open access tools' }));
+app.post('/api/tools/preferences', (_req, res) => res.json({ saved: false, note: 'Preferences remain local to this browser' }));
 
 app.use(express.static(path.join(__dirname, '..')));
 

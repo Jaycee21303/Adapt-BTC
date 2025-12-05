@@ -23,7 +23,6 @@
             <a class="pill-tab" href="{{ url_for('portal.dashboard') }}">Dashboard</a>
             <a class="pill-tab active" href="{{ url_for('portal.course_detail', course_id=course.id) }}">Lessons</a>
             <a class="pill-tab" href="{{ url_for('portal.quiz', course_id=course.id) }}">Quiz</a>
-            <a class="pill-tab" href="{{ url_for('portal.logout') }}">Logout</a>
           </div>
         </div>
 
@@ -63,7 +62,7 @@
                   <a class="btn btn-outline" href="{{ url_for('wallet_generator') }}">Wallet generator</a>
                 </div>
               </div>
-              <p class="portal-notes">All exercises save your quiz attempts and completions to the database so you can return next week and pick up where you left off.</p>
+              <p class="portal-notes">All exercises run client-side so you can explore freely—no sign-in or database needed.</p>
             </div>
             <h4>Examples</h4>
             <ul class="check-list">
@@ -87,7 +86,7 @@
             <div class="lesson-footer">
               <div class="quiz-meta">
                 <span class="pill">Interactive quiz with A/B/C/D options</span>
-                <span class="pill">Scores saved to your account</span>
+                <span class="pill">Scores stay in this browser session</span>
               </div>
               <a class="btn" href="{{ url_for('portal.quiz', course_id=course.id) }}">Jump to quiz</a>
             </div>
