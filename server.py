@@ -1,7 +1,7 @@
 from pathlib import Path
 import os
 
-from flask import Flask, abort, redirect, render_template, url_for
+from flask import Flask, abort, redirect, render_template, send_from_directory, url_for
 from flask_session import Session
 
 from blueprints import register_blueprints
@@ -45,6 +45,11 @@ def learning():
 @app.route("/tools")
 def tools():
     return render_existing("pages/tools.html")
+
+
+@app.route("/wallet-generator")
+def wallet_generator():
+    return send_from_directory(Path(__file__).parent, "wallet-generator.html")
 
 
 @app.route("/consulting")
