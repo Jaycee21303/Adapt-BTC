@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AdaptBTC | Cold Storage Checklist</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/global.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/tools.css') }}">
+</head>
+<body>
+  {% include 'components/navbar.html' %}
+  <main class="container">
+    <section class="section" data-animate>
+      <div class="section-heading">
+        <div>
+          <div class="badge">Security</div>
+          <h1>Cold Storage Security Checklist.</h1>
+          <p class="hero-sub">A guided list for backups, device hygiene, and recovery drills.</p>
+        </div>
+        <span class="pill">Coming Soon</span>
+      </div>
+      <div class="tool-reasons">
+        <div class="reason-card">
+          <div class="icon-circle">🛡</div>
+          <h4>Backups</h4>
+          <p>Redundant backups, tamper checks, and recovery walkthroughs.</p>
+        </div>
+        <div class="reason-card">
+          <div class="icon-circle">👥</div>
+          <h4>Roles</h4>
+          <p>Clear separation of duties for multi-sig or team-based custody.</p>
+        </div>
+        <div class="reason-card">
+          <div class="icon-circle">📄</div>
+          <h4>Audit trail</h4>
+          <p>Printable runbooks to prove readiness to auditors and stakeholders.</p>
+        </div>
+      </div>
+      <p class="tagline">The interactive checklist will ship soon. For now, contact us for a guided security review.</p>
+    </section>
+  </main>
+  {% include 'components/footer.html' %}
+</body>
+</html>

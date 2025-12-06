@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AdaptBTC | Lightning Suite</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/global.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/tools.css') }}">
+</head>
+<body>
+  {% include 'components/navbar.html' %}
+  <main class="container">
+    <section class="section" data-animate>
+      <div class="section-heading">
+        <div>
+          <div class="badge">Lightning Suite</div>
+          <h1>Channel insights and routing drills.</h1>
+          <p class="hero-sub">Review node health, simulate routes, and prep your operations playbook in one place.</p>
+        </div>
+        <span class="pill">Coming Soon</span>
+      </div>
+      <div class="tools-grid">
+        <div class="tool-card">
+          <h3>Node telemetry</h3>
+          <p>Planned dashboards for channel balances, uptime, and fee policies.</p>
+        </div>
+        <div class="tool-card">
+          <h3>Routing simulator</h3>
+          <p>Route tracing with visual hops to rehearse liquidity moves before production.</p>
+        </div>
+        <div class="tool-card">
+          <h3>Ops runbooks</h3>
+          <p>Standard operating procedures for rebalancing and invoice settlement.</p>
+        </div>
+      </div>
+      <p class="tagline">The Lightning Suite is under active development. Check back soon for interactive dashboards and scripts.</p>
+    </section>
+  </main>
+  {% include 'components/footer.html' %}
+</body>
+</html>

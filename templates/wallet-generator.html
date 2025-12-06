@@ -3,13 +3,13 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AdaptBTC | Advanced Wallet Generator</title>
 
 <!-- Libraries -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bitcoinjs-lib/6.1.0/bitcoinjs-lib.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@bitcoinerlab/secp256k1@1.1.0/dist/secp256k1-umd.min.js"></script>
 <script>
-    // bitcoinjs-lib v6 requires the secp256k1 implementation to be registered explicitly
     bitcoinjs.initEccLib(secp256k1);
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bip39/3.0.4/bip39.min.js"></script>
@@ -41,7 +41,13 @@
         opacity: 0.8;
         margin-bottom: 30px;
     }
-
+    .warning-banner {
+        background: #fff4e5;
+        border: 1px solid #ffb347;
+        border-radius: 12px;
+        padding: 14px 16px;
+        margin-bottom: 18px;
+    }
     button {
         padding: 12px 22px;
         background: #0047FF;
@@ -57,7 +63,6 @@
         transform: scale(1.03);
         box-shadow: 0px 6px 16px rgba(0, 71, 255, 0.3);
     }
-
     .card {
         background: #f5f7ff;
         padding: 22px;
@@ -65,14 +70,12 @@
         box-shadow: 0px 4px 16px rgba(0,0,0,0.1);
         margin-top: 20px;
     }
-
     .label {
         font-size: 16px;
         font-weight: 700;
         margin-top: 18px;
         color: #0047FF;
     }
-
     .value-box {
         background: white;
         padding: 12px;
@@ -81,8 +84,8 @@
         border: 1px solid #d9e1ff;
         word-wrap: break-word;
         position: relative;
+        min-height: 54px;
     }
-
     .copy-btn {
         position: absolute;
         right: 10px;
@@ -94,17 +97,10 @@
         cursor: pointer;
         font-size: 12px;
     }
-
     #qr {
         margin-top: 20px;
         text-align: center;
     }
-
-    #restoreBox {
-        margin-top: 30px;
-        text-align: center;
-    }
-
     select {
         padding: 10px;
         border-radius: 10px;
@@ -112,7 +108,6 @@
         width: 100%;
         margin-top: 5px;
     }
-
     #modal-bg {
         position: fixed;
         top:0; left:0;
@@ -122,39 +117,71 @@
         justify-content:center;
         align-items:center;
     }
+    #modal-bg.visible { display: flex; }
     #modal {
         background:white;
         padding:30px;
         width:90%;
-        max-width:400px;
+        max-width:420px;
         border-radius:15px;
         text-align:center;
+    }
+    .hidden { display: none; }
+    .info-box {
+        margin-top: 14px;
+        background: #e6f0ff;
+        border-radius: 10px;
+        padding: 12px;
+        border: 1px solid #bad1ff;
+    }
+    .toast {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        padding: 10px 14px;
+        background: #1f2937;
+        color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+        opacity: 0;
+        transform: translateY(10px);
+        transition: opacity 0.2s ease, transform 0.2s ease;
+        z-index: 10;
+    }
+    .toast.show {
+        opacity: 1;
+        transform: translateY(0);
     }
 </style>
 </head>
 
 <body>
 
-<div id="modal-bg">
+<div id="modal-bg" aria-modal="true" role="dialog">
     <div id="modal">
         <h2>⚠️ IMPORTANT</h2>
         <p>Your 12-word recovery phrase will appear once.<br>
         If you lose it, the wallet is gone forever.</p>
-        <button onclick="closeModal()">I Understand</button>
+        <p class="header-subtitle" style="font-size:14px;">This tool is for education only. Do not reuse generated wallets for real funds.</p>
+        <button id="modalConfirm">I Understand</button>
     </div>
 </div>
 
 <div class="container">
 
     <h1>AdaptBTC Advanced Wallet Generator</h1>
-    <p class="header-subtitle">Create, restore, and explore real Bitcoin wallets safely.</p>
+    <p class="header-subtitle">Create, restore, and explore Bitcoin wallets safely. Client-side only — no data leaves this page.</p>
 
-    <button onclick="showModal(); generateWallet()">Generate New Wallet</button>
+    <div class="warning-banner">
+      <strong>For educational use only.</strong> Use offline hardware for real funds and record your recovery phrase on durable media you control.
+    </div>
 
-    <div id="walletCard" class="card" style="display:none;">
+    <button id="generateBtn">Generate New Wallet</button>
+
+    <div id="walletCard" class="card hidden">
 
         <div class="label">Wallet Type</div>
-        <select id="addressType" onchange="updateAddressType()">
+        <select id="addressType">
             <option value="p2wpkh">SegWit (bc1…)</option>
             <option value="p2pkh">Legacy (1…)</option>
             <option value="p2tr">Taproot (bc1p…)</option>
@@ -164,6 +191,10 @@
         <div id="mnemonic" class="value-box">
             <span id="mnemonicText"></span>
             <span class="copy-btn" onclick="copyText('mnemonicText')">Copy</span>
+        </div>
+
+        <div class="info-box hidden" id="storageTip">
+          <strong>Store this securely:</strong> write it down, keep it offline, and never share it. Regenerate if anyone else saw the words.
         </div>
 
         <div class="label">Bitcoin Address</div>
@@ -180,89 +211,112 @@
             <span class="copy-btn" onclick="copyText('privateKeyText')">Copy</span>
         </div>
 
-        <button onclick="checkBalance()">Check Wallet Balance</button>
+        <button id="balanceBtn">Check Wallet Balance</button>
 
         <div class="label">Balance</div>
         <div id="balance" class="value-box">Balance not checked yet.</div>
 
     </div>
 
-    <!-- Restore Wallet Section -->
-    <div id="restoreBox">
+    <div id="restoreBox" class="card">
         <h2>Restore a Wallet</h2>
+        <p class="header-subtitle" style="font-size:14px;">We never send seed phrases to a server. Everything stays in this tab.</p>
         <textarea id="restoreInput" placeholder="Enter 12-word seed phrase…" style="width:100%; height:80px; border-radius:10px; padding:10px;"></textarea>
-        <button onclick="restoreWallet()">Restore Wallet</button>
+        <button id="restoreBtn">Restore Wallet</button>
     </div>
 
 </div>
+<div id="toast" role="status" aria-live="polite" class="toast"></div>
 
 <script>
+let currentChild;
+let currentMnemonic;
+let pendingGeneration = false;
+const bitcoin = bitcoinjs;
 
-// ---------------- Modal ----------------
-function showModal(){ document.getElementById("modal-bg").style.display="flex"; }
-function closeModal(){ document.getElementById("modal-bg").style.display="none"; }
-
-// ---------------- Copy Text ----------------
-function copyText(id){
-    navigator.clipboard.writeText(document.getElementById(id).innerText);
-    alert("Copied to clipboard!");
+function showToast(message){
+    const toast = document.getElementById('toast');
+    toast.textContent = message;
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 1800);
 }
 
-// ---------------- Generate Wallet ----------------
-let currentChild, currentMnemonic;
+function showModal(){
+    document.getElementById("modal-bg").classList.add('visible');
+    pendingGeneration = true;
+}
+
+function closeModal(){
+    document.getElementById("modal-bg").classList.remove('visible');
+    if(pendingGeneration){
+        pendingGeneration = false;
+        generateWallet();
+    }
+}
+
+function copyText(id){
+    const text = document.getElementById(id).innerText.trim();
+    if(!text){ return; }
+    navigator.clipboard.writeText(text);
+    showToast('Copied to clipboard');
+}
+
+function secureMnemonic(){
+    const entropy = new Uint8Array(16);
+    window.crypto.getRandomValues(entropy);
+    const hex = Array.from(entropy, (b) => b.toString(16).padStart(2, '0')).join('');
+    return bip39.entropyToMnemonic(hex);
+}
 
 async function generateWallet() {
-
-    currentMnemonic = bip39.generateMnemonic(128);
+    currentMnemonic = secureMnemonic();
     document.getElementById("mnemonicText").innerText = currentMnemonic;
-
     await deriveWallet(currentMnemonic);
-
-    document.getElementById("walletCard").style.display = "block";
+    document.getElementById("walletCard").classList.remove('hidden');
+    document.getElementById("storageTip").classList.remove('hidden');
 }
 
-// ---------------- Derive Wallet By Type ----------------
 async function deriveWallet(mnemonic){
+    if(!mnemonic){ return; }
     const seed = await bip39.mnemonicToSeed(mnemonic);
-    const root = bitcoinjs.bip32.fromSeed(seed);
+    const root = bitcoin.bip32.fromSeed(seed);
 
     const type = document.getElementById("addressType").value;
-
     let payment;
 
     if(type === "p2wpkh"){
         currentChild = root.derivePath("m/84'/0'/0'/0/0");
-        payment = bitcoinjs.payments.p2wpkh({
+        payment = bitcoin.payments.p2wpkh({
             pubkey: currentChild.publicKey,
-            network: bitcoinjs.networks.bitcoin
+            network: bitcoin.networks.bitcoin
         });
     }
 
     if(type === "p2pkh"){
         currentChild = root.derivePath("m/44'/0'/0'/0/0");
-        payment = bitcoinjs.payments.p2pkh({
+        payment = bitcoin.payments.p2pkh({
             pubkey: currentChild.publicKey,
-            network: bitcoinjs.networks.bitcoin
+            network: bitcoin.networks.bitcoin
         });
     }
 
     if(type === "p2tr"){
         currentChild = root.derivePath("m/86'/0'/0'/0/0");
-        payment = bitcoinjs.payments.p2tr({
+        payment = bitcoin.payments.p2tr({
             internalPubkey: currentChild.publicKey.subarray(1,33),
-            network: bitcoinjs.networks.bitcoin
+            network: bitcoin.networks.bitcoin
         });
     }
 
-    updateUI(payment.address, currentChild.toWIF());
+    if(payment?.address){
+        updateUI(payment.address, currentChild.toWIF());
+    }
 }
 
-// ---------------- Update Address Type ----------------
-async function updateAddressType(){
+function updateAddressType(){
     deriveWallet(currentMnemonic);
 }
 
-// ---------------- UI Update ----------------
 function updateUI(address, wif){
     document.getElementById("addressText").innerText = address;
     document.getElementById("privateKeyText").innerText = wif;
@@ -272,9 +326,12 @@ function updateUI(address, wif){
     new QRCode(qrDiv, { text: address, width: 170, height: 170 });
 }
 
-// ---------------- Balance Checker ----------------
 async function checkBalance(){
     const address = document.getElementById("addressText").innerText;
+    if(!address){
+        showToast('Generate a wallet first');
+        return;
+    }
     const url = `https://blockstream.info/api/address/${address}`;
 
     document.getElementById("balance").innerText = "Checking…";
@@ -290,7 +347,6 @@ async function checkBalance(){
     }
 }
 
-// ---------------- Restore Wallet ----------------
 async function restoreWallet(){
     const seed = document.getElementById("restoreInput").value.trim();
     if(!bip39.validateMnemonic(seed)){
@@ -300,8 +356,17 @@ async function restoreWallet(){
     currentMnemonic = seed;
     document.getElementById("mnemonicText").innerText = seed;
     await deriveWallet(seed);
-    document.getElementById("walletCard").style.display = "block";
+    document.getElementById("walletCard").classList.remove('hidden');
+    document.getElementById("storageTip").classList.remove('hidden');
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('generateBtn').addEventListener('click', showModal);
+    document.getElementById('modalConfirm').addEventListener('click', closeModal);
+    document.getElementById('addressType').addEventListener('change', updateAddressType);
+    document.getElementById('balanceBtn').addEventListener('click', checkBalance);
+    document.getElementById('restoreBtn').addEventListener('click', restoreWallet);
+});
 </script>
 
 </body>

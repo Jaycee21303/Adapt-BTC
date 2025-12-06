@@ -47,6 +47,11 @@ def tools():
     return render_existing("pages/tools.html")
 
 
+@app.route("/tools/<tool_slug>")
+def tool_detail(tool_slug: str):
+    return render_existing(f"pages/tools/{tool_slug}.html")
+
+
 @app.route("/wallet-generator")
 @app.route("/wallet-generator.html")
 def wallet_generator():
@@ -56,6 +61,12 @@ def wallet_generator():
 @app.route("/consulting")
 def consulting():
     return render_existing("pages/consulting.html")
+
+
+@app.route("/consulting/contact")
+@app.route("/consulting/contact.html")
+def consulting_contact():
+    return render_existing("pages/consulting-contact.html")
 
 
 @app.route("/donate")

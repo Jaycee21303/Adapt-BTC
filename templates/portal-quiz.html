@@ -24,13 +24,15 @@
             <a class="pill-tab active" href="{{ url_for('portal.quiz', course_id=course.id) }}">Quiz</a>
           </div>
         </div>
+        {% if questions %}
         <form method="post" class="grid-two">
           {% for question in questions %}
+          {% set outer_loop = loop %}
           <div class="card" style="grid-column: span 2;">
-            <p><strong>Q{{ loop.index }}.</strong> {{ question.prompt }}</p>
+            <p><strong>Q{{ outer_loop.index }}.</strong> {{ question.prompt }}</p>
             {% for option in question.options %}
             <label class="quiz-option">
-              <input type="radio" name="q{{ loop.parent.index0 }}" value="{{ loop.index0 }}" required>
+              <input type="radio" name="q{{ outer_loop.index0 }}" value="{{ loop.index0 }}" required>
               <span class="pill">{{ 'ABCD'[loop.index0] }}</span>
               {{ option }}
             </label>
@@ -41,6 +43,11 @@
             <button class="btn" type="submit">Submit Quiz</button>
           </div>
         </form>
+        {% else %}
+        <div class="card" style="grid-column: span 2;">
+          <p class="hero-sub">This course does not have quiz questions yet. Please check back soon.</p>
+        </div>
+        {% endif %}
       </div>
     </section>
   </main>
