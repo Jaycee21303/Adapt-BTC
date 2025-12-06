@@ -7,6 +7,11 @@
 
 <!-- Libraries -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bitcoinjs-lib/6.1.0/bitcoinjs-lib.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@bitcoinerlab/secp256k1@1.1.0/dist/secp256k1-umd.min.js"></script>
+<script>
+    // bitcoinjs-lib v6 requires the secp256k1 implementation to be registered explicitly
+    bitcoinjs.initEccLib(secp256k1);
+</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bip39/3.0.4/bip39.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
