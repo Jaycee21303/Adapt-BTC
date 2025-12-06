@@ -1,13 +1,15 @@
-"""WSGI entrypoint for running the Flask app with Gunicorn.
-
-Exposes the Flask ``app`` instance so process managers can use the default
-``app:app`` target without referring to the ``server`` module directly.
 """
-from server import app
+WSGI entrypoint for the AdaptBTC Flask application.
+
+Expose the ``app`` instance from :mod:`server` for WSGI servers like
+Gunicorn. When run directly, this module will start a development
+server which should not be used in production.
+"""
+from server import app  # noqa: F401  import side effect
 
 __all__ = ["app"]
 
-
 if __name__ == "__main__":
-    # Local development convenience
+    # Running ``python app.py`` will serve the application via Flask's
+    # development server. This should only be used for local testing.
     app.run(host="0.0.0.0", port=5000, debug=True)
