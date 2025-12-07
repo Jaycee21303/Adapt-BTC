@@ -23,7 +23,7 @@ const quoteRoutes = require('./routes/quote');
 const executeRoutes = require('./routes/execute');
 
 const isProd = process.env.NODE_ENV === 'production';
-const allowedOrigins = ['https://adaptbtc.com', 'https://adaptbtc.onrender.com', 'https://swap.adaptbtc.com'];
+const allowedOrigins = ['https://adaptbtc.com', 'https://www.adaptbtc.com', 'https://swap.adaptbtc.com'];
 
 const app = express();
 app.locals.isProd = isProd;
