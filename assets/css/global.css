@@ -305,14 +305,14 @@ strong { color: var(--gray-800); }
   display: grid;
   grid-template-columns: auto auto;
   align-items: center;
-  gap: 4px 10px;
-  padding: 10px 14px;
-  border-radius: 14px;
-  background: linear-gradient(135deg, #0b1220, #0f243f);
-  color: #e5eeff;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 12px 30px rgba(5, 22, 50, 0.35);
-  min-width: 170px;
+  gap: 2px 8px;
+  padding: 6px 10px;
+  border-radius: 12px;
+  background: transparent;
+  color: var(--gray-800);
+  border: none;
+  box-shadow: none;
+  min-width: 0;
 }
 
 .ticker-label {
@@ -321,7 +321,7 @@ strong { color: var(--gray-800); }
   gap: 6px;
   font-weight: 700;
   letter-spacing: 0.04em;
-  color: #8fb4ff;
+  color: var(--gray-600);
 }
 
 .live-dot {
@@ -333,17 +333,17 @@ strong { color: var(--gray-800); }
 }
 
 .ticker-price {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 700;
-  color: #f4f7ff;
+  color: #24d68a;
   justify-self: end;
 }
 
 .ticker-change {
   grid-column: 1 / -1;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 600;
-  color: #d7e3ff;
+  color: var(--gray-700);
   display: inline-flex;
   align-items: center;
   gap: 6px;
