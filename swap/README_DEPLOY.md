@@ -14,7 +14,7 @@ After DNS propagates, add the domain in Vercel:
 - Vercel Dashboard → Project → Settings → Domains → add `swap.adaptbtc.com`
 
 Backend URL for frontend env:
-`NEXT_PUBLIC_SWAP_BACKEND_URL=https://<your-render-service>.onrender.com`
+`NEXT_PUBLIC_SWAP_BACKEND_URL=https://swap.adaptbtc.com`
 
 ## Backend deploy steps (Render)
 - Runtime: Node 18
@@ -28,7 +28,7 @@ Backend URL for frontend env:
 - Build Command: `npm run build`
 - Install Command: `npm install`
 - Output: Next.js default
-- Environment variable: `NEXT_PUBLIC_SWAP_BACKEND_URL` pointing to the Render backend
+- Environment variable: `NEXT_PUBLIC_SWAP_BACKEND_URL` pointing to `https://swap.adaptbtc.com`
 - Add `swap.adaptbtc.com` domain after DNS is live
 
 ## Fee wallet updates before production

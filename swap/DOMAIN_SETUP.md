@@ -9,7 +9,7 @@ swap.adaptbtc.com FINAL INTEGRATION
    Add domain swap.adaptbtc.com to the frontend project.
 
 3. Add environment variable:
-   NEXT_PUBLIC_SWAP_BACKEND_URL=https://<render-subdomain>.onrender.com
+   NEXT_PUBLIC_SWAP_BACKEND_URL=https://swap.adaptbtc.com
 
 4. Enable HTTPS forced redirect on Vercel.
 
