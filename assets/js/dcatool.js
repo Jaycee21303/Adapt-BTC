@@ -135,7 +135,7 @@
         x: {
           title: {
             display: true,
-            text: 'Months from now',
+            text: 'Years from now',
           },
         },
       },
@@ -187,18 +187,21 @@
       balance += dcaAmount / currentPrice;
 
       const monthProgress = period * monthsPerPeriod;
-      while (currentMonth < monthProgress && labels.length <= months) {
+      while (currentMonth < monthProgress && currentMonth < months) {
         currentMonth += 1;
-        const monthsElapsed = currentMonth;
-        labels.push(monthsElapsed.toString());
 
-        Object.keys(growthModes).forEach((growthKey) => {
-          const rate = growthModes[growthKey];
-          const projectedPrice = startingPrice * (1 + rate) ** (monthsElapsed / 12);
-          pricePaths[growthKey].push(projectedPrice);
-        });
+        if (currentMonth % 12 === 0) {
+          const yearsElapsedForLabel = currentMonth / 12;
+          labels.push(yearsElapsedForLabel.toString());
 
-        accumulation.push(balance);
+          Object.keys(growthModes).forEach((growthKey) => {
+            const rate = growthModes[growthKey];
+            const projectedPrice = startingPrice * (1 + rate) ** yearsElapsedForLabel;
+            pricePaths[growthKey].push(projectedPrice);
+          });
+
+          accumulation.push(balance);
+        }
       }
 
       if (goalMonths === null && balance >= goalBtc) {
@@ -208,15 +211,15 @@
     }
 
     // If the loop ended early due to reaching the goal, pad remaining labels for consistent graphing.
-    if (labels.length <= months) {
+    if (labels.length - 1 < years) {
       const lastBalance = accumulation[accumulation.length - 1];
-      const lastMonth = labels.length - 1;
-      for (let month = lastMonth + 1; month <= months; month += 1) {
-        labels.push(month.toString());
+      const lastYear = labels.length - 1;
+      for (let year = lastYear + 1; year <= years; year += 1) {
+        labels.push(year.toString());
         accumulation.push(lastBalance);
         Object.keys(growthModes).forEach((growthKey) => {
           const rate = growthModes[growthKey];
-          const projectedPrice = startingPrice * (1 + rate) ** (month / 12);
+          const projectedPrice = startingPrice * (1 + rate) ** year;
           pricePaths[growthKey].push(projectedPrice);
         });
       }
