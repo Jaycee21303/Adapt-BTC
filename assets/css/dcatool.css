@@ -96,6 +96,18 @@
   color: #0f172a;
 }
 
+.live-price-box {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.price-status {
+  margin: 0;
+  font-size: 13px;
+  color: #4b5563;
+}
+
 .chart-area {
   background: #fff;
   border: 1px solid #e5e7eb;

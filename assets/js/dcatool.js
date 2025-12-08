@@ -18,8 +18,8 @@
     accumulation: '#0f172a',
   };
 
-  // Assumed starting BTC spot price in USD for projections.
-  const startingPrice = 30000;
+  // Starting BTC spot price in USD for projections. Will update from live ticker.
+  let startingPrice = 30000;
 
   const currentBtcInput = document.getElementById('current-btc');
   const goalBtcInput = document.getElementById('goal-btc');
@@ -27,6 +27,8 @@
   const frequencyInput = document.getElementById('frequency');
   const modeInput = document.getElementById('mode');
   const goalTimelineEl = document.getElementById('goal-timeline');
+  const livePriceEl = document.getElementById('current-price');
+  const livePriceStatusEl = document.getElementById('price-status');
   const ctx = document.getElementById('dca-chart');
 
   if (!ctx) {
@@ -147,6 +149,10 @@
     return Number.isFinite(parsed) ? parsed : fallback;
   }
 
+  function formatUsd(value) {
+    return `$${Number(value).toLocaleString(undefined, { maximumFractionDigits: 0 })}`;
+  }
+
   function formatTimeline(monthsToGoal) {
     if (!Number.isFinite(monthsToGoal)) return '—';
     if (monthsToGoal < 1) return 'Already at goal';
@@ -240,10 +246,43 @@
     goalTimelineEl.textContent = timelineText;
   }
 
+  async function loadLivePrice() {
+    const apiUrl = 'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd';
+    try {
+      const response = await fetch(apiUrl, { cache: 'no-store' });
+      if (!response.ok) throw new Error('Unable to fetch price');
+      const data = await response.json();
+      const livePrice = data?.bitcoin?.usd;
+
+      if (Number.isFinite(livePrice)) {
+        startingPrice = livePrice;
+        if (livePriceEl) {
+          livePriceEl.textContent = formatUsd(livePrice);
+        }
+        if (livePriceStatusEl) {
+          livePriceStatusEl.textContent = 'Live price from CoinGecko';
+        }
+        project();
+        return;
+      }
+
+      throw new Error('Invalid price data');
+    } catch (error) {
+      if (livePriceStatusEl) {
+        livePriceStatusEl.textContent = 'Using fallback price due to live data issue';
+      }
+      if (livePriceEl) {
+        livePriceEl.textContent = formatUsd(startingPrice);
+      }
+      project();
+    }
+  }
+
   [currentBtcInput, goalBtcInput, dcaAmountInput, frequencyInput, modeInput].forEach((input) => {
     input?.addEventListener('input', project);
     input?.addEventListener('change', project);
   });
 
   project();
+  loadLivePrice();
 })();
