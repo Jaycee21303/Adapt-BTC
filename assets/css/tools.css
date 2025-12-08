@@ -16,6 +16,12 @@
   min-height: 240px;
 }
 
+.tools-grid .tool-card.highlight {
+  border: 1px solid #dbeafe;
+  background: linear-gradient(135deg, #f5f9ff, #eef4ff);
+  box-shadow: 0 16px 38px rgba(37, 99, 235, 0.14);
+}
+
 .tool-icon {
   width: 54px;
   height: 54px;

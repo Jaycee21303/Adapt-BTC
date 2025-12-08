@@ -76,6 +76,97 @@
   box-shadow: var(--shadow-soft);
 }
 
+.dca-highlight {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 22px;
+  align-items: center;
+  padding: 26px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #f8fbff 0%, #f1f5ff 100%);
+  border: 1px solid #e5e7eb;
+  box-shadow: var(--shadow-soft);
+}
+
+.dca-copy .hero-cta { margin-top: 12px; }
+
+.dca-mock {
+  background: #0f172a;
+  color: #e2e8f0;
+  border-radius: 18px;
+  padding: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 18px 42px rgba(15, 23, 42, 0.32);
+}
+
+.mock-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 12px;
+}
+
+.mock-header .pill { background: rgba(255, 255, 255, 0.12); color: #fff; }
+.mock-header strong { font-size: 22px; color: #fff; }
+
+.mock-body { display: grid; gap: 14px; padding-top: 12px; }
+
+.mock-legend {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+  color: #cbd5e1;
+  font-size: 14px;
+}
+
+.mock-legend .dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  display: inline-block;
+  margin-right: 6px;
+}
+
+.mock-legend .reserved { background: rgba(244, 152, 72, 0.9); }
+.mock-legend .moderate { background: rgba(37, 99, 235, 0.9); }
+.mock-legend .bullish { background: rgba(16, 185, 129, 0.9); }
+
+.mock-chart {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+  align-items: end;
+  height: 160px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 14px;
+  padding: 12px;
+}
+
+.mock-chart .bar {
+  width: 100%;
+  border-radius: 10px 10px 4px 4px;
+  background: linear-gradient(180deg, rgba(59, 130, 246, 0.9), rgba(37, 99, 235, 0.7));
+}
+
+.mock-chart .bar-1 { height: 24%; }
+.mock-chart .bar-2 { height: 42%; }
+.mock-chart .bar-3 { height: 58%; }
+.mock-chart .bar-4 { height: 76%; }
+.mock-chart .bar-5 { height: 90%; }
+
+.mock-metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 10px;
+}
+
+.mock-metrics .label { color: #cbd5e1; margin-bottom: 4px; }
+.mock-metrics strong { color: #fff; }
+
 .tool-preview {
   background: white;
   border-radius: 16px;
