@@ -7,7 +7,7 @@ server which should not be used in production.
 """
 import os
 
-from flask import redirect, request
+from flask import redirect, render_template, request
 
 from server import app  # noqa: F401  import side effect
 
@@ -29,6 +29,13 @@ def force_custom_domain():
         # question marks in the redirect target.
         full_path = request.full_path.rstrip("?")
         return redirect(f"https://{PRIMARY_DOMAIN}{full_path}", code=301)
+
+
+@app.route("/DCAtool")
+def dcatool() -> str:
+    """Render the Bitcoin DCA projection tool."""
+
+    return render_template("dcatool.html")
 
 __all__ = ["app"]
 
