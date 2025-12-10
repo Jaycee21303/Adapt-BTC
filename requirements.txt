@@ -5,4 +5,4 @@ bcrypt
 python-dotenv
 Pillow
 qrcode
-requestsMarkdown\nPyYAML
+requests
