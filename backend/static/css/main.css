@@ -1,5 +1,0 @@
-* { box-sizing: border-box; }
-body { background: var(--bg); }
-a { color: var(--btc-blue); }
-.section.cards .card { min-height: 180px; }
-.hero-compact { padding: 72px 0 32px; }

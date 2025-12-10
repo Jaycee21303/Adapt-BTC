@@ -3,81 +3,79 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AdaptBTC Consulting</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  <title>AdaptBTC Consulting | Enterprise Bitcoin Guidance</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/global.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/consulting.css') }}">
   <script defer src="{{ url_for('static', filename='js/main.js') }}"></script>
 </head>
 <body>
-  {% include 'components/header.html' %}
+  {% include 'components/navbar.html' %}
   <main class="container">
     <section class="section">
-      <div class="badge">Consulting</div>
-      <h1>Operational Bitcoin playbooks</h1>
-      <p class="tagline">From policy design to accounting hygiene, AdaptBTC gives teams a safe adoption path.</p>
-      <div class="card grid-two">
-        <div>
-          <h3>For small &amp; medium businesses</h3>
-          <p>Board-ready adoption plans, vendor vetting, and treasury guardrails modeled after MicroStrategy discipline but right-sized for lean teams.</p>
+      <div class="consult-hero" data-animate>
+        <div class="section-heading">
+          <div>
+            <div class="badge">Advisory</div>
+            <h1>Bitcoin Strategy & Guidance for Individuals & Businesses.</h1>
+            <p class="hero-sub">Enterprise-grade consulting with the polish of a premier fintech studio.</p>
+          </div>
+          <a class="btn" href="{{ url_for('consulting') }}">Partner with AdaptBTC</a>
         </div>
-        <div>
-          <h3>For individuals &amp; founders</h3>
-          <p>Personalized custody setups, travel-ready wallets, tax-aware reporting workflows, and concierge onboarding for spouses or partners.</p>
+        <div class="grid-three">
+          <div class="stat-card">
+            <p class="label">Workshops</p>
+            <h3>Weekly</h3>
+            <p class="progress-text">Live or virtual</p>
+          </div>
+          <div class="stat-card">
+            <p class="label">Playbooks</p>
+            <h3>12</h3>
+            <p class="progress-text">Treasury + Lightning</p>
+          </div>
+          <div class="stat-card">
+            <p class="label">Industries</p>
+            <h3>Fintech, SaaS, Commerce</h3>
+            <p class="progress-text">Tailored programs</p>
+          </div>
         </div>
       </div>
     </section>
-    <section class="section grid-two">
-      <div class="card">
-        <h3>Treasury frameworks</h3>
-        <p>Saylor-inspired strategies, collateralized borrowing, and long-term custody plans that keep your balance sheet resilient.</p>
+
+    <section class="section" data-animate>
+      <div class="section-heading">
+        <h2>What We Offer</h2>
       </div>
-      <div class="card">
-        <h3>Risk controls</h3>
-        <p>Multi-sig design, hardware rotation, role-based access, and incident procedures.</p>
-      </div>
-      <div class="card">
-        <h3>Compliance-ready</h3>
-        <p>Address hygiene, reporting checkpoints, baseline regulatory awareness, and audit-friendly documentation.</p>
-      </div>
-      <div class="card">
-        <h3>Team readiness</h3>
-        <p>Track lesson completion, quiz scores, and certificates across departments with our learning portal and structured drills.</p>
-      </div>
-    </section>
-    <section class="section grid-three">
-      <div class="card">
-        <h3>Self-custody proofing</h3>
-        <p>Workshop-driven key ceremonies, recovery playbooks, and redundancy testing to harden custody across multiple jurisdictions.</p>
-      </div>
-      <div class="card">
-        <h3>DCA &amp; treasury automation</h3>
-        <p>Build disciplined purchase schedules, cold-storage sweep rules, and treasury reporting that plugs into your finance stack.</p>
-      </div>
-      <div class="card">
-        <h3>Executive &amp; board briefings</h3>
-        <p>Quarterly threat modeling, strategy refreshes, and market signals to keep leadership aligned on Bitcoin risk and opportunity.</p>
+      <div class="service-grid">
+        <div class="service-card">
+          <div class="icon-circle">🏛</div>
+          <h3>Treasury Onboarding</h3>
+          <p>Policy design, accounting workflows, and institutional custody planning.</p>
+        </div>
+        <div class="service-card">
+          <div class="icon-circle">🔐</div>
+          <h3>Self-Custody Setup</h3>
+          <p>Wallet provisioning, multi-signature design, and operational runbooks.</p>
+        </div>
+        <div class="service-card">
+          <div class="icon-circle">⚡</div>
+          <h3>Lightning Network Integration</h3>
+          <p>Node deployment, routing strategies, and payments UX consulting.</p>
+        </div>
       </div>
     </section>
-    <section class="section grid-two">
-      <div class="card">
-        <h3>What a typical engagement looks like</h3>
-        <ul class="checklist">
-          <li>Discovery sprint: map existing finance ops, tooling, and risk tolerances.</li>
-          <li>Design: produce custody topology, DCA policy, and escalation ladders.</li>
-          <li>Enablement: train staff in our learning portal with graded, certifiable modules.</li>
-          <li>Validation: tabletop exercises, recovery drills, and sign-off with leadership.</li>
-        </ul>
+
+    <section class="section" data-animate>
+      <div class="section-heading">
+        <h2>Why Work With Us</h2>
       </div>
-      <div class="card">
-        <h3>Tools we bring to the table</h3>
-        <p>We deploy the same dashboards and labs you see in our portal&mdash;risk heatmaps, address hygiene analyzers, and multi-sig rehearsal guides&mdash;so your team can practice with production-grade workflows.</p>
-      </div>
-    </section>
-    <section class="section">
-      <div class="card">
-        <h3>Schedule a workshop</h3>
-        <p>We tailor the 12-lesson track for finance, engineering, and operations teams, or craft bespoke playbooks for founders rolling out self-custody and recurring DCA programs.</p>
-        <a class="btn" href="{{ url_for('contact') }}">Talk with us</a>
-      </div>
+      <ul class="why-list">
+        <li>Premium fintech-grade UI/UX for every deliverable.</li>
+        <li>Security-first frameworks aligned to your risk profile.</li>
+        <li>Hands-on configuration for Lightning and on-chain workflows.</li>
+        <li>Education and enablement for finance, ops, and engineering teams.</li>
+        <li>Compliant accounting checklists and reporting templates.</li>
+        <li>Responsive, white-glove support during rollout.</li>
+      </ul>
     </section>
   </main>
   {% include 'components/footer.html' %}
