@@ -63,3 +63,30 @@
 @media (max-width: 540px) {
   .consult-banner { gap: 8px; }
 }
+
+.consult-request { display: grid; gap: 16px; }
+
+.consult-form { display: grid; gap: 14px; }
+
+.form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+
+.form-field { display: grid; gap: 8px; font-weight: 700; color: var(--gray-700); }
+.form-field input,
+.form-field select,
+.form-field textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--gray-200);
+  background: #fff;
+  font: inherit;
+  color: var(--ink);
+}
+
+.form-field textarea { resize: vertical; min-height: 120px; }
+
+.form-actions { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+
+.form-status { margin: 0; color: var(--gray-700); font-weight: 700; }
+.form-status.success { color: #047857; }
+.form-status.error { color: #b91c1c; }

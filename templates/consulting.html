@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='css/global.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/consulting.css') }}">
   <script defer src="{{ url_for('static', filename='js/main.js') }}"></script>
+  <script defer src="{{ url_for('static', filename='js/consulting.js') }}"></script>
 </head>
 <body>
   {% include 'components/navbar.html' %}
@@ -47,17 +48,17 @@
       </div>
       <div class="service-grid">
         <div class="service-card">
-          <div class="icon-circle">🏛</div>
+          <div class="icon-circle">TRE</div>
           <h3>Treasury Onboarding</h3>
           <p>Policy design, accounting workflows, and institutional custody planning.</p>
         </div>
         <div class="service-card">
-          <div class="icon-circle">🔐</div>
+          <div class="icon-circle">SAFE</div>
           <h3>Self-Custody Setup</h3>
           <p>Wallet provisioning, multi-signature design, and operational runbooks.</p>
         </div>
         <div class="service-card">
-          <div class="icon-circle">⚡</div>
+          <div class="icon-circle">LNET</div>
           <h3>Lightning Network Integration</h3>
           <p>Node deployment, routing strategies, and payments UX consulting.</p>
         </div>
@@ -76,6 +77,57 @@
         <li>Compliant accounting checklists and reporting templates.</li>
         <li>Responsive, white-glove support during rollout.</li>
       </ul>
+    </section>
+
+    <section class="section" data-animate>
+      <div class="consult-request card-lg">
+        <div>
+          <p class="badge subtle">Get a quote</p>
+          <h2>Start a conversation about your Bitcoin roadmap</h2>
+          <p class="muted">Tell us how you plan to use Bitcoin and we’ll reply with a tailored consulting track.</p>
+        </div>
+        <form id="consulting-form" class="consult-form">
+          <div class="form-grid">
+            <label class="form-field">
+              <span>Name</span>
+              <input type="text" name="name" required placeholder="Full name" />
+            </label>
+            <label class="form-field">
+              <span>Email</span>
+              <input type="email" name="email" required placeholder="you@example.com" />
+            </label>
+          </div>
+          <div class="form-grid">
+            <label class="form-field">
+              <span>Engagement type</span>
+              <select name="engagement" required>
+                <option value="">Choose one</option>
+                <option value="Business">Business</option>
+                <option value="Personal">Personal</option>
+              </select>
+            </label>
+            <label class="form-field">
+              <span>Team size</span>
+              <select name="team_size" required>
+                <option value="">Select a range</option>
+                <option value="1-2">1–2</option>
+                <option value="3-25">3–25</option>
+                <option value="26-100">26–100</option>
+                <option value="101-5000">101–5,000</option>
+                <option value="5000+">5,000+</option>
+              </select>
+            </label>
+          </div>
+          <label class="form-field">
+            <span>What do you need help with?</span>
+            <textarea name="details" rows="4" placeholder="Treasury onboarding, Lightning readiness, risk planning, etc."></textarea>
+          </label>
+          <div class="form-actions">
+            <button class="btn" type="submit">Send consulting request</button>
+            <p class="form-status" id="consulting-status" role="status" aria-live="polite"></p>
+          </div>
+        </form>
+      </div>
     </section>
   </main>
   {% include 'components/footer.html' %}
