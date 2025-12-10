@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AdaptBTC Tools | DCA Projection</title>
+  <title>AdaptBTC Tools | Live Bitcoin Feed & DCA</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/global.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/tools.css') }}">
   <script defer src="{{ url_for('static', filename='js/main.js') }}"></script>
@@ -16,10 +16,13 @@
         <div class="section-heading">
           <div>
             <div class="badge">Product Suite</div>
-            <h1>Bitcoin DCA, Simplified.</h1>
-            <p class="hero-sub">Run projections, explore scenarios, and keep your accumulation on track.</p>
+            <h1>Bitcoin tools, live and focused.</h1>
+            <p class="hero-sub">Track the network in real time and plan accumulation with the DCA calculator.</p>
           </div>
-          <a class="btn" href="{{ url_for('dca') }}">Open DCA Tool</a>
+          <div class="hero-actions">
+            <a class="btn" href="{{ url_for('live_feed') }}">Open Live Feed</a>
+            <a class="btn btn-outline" href="{{ url_for('dca') }}">Open DCA Tool</a>
+          </div>
         </div>
       </div>
     </section>
@@ -27,9 +30,16 @@
     <section class="section" data-animate>
       <div class="section-heading">
         <h2>Toolbox</h2>
-        <p class="tagline">A single, focused experience for Bitcoin dollar-cost averaging.</p>
+        <p class="tagline">Live network intelligence plus precision accumulation planning.</p>
       </div>
       <div class="tools-grid">
+        <div class="tool-card highlight">
+          <div class="tool-icon">⚡</div>
+          <h3>Live Bitcoin Feed</h3>
+          <p>Watch Bitcoin transactions and blocks in real time with streaming mempool insights.</p>
+          <div class="tool-meta"><span class="pill">New</span></div>
+          <a class="btn" href="{{ url_for('live_feed') }}">Open Tool</a>
+        </div>
         <div class="tool-card highlight">
           <div class="tool-icon">📈</div>
           <h3>DCA Projection Tool</h3>

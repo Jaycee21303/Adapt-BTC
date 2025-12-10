@@ -29,6 +29,11 @@ def dca():
     return render_template("tools/dca.html")
 
 
+@app.route("/tools/live-feed")
+def live_feed():
+    return render_template("tools/live-feed.html")
+
+
 @app.route("/tools/dca/assets/<path:filename>")
 def dca_asset(filename: str):
     return send_from_directory(os.path.join(app.root_path, "tools", "dca"), filename)
