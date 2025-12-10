@@ -52,7 +52,6 @@ def dca():
     return render_template("tools/dca.html")
 
 
-# Static assets for DCA Tool
 @app.route("/tools/dca/assets/<path:filename>")
 def dca_asset(filename):
     return send_from_directory(os.path.join("tools", "dca"), filename)
@@ -73,7 +72,7 @@ def server_error(e):
 
 
 # ------------------------------
-# MAIN ENTRY
+# MAIN ENTRYPOINT
 # ------------------------------
 
 if __name__ == "__main__":
