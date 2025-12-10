@@ -8,6 +8,7 @@ const estimatedHashrateEl = document.getElementById('estimated-hashrate');
 
 let livePriceUsd = null;
 let lastBlockTimestamp = null;
+let socket;
 
 function formatBtcFromSats(sats) {
   if (!sats && sats !== 0) return '—';
@@ -48,7 +49,7 @@ function addMempoolTxToFeed(tx) {
   const meta = `${(tx.vsize || tx.size || 0).toLocaleString()} vBytes`;
 
   addFeedEntry({
-    icon: '🔵',
+    icon: 'TX',
     title: 'New transaction',
     detail: `${valueBtc}${usd} • ${tx.txid ? tx.txid.slice(0, 10) + '…' : 'Pending tx'}`,
     meta,
@@ -64,7 +65,7 @@ function addNewBlockToFeed(block) {
   const txCount = block.tx_count || block.txCount || block.nTx || '—';
 
   addFeedEntry({
-    icon: '🟢',
+    icon: 'BLK',
     title: `New block ${height}`,
     detail: `${txCount} transactions • ${block.id ? block.id.slice(0, 10) + '…' : 'Block received'}`,
     meta: block.timestamp ? new Date(block.timestamp * 1000).toLocaleTimeString() : 'Now',
@@ -106,14 +107,21 @@ function updateNetworkHealth(data) {
 }
 
 function connectWebSocket() {
-  const ws = new WebSocket('wss://mempool.space/api/v1/ws');
+  socket = new WebSocket('wss://mempool.space/api/v1/ws');
 
-  ws.onopen = () => {
+  socket.onopen = () => {
     feedStatus.textContent = 'Live';
     feedStatus.classList.add('online');
+
+    socket.send(
+      JSON.stringify({
+        action: 'want',
+        data: ['blocks', 'mempool-blocks', 'transactions'],
+      })
+    );
   };
 
-  ws.onmessage = (event) => {
+  socket.onmessage = (event) => {
     try {
       const data = JSON.parse(event.data);
 
@@ -133,12 +141,12 @@ function connectWebSocket() {
     }
   };
 
-  ws.onerror = () => {
+  socket.onerror = () => {
     feedStatus.textContent = 'Reconnecting…';
     feedStatus.classList.remove('online');
   };
 
-  ws.onclose = () => {
+  socket.onclose = () => {
     feedStatus.textContent = 'Reconnecting…';
     feedStatus.classList.remove('online');
     setTimeout(connectWebSocket, 2000);
@@ -155,8 +163,37 @@ async function fetchLivePrice() {
   }
 }
 
+async function fetchNetworkSnapshot() {
+  try {
+    const [mempoolRes, blocksRes, recentTxRes] = await Promise.all([
+      fetch('https://mempool.space/api/v1/fees/mempool-blocks'),
+      fetch('https://mempool.space/api/blocks'),
+      fetch('https://mempool.space/api/mempool/recent'),
+    ]);
+
+    const mempoolBlocks = await mempoolRes.json();
+    updateNetworkHealth({ 'mempool-blocks': mempoolBlocks });
+
+    const blocks = await blocksRes.json();
+    if (Array.isArray(blocks) && blocks.length) {
+      addNewBlockToFeed(blocks[0]);
+    }
+
+    const txs = await recentTxRes.json();
+    if (Array.isArray(txs)) {
+      txs
+        .slice(0, 10)
+        .reverse()
+        .forEach(addMempoolTxToFeed);
+    }
+  } catch (err) {
+    console.warn('Initial network snapshot unavailable', err);
+  }
+}
+
 (function init() {
   if (!feedContainer) return;
   fetchLivePrice();
+  fetchNetworkSnapshot();
   connectWebSocket();
 })();
