@@ -1,0 +1,14 @@
+.navbar { background: white; box-shadow: var(--shadow); position: sticky; top:0; z-index:10; }
+.nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; }
+.nav-links a { margin-left: 16px; color: #1b2435; text-decoration: none; font-weight: 600; }
+.hero { padding: 96px 0; background: linear-gradient(120deg, #f0f5ff, #f8fbff); }
+.hero-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(280px,1fr)); gap:32px; align-items:center; }
+.hero-visual { min-height: 220px; background: radial-gradient(circle at 30% 30%, rgba(10,132,255,0.2), transparent 45%),
+  radial-gradient(circle at 70% 50%, rgba(255,138,0,0.2), transparent 50%);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+.card-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(240px,1fr)); gap: 20px; }
+.two-col { display: grid; grid-template-columns: repeat(auto-fit,minmax(320px,1fr)); gap: 24px; }
+.footer { padding: 32px 0; background: white; border-top: 1px solid var(--silver); }
+.footer-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap: 16px; align-items: center; }

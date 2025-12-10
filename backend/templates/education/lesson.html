@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}{{ lesson.meta.title }}{% endblock %}
+{% block content %}
+<section class="section">
+  <div class="container">
+    <p class="eyebrow">Lesson</p>
+    <h1>{{ lesson.meta.title }}</h1>
+    <article class="lesson-body">{{ lesson.html|safe }}</article>
+  </div>
+</section>
+{% endblock %}

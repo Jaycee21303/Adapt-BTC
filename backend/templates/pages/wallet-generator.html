@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}Wallet Generator{% endblock %}
+{% block content %}
+<section class="section">
+  <div class="container two-col">
+    <div>
+      <h1>Wallet Generator</h1>
+      <p>Generate a wallet and display keys securely. Nothing leaves your browser.</p>
+      <div class="card">
+        <label><input type="checkbox" id="use-testnet"> Use testnet</label>
+        <button class="btn primary" id="generate-wallet">Generate</button>
+      </div>
+    </div>
+    <div class="card" id="wallet-output">
+      <h3>Wallet Details</h3>
+      <div class="output-field"><span>Address</span><code data-address></code></div>
+      <div class="output-field"><span>WIF</span><code data-wif></code></div>
+      <div class="output-field"><span>Seed</span><code data-seed></code></div>
+      <canvas id="wallet-qr"></canvas>
+    </div>
+  </div>
+</section>
+{% endblock %}

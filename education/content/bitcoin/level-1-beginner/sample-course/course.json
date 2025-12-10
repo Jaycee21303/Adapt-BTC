@@ -1,0 +1,11 @@
+{
+  "id": "bitcoin-basics",
+  "title": "Bitcoin Basics",
+  "level": 1,
+  "track": "bitcoin-core",
+  "estimated_hours": 1.5,
+  "prerequisites": [],
+  "learning_objectives": ["Understand Bitcoin fundamentals", "Explain wallets"],
+  "tags": ["bitcoin", "wallets"],
+  "summary": "Introductory tour of Bitcoin and wallets."
+}

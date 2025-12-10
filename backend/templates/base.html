@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}AdaptBTC{% endblock %}</title>
+    <link rel="preload" href="/static/css/main.css" as="style">
+    <link rel="stylesheet" href="/static/css/main.css">
+    <link rel="stylesheet" href="/static/css/layout.css">
+    <link rel="stylesheet" href="/static/css/components.css">
+    <link rel="stylesheet" href="/static/css/typography.css">
+    <link rel="stylesheet" href="/static/css/colors.css">
+    <link rel="stylesheet" href="/static/css/spacing.css">
+    <link rel="stylesheet" href="/static/css/tools.css">
+  </head>
+  <body class="bg-base">
+    {% include 'components/navbar.html' %}
+    <main>{% block content %}{% endblock %}</main>
+    {% include 'components/footer.html' %}
+    <script type="module" src="/static/js/main.js" defer></script>
+  </body>
+</html>

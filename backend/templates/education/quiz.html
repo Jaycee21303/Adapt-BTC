@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %}Quiz | {{ course.title }}{% endblock %}
+{% block content %}
+<section class="section">
+  <div class="container">
+    <h1>Quiz: {{ course.title }}</h1>
+    <form method="post">
+      {% for question in quiz.questions %}
+        <div class="card mb-6">
+          <p><strong>Q{{ loop.index }}.</strong> {{ question.prompt }}</p>
+          {% if question.type == 'mcq' %}
+            {% for option in question.options %}
+              <label><input type="radio" name="{{ loop.parent.index0 }}" value="{{ loop.index0 }}"> {{ option }}</label><br>
+            {% endfor %}
+          {% elif question.type == 'true_false' %}
+            <label><input type="radio" name="{{ loop.index0 }}" value="true"> True</label>
+            <label><input type="radio" name="{{ loop.index0 }}" value="false"> False</label>
+          {% endif %}
+        </div>
+      {% endfor %}
+      <button class="btn primary" type="submit">Submit</button>
+    </form>
+    {% if result %}
+      <div class="card mt-4">
+        <p>Score: {{ result.score }}%</p>
+        <ul>
+          {% for detail in result.details %}
+            <li>{{ detail.prompt }} — {{ 'Correct' if detail.correct else 'Incorrect' }} ({{ detail.explanation }})</li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}

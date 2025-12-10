@@ -1,0 +1,11 @@
+:root {
+  --primary: #000;
+  --btc-blue: #0A84FF;
+  --silver: #D4D9E0;
+  --bg: #F8FBFF;
+  --radius: 18px;
+  --shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+  --font-main: 'Inter', sans-serif;
+}
+
+.bg-base { background: var(--bg); }
