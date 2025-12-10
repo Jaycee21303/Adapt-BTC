@@ -212,14 +212,18 @@ strong { color: var(--gray-800); }
 .hero-cta { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 18px; }
 
 .icon-circle {
-  width: 44px;
+  min-width: 44px;
   height: 44px;
-  border-radius: 50%;
+  padding: 0 12px;
+  border-radius: 999px;
   background: var(--gradient-blue);
-  display: grid;
+  display: inline-grid;
   place-items: center;
   color: white;
   font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
   box-shadow: 0 10px 24px rgba(0, 87, 255, 0.2);
 }
 
