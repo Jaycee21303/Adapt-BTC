@@ -1,0 +1,19 @@
+{
+  "course_id": "bitcoin-basics",
+  "passing_score": 60,
+  "questions": [
+    {
+      "type": "mcq",
+      "prompt": "What secures Bitcoin transactions?",
+      "options": ["A central bank", "Proof-of-Work miners", "A private company", "Email confirmations"],
+      "answer_index": 1,
+      "explanation": "Proof-of-Work ensures miners validate blocks."
+    },
+    {
+      "type": "true_false",
+      "prompt": "Seed phrases can recover wallets.",
+      "answer": true,
+      "explanation": "Seed phrases regenerate keys."
+    }
+  ]
+}

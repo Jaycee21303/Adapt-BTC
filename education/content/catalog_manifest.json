@@ -2,46 +2,34 @@
   "courses": [
     {
       "id": "bitcoin-basics",
-      "title": "Bitcoin Orientation",
+      "title": "Bitcoin Basics",
       "level": 1,
       "track": "bitcoin-core",
       "estimated_hours": 1.5,
-      "prerequisites": [
-        "Interest in Bitcoin"
-      ],
+      "prerequisites": [],
       "learning_objectives": [
-        "Explain why Bitcoin was created",
-        "Describe how transactions are recorded",
-        "Identify wallet best practices"
+        "Understand Bitcoin fundamentals",
+        "Explain wallets"
       ],
       "tags": [
         "bitcoin",
-        "orientation",
-        "security"
+        "wallets"
       ],
-      "summary": "A fast orientation to the Bitcoin landscape with practical examples.",
-      "author": "AdaptBTC Team",
-      "last_updated": null,
-      "difficulty": "beginner",
+      "summary": "Introductory tour of Bitcoin and wallets.",
+      "path": "/workspace/Adapt-BTC/education/app/services/../../content/bitcoin/level-1-beginner/sample-course",
       "lessons": [
         {
           "id": "01",
-          "title": "Why Bitcoin exists",
+          "title": "Why Bitcoin Matters",
           "order": 1
         },
         {
           "id": "02",
-          "title": "How transactions move",
+          "title": "Wallets and Keys",
           "order": 2
-        },
-        {
-          "id": "03",
-          "title": "Wallet safety fundamentals",
-          "order": 3
         }
       ],
       "quiz": true,
-      "path": "/workspace/Adapt-BTC/education/app/services/../../content/bitcoin/level-1-beginner/bitcoin-basics",
       "valid": true,
       "errors": []
     }

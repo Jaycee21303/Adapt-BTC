@@ -79,7 +79,7 @@ def create_app() -> Flask:
     @app.route("/learning")
     @app.route("/education")
     def learning() -> str:
-        return redirect(url_for("education.portal_home"))
+        return render_existing("pages/learning.html")
 
     @app.route("/tools")
     def tools() -> str:

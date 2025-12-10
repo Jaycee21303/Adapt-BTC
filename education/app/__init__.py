@@ -1,1 +1,0 @@
-"""Education portal application package."""
