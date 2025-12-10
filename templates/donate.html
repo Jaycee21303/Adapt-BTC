@@ -3,89 +3,99 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Get Involved with AdaptBTC</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  <title>AdaptBTC | Support the Mission</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/global.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/donate.css') }}">
   <script defer src="{{ url_for('static', filename='js/main.js') }}"></script>
 </head>
 <body>
-  {% include 'components/header.html' %}
+  {% include 'components/navbar.html' %}
   <main class="container">
     <section class="section">
-      <div class="badge">Get Involved</div>
-      <h1>Support AdaptBTC</h1>
-      <p class="tagline">Help us grow the learning and tooling ecosystem for Bitcoin teams.</p>
-    </section>
-    <section class="section grid-two">
-      <div class="card">
-        <h3>Partner with us</h3>
-        <p>Bring AdaptBTC content, lightning utilities, and training to your community or organization.</p>
-        <ul class="bullets">
-          <li>Host a workshop or webinar with our educators.</li>
-          <li>Pilot our learning portal with your internal team.</li>
-          <li>Co-build tooling that fills a gap for builders.</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h3>Contribute resources</h3>
-        <p>Share feedback, curriculum ideas, or integrations that improve the learning portal.</p>
-        <ul class="bullets">
-          <li>Submit lesson ideas or share industry case studies.</li>
-          <li>Offer code reviews, UX feedback, or localization help.</li>
-          <li>Donate infrastructure credits to support our demos.</li>
-        </ul>
-      </div>
-    </section>
-    <section class="section grid-two">
-      <div class="card">
-        <h3>Donate Bitcoin</h3>
-        <p>Fuel our mission directly with a Bitcoin contribution. Every sat helps us ship more education and tools.</p>
-        <div class="donation-box">
-          <img 
-            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPAAAADwAQMAAABcO0H1AAAABlBMVEUAAP8AAADPZJ4LAAAACXBIWXMAAAsTAAALEwEAmpwYAAABJ0lEQVRIx+3WsU0DQRBE0U+wwkyQaCm5AhDcFkJmAAnQFxA2i7LmA4R2XdM03/M+K5ZrYLpprw9Zo7zOP8vV3e7x7L06n+YB/wD7fP8jkf4P4vj/2Ds7RrxeZ9sgS6mwtYkbdfiqH0RHLIW1UBg2saqcUU2GyqMaIcNEyGlhKFs0Roks5OEotCh5loJEYbF8MXrTKRqkUqMbjoxpoyiTsmxliMZpMhiyjEYssxGLKMRiyzEYssxGLKMRiyzEYu43C3qRrHFsq8hrvoGf4Dxvz0DZkH1jfi7vsdfX3i7rDN71fl6J8Z70Fn+8wy/vpOdF8AAAAAAAAA4C8BHQJ94WznNAAAAABJRU5ErkJggg==" 
-            alt="Static Lightning QR — adaptbtcdonate@strike.me"
-            style="width:240px;height:240px;"
-          />
+      <div class="donate-hero" data-animate>
+        <div class="section-heading">
           <div>
-            <p class="muted">Lightning address</p>
+            <div class="badge">Donate</div>
+            <h1>Support AdaptBTC’s Mission.</h1>
+            <p class="hero-sub">Your contribution fuels free education, the DCA tool, and community expansion.</p>
+          </div>
+          <a class="btn" href="#donation-card">Make a Contribution</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="donation-card" class="section" data-animate>
+      <div class="donation-card">
+        <div class="flex-between">
+          <div>
+            <h2>Lightning Donation</h2>
+            <p>Scan or copy the static lightning address to support the mission instantly.</p>
+          </div>
+          <span class="badge">Lightning Only</span>
+        </div>
+        <div class="qr-wrap">
+          <div class="qr-box">
+            <img
+              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPAAAADwAQMAAABcO0H1AAAABlBMVEUAAP8AAADPZJ4LAAAACXBIWXMAAAsTAAALEwEAmpwYAAABJ0lEQVRIx+3WsU0DQRBE0U+wwkyQaCm5AhDcFkJmAAnQFxA2i7LmA4R2XdM03/M+K5ZrYLpprw9Zo7zOP8vV3e7x7L06n+YB/wD7fP8jkf4P4vj/2Ds7RrxeZ9sgS6mwtYkbdfiqH0RHLIW1UBg2saqcUU2GyqMaIcNEyGlhKFs0Roks5OEotCh5loJEYbF8MXrTKRqkUqMbjoxpoyiTsmxliMZpMhiyjEYssxGLKMRiyzEYssxGLKMRiyzEYu43C3qRrHFsq8hrvoGf4Dxvz0DZkH1jfi7vsdfX3i7rDN71fl6J8Z70Fn+8wy/vpOdF8AAAAAAAAA4C8BHQJ94WznNAAAAABJRU5ErkJggg=="
+              alt="Static Lightning QR — adaptbtcdonate@strike.me"
+              style="width:240px;height:240px;"
+            />
+          </div>
+          <div style="flex:1; min-width:260px;">
+            <p class="label">Lightning address</p>
             <div class="address-row">
               <code id="donation-address">adaptbtcdonate@strike.me</code>
-              <button class="btn btn-secondary" id="copy-address" type="button">Copy</button>
+              <button class="btn btn-outline" id="copy-address" type="button">Copy</button>
             </div>
-            <p class="muted">Scan the QR or paste the address above to send a donation.</p>
-            <div style="margin-top:12px; font-size:14px; color:#555; text-align:center;">
+            <div style="margin-top:12px; font-size:14px; color:#555; text-align:left;">
               ⚡ <strong>Lightning Only — Static Payment Address</strong><br>
-              This is not an invoice generator. Send Lightning payments only.
+              This is not an invoice generator.
             </div>
           </div>
         </div>
       </div>
-      <div class="card">
-        <h3>Stay in touch</h3>
-        <p>We will reach out with ways to collaborate as new phases roll out.</p>
-        <div class="pill-row">
-          <span class="pill">Program pilots</span>
-          <span class="pill">Hackathons</span>
-          <span class="pill">Content reviews</span>
+    </section>
+
+    <section class="section" data-animate>
+      <div class="section-heading">
+        <h2>Why Donate</h2>
+      </div>
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="icon-circle">🛠</div>
+          <h3>Support tools</h3>
+          <p>Help us keep the DCA calculator polished and ready.</p>
         </div>
-        <a class="btn" href="{{ url_for('contact') }}">Contact the team</a>
+        <div class="why-card">
+          <div class="icon-circle">🎓</div>
+          <h3>Support free education</h3>
+          <p>Keep the learning portal open, structured, and certification-ready.</p>
+        </div>
+        <div class="why-card">
+          <div class="icon-circle">🌍</div>
+          <h3>Help expand the mission</h3>
+          <p>Fuel new translations, community chapters, and global onboarding.</p>
+        </div>
       </div>
     </section>
   </main>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      const address = document.getElementById('donation-address').textContent.trim();
+      const addressEl = document.getElementById('donation-address');
+      const button = document.getElementById('copy-address');
 
-      document.getElementById('copy-address').addEventListener('click', async () => {
-        try {
-          await navigator.clipboard.writeText(address);
-          const btn = document.getElementById('copy-address');
-          const original = btn.textContent;
-          btn.textContent = 'Copied!';
-          setTimeout(() => (btn.textContent = original), 1200);
-        } catch (err) {
-          console.error('Copy failed', err);
-        }
-      });
+      if (addressEl && button) {
+        button.addEventListener('click', async () => {
+          try {
+            await navigator.clipboard.writeText(addressEl.textContent.trim());
+            const original = button.textContent;
+            button.textContent = 'Copied!';
+            setTimeout(() => (button.textContent = original), 1200);
+          } catch (err) {
+            console.error('Copy failed', err);
+          }
+        });
+      }
     });
   </script>
   {% include 'components/footer.html' %}

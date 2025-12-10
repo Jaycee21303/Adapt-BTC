@@ -1,5 +1,0 @@
-body { font-family: var(--font-main); color: #0b1221; margin: 0; }
-h1,h2,h3,h4,h5,h6 { color: #0b1221; margin: 0 0 12px; }
-p { line-height: 1.6; }
-.lead { font-size: 1.1rem; color: #3c4657; }
-.eyebrow { text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; color: var(--btc-blue); }

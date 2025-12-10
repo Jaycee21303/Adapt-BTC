@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AdaptBTC Tools | DCA Projection</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/global.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/tools.css') }}">
+  <script defer src="{{ url_for('static', filename='js/main.js') }}"></script>
+</head>
+<body>
+  {% include 'components/navbar.html' %}
+  <main class="container">
+    <section class="section">
+      <div class="tools-hero" data-animate>
+        <div class="section-heading">
+          <div>
+            <div class="badge">Product Suite</div>
+            <h1>Bitcoin DCA, Simplified.</h1>
+            <p class="hero-sub">Run projections, explore scenarios, and keep your accumulation on track.</p>
+          </div>
+          <a class="btn" href="{{ url_for('dca') }}">Open DCA Tool</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" data-animate>
+      <div class="section-heading">
+        <h2>Toolbox</h2>
+        <p class="tagline">A single, focused experience for Bitcoin dollar-cost averaging.</p>
+      </div>
+      <div class="tools-grid">
+        <div class="tool-card highlight">
+          <div class="tool-icon">📈</div>
+          <h3>DCA Projection Tool</h3>
+          <p>Plan Bitcoin accumulation with live price data, flexible DCA settings, and goal timelines.</p>
+          <div class="tool-meta"><span class="pill">Live</span></div>
+          <a class="btn" href="{{ url_for('dca') }}">Open Tool</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" data-animate>
+      <div class="section-heading">
+        <h2>Why Use AdaptBTC Tools?</h2>
+      </div>
+      <div class="tool-reasons">
+        <div class="reason-card">
+          <div class="icon-circle">🎯</div>
+          <h4>Precision-built UI</h4>
+          <p>Stripe-level visual polish with audit-friendly layouts.</p>
+        </div>
+        <div class="reason-card">
+          <div class="icon-circle">🔗</div>
+          <h4>Integrated</h4>
+          <p>Learning paths connect directly to the DCA experience.</p>
+        </div>
+        <div class="reason-card">
+          <div class="icon-circle">🧠</div>
+          <h4>Guided</h4>
+          <p>Contextual tips keep teams compliant and confident.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  {% include 'components/footer.html' %}
+</body>
+</html>

@@ -1,45 +1,53 @@
-"""
-WSGI entrypoint for the AdaptBTC Flask application.
-
-Expose the ``app`` instance from :mod:`server` for WSGI servers like
-Gunicorn. When run directly, this module will start a development
-server which should not be used in production.
-"""
 import os
+from flask import Flask, render_template, send_from_directory
 
-from flask import redirect, render_template, request
+from learning_portal.portal_routes import portal
 
-from server import app  # noqa: F401  import side effect
+app = Flask(
+    __name__,
+    static_folder="assets",
+    static_url_path="/assets",
+    template_folder="templates",
+)
+app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY", "dev-secret-key")
 
-PRIMARY_DOMAIN = os.getenv("PRIMARY_DOMAIN", "adaptbtc.com")
-FORCE_PRIMARY_DOMAIN = os.getenv("FORCE_PRIMARY_DOMAIN", "1") != "0"
-ONRENDER_HOST_FRAGMENT = ("onrender", ".com")
-
-
-@app.before_request
-def force_custom_domain():
-    if not FORCE_PRIMARY_DOMAIN:
-        return None
-
-    host = request.headers.get("Host", "")
-    if "".join(ONRENDER_HOST_FRAGMENT) in host:
-        # Preserve query strings and paths while forcing the custom domain.
-        # ``request.full_path`` always includes a trailing ``?`` even when
-        # there are no query parameters, so strip it to avoid duplicate
-        # question marks in the redirect target.
-        full_path = request.full_path.rstrip("?")
-        return redirect(f"https://{PRIMARY_DOMAIN}{full_path}", code=301)
+app.register_blueprint(portal)
 
 
-@app.route("/DCAtool")
-def dcatool() -> str:
-    """Render the Bitcoin DCA projection tool."""
+@app.route("/")
+def home():
+    return render_template("index.html")
 
-    return render_template("dcatool.html")
 
-__all__ = ["app"]
+@app.route("/tools")
+def tools():
+    return render_template("tools.html")
+
+
+@app.route("/tools/dca")
+def dca():
+    return render_template("tools/dca.html")
+
+
+@app.route("/tools/dca/assets/<path:filename>")
+def dca_asset(filename: str):
+    return send_from_directory(os.path.join(app.root_path, "tools", "dca"), filename)
+
+
+@app.route("/consulting")
+def consulting():
+    return render_template("consulting.html")
+
+
+@app.route("/donate")
+def donate():
+    return render_template("donate.html")
+
+
+@app.route("/learning")
+def learning():
+    return render_template("learning.html")
+
 
 if __name__ == "__main__":
-    # Running ``python app.py`` will serve the application via Flask's
-    # development server. This should only be used for local testing.
     app.run(host="0.0.0.0", port=5000, debug=True)

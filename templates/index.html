@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AdaptBTC | Bitcoin Education, Tools & Consulting</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/global.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+  <script defer src="{{ url_for('static', filename='js/main.js') }}"></script>
+</head>
+<body>
+  {% include 'components/navbar.html' %}
+  <main class="container">
+    <section class="section">
+      <div class="hero" data-animate>
+        <div class="hero-grid">
+          <div>
+            <div class="badge">Future-ready Bitcoin platform</div>
+            <h1 class="headline">Bitcoin Education, Tools & Consulting — Built for the Future of Finance.</h1>
+            <p class="hero-sub">AdaptBTC helps individuals, businesses, and treasury managers safely onboard into Bitcoin.</p>
+            <div class="hero-cta">
+              <a class="btn" href="{{ url_for('learning') }}">Start Learning</a>
+              <a class="btn btn-outline" href="{{ url_for('tools') }}">Explore Tools</a>
+            </div>
+            <div class="hero-metrics">
+              <div class="metric-card">
+                <small>Courses</small>
+                <h3>12 modules</h3>
+                <p>Structured learning paths with quizzes.</p>
+              </div>
+              <div class="metric-card">
+                <small>Tools</small>
+                <h3>DCA</h3>
+                <p>Live Bitcoin dollar-cost averaging projections.</p>
+              </div>
+              <div class="metric-card">
+                <small>Consulting</small>
+                <h3>Enterprise</h3>
+                <p>Treasury onboarding & risk frameworks.</p>
+              </div>
+            </div>
+          </div>
+          <div class="hero-visual">
+            <div class="hero-chart">
+              <div class="row">
+                <strong>BTC Signal</strong>
+                <span>Secure • Real-time</span>
+              </div>
+              <div class="spark"></div>
+              <div class="row">
+                <span>Lightning Capacity</span>
+                <strong>+12.4%</strong>
+              </div>
+            </div>
+            <ul class="hero-checklist">
+              <li>Institutional-grade UX for education & tools.</li>
+              <li>Lightning-ready workflows for invoices & routing.</li>
+              <li>Guided programs for teams, finance leaders, and builders.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" data-animate>
+      <div class="dca-highlight">
+        <div class="dca-copy">
+          <div class="badge">Featured Tool</div>
+          <h2>Visualize your Bitcoin DCA with live projections.</h2>
+          <p class="hero-sub">Use the DCA Tool to model recurring buys, track goal timelines, and see how different price paths impact your accumulation.</p>
+          <div class="hero-cta">
+            <a class="btn" href="{{ url_for('dca') }}">Open DCA Tool</a>
+            <a class="btn btn-outline" href="{{ url_for('tools') }}">View the tools hub</a>
+          </div>
+        </div>
+        <div class="dca-mock" aria-hidden="true">
+          <div class="mock-header">
+            <div>
+              <p class="label">DCA Projection</p>
+              <strong>$92,098</strong>
+              <p class="muted">Live price anchor</p>
+            </div>
+            <span class="pill">Live</span>
+          </div>
+          <div class="mock-body">
+            <div class="mock-legend">
+              <span class="dot reserved"></span>Reserved
+              <span class="dot moderate"></span>Moderate
+              <span class="dot bullish"></span>Bullish
+            </div>
+            <div class="mock-chart">
+              <div class="bar bar-1"></div>
+              <div class="bar bar-2"></div>
+              <div class="bar bar-3"></div>
+              <div class="bar bar-4"></div>
+              <div class="bar bar-5"></div>
+            </div>
+            <div class="mock-metrics">
+              <div>
+                <p class="label">BTC owned</p>
+                <strong>0.25</strong>
+              </div>
+              <div>
+                <p class="label">Weekly DCA</p>
+                <strong>$100</strong>
+              </div>
+              <div>
+                <p class="label">Goal</p>
+                <strong>1 BTC</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" data-animate>
+      <div class="section-heading">
+        <div>
+          <p class="label">Platform</p>
+          <h2>Learning, tools, and guidance in one place.</h2>
+        </div>
+        <a class="btn btn-outline" href="{{ url_for('portal.dashboard') }}">Launch Learning Portal</a>
+      </div>
+      <div class="capabilities-grid">
+        <div class="capability-card">
+          <div class="icon-circle">🎓</div>
+          <h3>Learning Portal</h3>
+          <p>Open access lessons, quizzes, and certificates.</p>
+        </div>
+        <div class="capability-card">
+          <div class="icon-circle">📈</div>
+          <h3>DCA Projection Tool</h3>
+          <p>Live Bitcoin price feeds and growth scenarios for your DCA plan.</p>
+        </div>
+        <div class="capability-card">
+          <div class="icon-circle">🤝</div>
+          <h3>Advisory</h3>
+          <p>Treasury onboarding, Lightning workflows, and implementation support.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" data-animate>
+      <div class="section-heading">
+        <h2>Why AdaptBTC?</h2>
+      </div>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="icon-circle">✨</div>
+          <h3>Premium UX</h3>
+          <p>Fintech-quality visual design across learning and tooling.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon-circle">🧭</div>
+          <h3>Guided Journeys</h3>
+          <p>Clear steps for teams adopting Bitcoin and Lightning.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon-circle">🔒</div>
+          <h3>Security First</h3>
+          <p>Risk-aware playbooks and self-custody readiness.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  {% include 'components/footer.html' %}
+</body>
+</html>
