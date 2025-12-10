@@ -1,0 +1,36 @@
+{% extends 'education/base.html' %}
+{% block content %}
+<p class="breadcrumb"><a href="/education">Education</a> / <a href="/education/course/{{ course.id }}">{{ course.title }}</a> / Lesson</p>
+<div class="grid" style="grid-template-columns: 2.2fr 0.8fr; gap: 24px;">
+  <article class="card lesson-body">
+    <h1>{{ lesson.meta.title }}</h1>
+    {{ lesson.html | safe }}
+    <div class="lesson-nav">
+      {% set prev = None %}
+      {% set nxt = None %}
+      {% for item in lessons %}
+        {% if item.id == current_lesson_id %}
+          {% set idx = loop.index0 %}
+          {% if idx > 0 %}{% set prev = lessons[idx-1] %}{% endif %}
+          {% if idx + 1 < lessons|length %}{% set nxt = lessons[idx+1] %}{% endif %}
+        {% endif %}
+      {% endfor %}
+      <div>
+        {% if prev %}<a href="/education/course/{{ course.id }}/lesson/{{ prev.id }}">← {{ prev.title }}</a>{% endif %}
+      </div>
+      <div>
+        {% if nxt %}<a href="/education/course/{{ course.id }}/lesson/{{ nxt.id }}">{{ nxt.title }} →</a>{% endif %}
+      </div>
+    </div>
+  </article>
+  <aside class="card">
+    <h3>Lesson list</h3>
+    <ol>
+      {% for item in lessons %}
+        <li><a href="/education/course/{{ course.id }}/lesson/{{ item.id }}">{{ item.title }}</a></li>
+      {% endfor %}
+    </ol>
+    <a class="btn" href="/education/course/{{ course.id }}">Back to course</a>
+  </aside>
+</div>
+{% endblock %}

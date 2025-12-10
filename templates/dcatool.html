@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AdaptBTC | DCA Tool</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/global.css') }}">
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/dcatool.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/tools.css') }}">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
@@ -78,6 +78,6 @@
     </section>
   </main>
   {% include 'components/footer.html' %}
-  <script src="{{ url_for('static', filename='js/dcatool.js') }}"></script>
+  <script type="module" src="{{ url_for('static', filename='js/tools/dca-engine.js') }}"></script>
 </body>
 </html>

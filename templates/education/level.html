@@ -1,0 +1,21 @@
+{% extends 'education/base.html' %}
+{% block content %}
+<p class="breadcrumb"><a href="/education">Education</a> / Level {{ level }}</p>
+<h1>Level {{ level }} courses</h1>
+<p>Courses are loaded from the cached manifest. Lessons are lazy-loaded when opened.</p>
+<div class="grid">
+  {% for course in courses %}
+    <div class="card">
+      <div class="flex">
+        <span class="badge">Level {{ course.level }}</span>
+        <span class="pill">{{ course.track }}</span>
+      </div>
+      <h3>{{ course.title }}</h3>
+      <p>{{ course.summary or 'No summary provided.' }}</p>
+      <a class="btn" href="/education/course/{{ course.id }}">Open course</a>
+    </div>
+  {% else %}
+    <p>No courses found for this level.</p>
+  {% endfor %}
+</div>
+{% endblock %}

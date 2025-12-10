@@ -1,0 +1,39 @@
+@import url('./colors.css');
+@import url('./typography.css');
+@import url('./spacing.css');
+@import url('./layout.css');
+@import url('./components.css');
+
+body { min-height: 100vh; }
+
+.section-divider { height: 1px; background: var(--border); margin: 28px 0; }
+
+.surface { background: white; border-radius: 20px; padding: 20px; border: 1px solid var(--border); box-shadow: var(--shadow-soft); }
+
+.inline-link { color: var(--btc-blue); font-weight: 700; }
+.inline-link:hover { text-decoration: underline; }
+
+.hero-cta { display: flex; gap: 12px; flex-wrap: wrap; }
+
+.dca-highlight, .feature-tool { display: grid; gap: 18px; padding: 22px; border-radius: 20px; border: 1px solid var(--border); background: #fff; box-shadow: var(--shadow); }
+.dca-mock, .tool-preview { border: 1px solid var(--border); padding: 16px; border-radius: 16px; background: #f8fbff; }
+.mock-header, .mock-metrics, .flex-between { display: flex; justify-content: space-between; align-items: center; }
+.mock-legend { display: flex; gap: 12px; flex-wrap: wrap; color: var(--muted); }
+.mock-chart { display: flex; gap: 6px; align-items: flex-end; height: 120px; }
+.mock-chart .bar { flex: 1; border-radius: 8px; background: var(--blue-100); }
+.mock-chart .reserved { background: #fed7aa; }
+.mock-chart .moderate { background: #bfdbfe; }
+.mock-chart .bullish { background: #bbf7d0; }
+.mock-metrics { gap: 12px; }
+
+.tool-reasons { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+.reason-card { border: 1px solid var(--border); padding: 14px; border-radius: 14px; background: white; box-shadow: var(--shadow); display: grid; gap: 8px; }
+
+.dot { width: 12px; height: 12px; border-radius: 50%; display: inline-block; }
+.dot.reserved { background: #f49a48; }
+.dot.moderate { background: #2563eb; }
+.dot.bullish { background: #10b981; }
+.spark { height: 6px; background: linear-gradient(90deg, rgba(10,132,255,0.2), rgba(10,132,255,0.8)); border-radius: 10px; margin: 6px 0; }
+.hero-metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-top: 12px; }
+
+.footer-meta { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; margin-top: 14px; font-size: 14px; color: #cbd5e1; }
