@@ -1,8 +1,12 @@
 import os
 import smtplib
 from email.message import EmailMessage
+
+from dotenv import load_dotenv
 from flask import Flask, jsonify, render_template, request, send_from_directory
 from learning_portal.portal_routes import portal
+
+load_dotenv()
 
 app = Flask(__name__, template_folder="templates")
 app.secret_key = os.getenv("SECRET_KEY", "dev_secret_key")
@@ -91,7 +95,10 @@ def _send_consulting_email(payload: dict) -> None:
     use_tls = os.getenv("SMTP_USE_TLS", "true").lower() != "false"
 
     if not smtp_host:
-        raise RuntimeError("SMTP_HOST is not configured")
+        raise RuntimeError(
+            "Email delivery is not configured on the server. "
+            "Please contact support@adaptbtc.com directly."
+        )
 
     msg = EmailMessage()
     msg["Subject"] = "New AdaptBTC consulting request"
