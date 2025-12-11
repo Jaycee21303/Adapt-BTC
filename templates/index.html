@@ -15,48 +15,58 @@
       <div class="hero" data-animate>
         <div class="hero-grid">
           <div>
-            <div class="badge">Future-ready Bitcoin platform</div>
-            <h1 class="headline">Bitcoin Education, Tools & Consulting — Built for the Future of Finance.</h1>
-            <p class="hero-sub">AdaptBTC helps individuals, businesses, and treasury managers safely onboard into Bitcoin.</p>
+            <div class="badge">AdaptBTC platform</div>
+            <h1 class="headline">Learn Bitcoin, model your plan, and launch with a team that ships.</h1>
+            <p class="hero-sub">We build the training, tools, and advisory workflows that let you onboard with confidence—whether you're a new allocator or scaling Lightning operations.</p>
             <div class="hero-cta">
               <a class="btn" href="{{ url_for('learning') }}">Start Learning</a>
-              <a class="btn btn-outline" href="{{ url_for('tools') }}">Explore Tools</a>
+              <a class="btn btn-outline" href="{{ url_for('consulting') }}">Talk to Advisory</a>
             </div>
-            <div class="hero-metrics">
-              <div class="metric-card">
-                <small>Courses</small>
-                <h3>12 modules</h3>
-                <p>Structured learning paths with quizzes.</p>
-              </div>
-              <div class="metric-card">
-                <small>Tools</small>
-                <h3>DCA</h3>
-                <p>Live Bitcoin dollar-cost averaging projections.</p>
-              </div>
-              <div class="metric-card">
-                <small>Consulting</small>
-                <h3>Enterprise</h3>
-                <p>Treasury onboarding & risk frameworks.</p>
-              </div>
+            <div class="pill-list">
+              <span class="pill">Education programs</span>
+              <span class="pill">Live market tools</span>
+              <span class="pill">Implementation support</span>
+              <span class="pill">Lightning ready</span>
             </div>
           </div>
           <div class="hero-visual">
-            <div class="hero-chart">
-              <div class="row">
-                <strong>BTC Signal</strong>
-                <span>Secure • Real-time</span>
+            <div class="hero-panel">
+              <div class="panel-head">
+                <div>
+                  <p class="label">Operator dashboard</p>
+                  <strong>AdaptBTC</strong>
+                </div>
+                <span class="pill">Live</span>
               </div>
-              <div class="spark"></div>
-              <div class="row">
-                <span>Lightning Capacity</span>
-                <strong>+12.4%</strong>
+              <div class="panel-body">
+                <div class="panel-row">
+                  <p>Price anchor</p>
+                  <strong id="live-btc">$92,098</strong>
+                </div>
+                <div class="panel-row">
+                  <p>Lightning routes</p>
+                  <span class="status success">Healthy</span>
+                </div>
+                <div class="panel-row">
+                  <p>Onboarding track</p>
+                  <span class="status">Teams • Finance • Builders</span>
+                </div>
+                <div class="panel-grid">
+                  <div>
+                    <p class="label">Courses</p>
+                    <strong>12 modules</strong>
+                  </div>
+                  <div>
+                    <p class="label">Tools</p>
+                    <strong>DCA + live feed</strong>
+                  </div>
+                  <div>
+                    <p class="label">Advisory</p>
+                    <strong>Implementation</strong>
+                  </div>
+                </div>
               </div>
             </div>
-            <ul class="hero-checklist">
-              <li>Institutional-grade UX for education & tools.</li>
-              <li>Lightning-ready workflows for invoices & routing.</li>
-              <li>Guided programs for teams, finance leaders, and builders.</li>
-            </ul>
           </div>
         </div>
       </div>
@@ -117,49 +127,77 @@
     <section class="section" data-animate>
       <div class="section-heading">
         <div>
-          <p class="label">Platform</p>
-          <h2>Learning, tools, and guidance in one place.</h2>
+          <p class="label">Built for operators</p>
+          <h2>Everything you need to move from research to rollout.</h2>
         </div>
-        <a class="btn btn-outline" href="{{ url_for('portal.dashboard') }}">Launch Learning Portal</a>
+        <a class="btn btn-outline" href="{{ url_for('portal.dashboard') }}">Launch the portal</a>
       </div>
-      <div class="capabilities-grid">
-        <div class="capability-card">
-          <div class="icon-circle">EDU</div>
-          <h3>Learning Portal</h3>
-          <p>Open access lessons, quizzes, and certificates.</p>
+      <div class="pillar-grid">
+        <div class="pillar-card">
+          <div class="icon-circle">Track</div>
+          <h3>Structured learning</h3>
+          <p>Role-based tracks for finance leaders, engineers, and operators with checkpoints and quizzes.</p>
+          <div class="sub-list">
+            <span class="pill">Self-paced</span>
+            <span class="pill">Certificates</span>
+            <span class="pill">Team ready</span>
+          </div>
         </div>
-        <div class="capability-card">
-          <div class="icon-circle">DCA</div>
-          <h3>DCA Projection Tool</h3>
-          <p>Live Bitcoin price feeds and growth scenarios for your DCA plan.</p>
+        <div class="pillar-card">
+          <div class="icon-circle">Tools</div>
+          <h3>Live-market tooling</h3>
+          <p>Model allocations with DCA projections, watch the live feed, and export insight for stakeholders.</p>
+          <div class="sub-list">
+            <span class="pill">Real-time data</span>
+            <span class="pill">Scenario planning</span>
+            <span class="pill">No emojis—just signal</span>
+          </div>
         </div>
-        <div class="capability-card">
-          <div class="icon-circle">ADV</div>
-          <h3>Advisory</h3>
-          <p>Treasury onboarding, Lightning workflows, and implementation support.</p>
+        <div class="pillar-card">
+          <div class="icon-circle">Advisory</div>
+          <h3>Implementation support</h3>
+          <p>Consulting for custody decisions, Lightning workflows, integrations, and go-live reviews.</p>
+          <div class="sub-list">
+            <span class="pill">Treasury onboarding</span>
+            <span class="pill">Lightning design</span>
+            <span class="pill">Security-first</span>
+          </div>
         </div>
       </div>
     </section>
 
     <section class="section" data-animate>
-      <div class="section-heading">
-        <h2>Why AdaptBTC?</h2>
-      </div>
-      <div class="feature-grid">
-        <div class="feature-card">
-          <div class="icon-circle">UX</div>
-          <h3>Premium UX</h3>
-          <p>Fintech-quality visual design across learning and tooling.</p>
+      <div class="proof-grid">
+        <div class="proof-card">
+          <p class="label">Operational clarity</p>
+          <h3>Simple steps, predictable milestones.</h3>
+          <p class="muted">Every track comes with checklists, pre-flight reviews, and guidance you can share with leadership.</p>
+          <div class="hero-cta">
+            <a class="btn" href="{{ url_for('consulting') }}">Meet the team</a>
+            <a class="btn btn-outline" href="{{ url_for('tools') }}">See live tools</a>
+          </div>
         </div>
-        <div class="feature-card">
-          <div class="icon-circle">PATH</div>
-          <h3>Guided Journeys</h3>
-          <p>Clear steps for teams adopting Bitcoin and Lightning.</p>
-        </div>
-        <div class="feature-card">
-          <div class="icon-circle">SAFE</div>
-          <h3>Security First</h3>
-          <p>Risk-aware playbooks and self-custody readiness.</p>
+        <div class="stat-grid">
+          <div class="stat-card">
+            <p class="label">Courses</p>
+            <strong>12</strong>
+            <p class="muted">Built for teams and individuals.</p>
+          </div>
+          <div class="stat-card">
+            <p class="label">Data sources</p>
+            <strong>Live</strong>
+            <p class="muted">Realtime feed for blocks & transactions.</p>
+          </div>
+          <div class="stat-card">
+            <p class="label">Advisory</p>
+            <strong>On call</strong>
+            <p class="muted">Implementation and Lightning design.</p>
+          </div>
+          <div class="stat-card">
+            <p class="label">UX</p>
+            <strong>Fintech-grade</strong>
+            <p class="muted">Clear layouts—no noise, no emojis.</p>
+          </div>
         </div>
       </div>
     </section>
