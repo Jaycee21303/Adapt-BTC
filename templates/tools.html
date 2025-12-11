@@ -22,6 +22,7 @@
           <div class="hero-actions">
             <a class="btn" href="{{ url_for('live_feed') }}">Open Live Feed</a>
             <a class="btn btn-outline" href="{{ url_for('dca') }}">Open DCA Tool</a>
+            <a class="btn btn-outline" href="{{ url_for('btc_price_map') }}">Open BTC Price Map</a>
           </div>
         </div>
       </div>
@@ -42,6 +43,12 @@
           <h3>BTC DCA Calculator</h3>
           <p>Plan your Bitcoin accumulation over time.</p>
           <a class="btn" href="{{ url_for('dca') }}">Open Tool</a>
+        </div>
+        <div class="tool-card highlight">
+          <h3>BTC Price Map</h3>
+          <p>Explore Bitcoin’s price history on an interactive chart.</p>
+          <a class="btn" href="{{ url_for('btc_price_map') }}">Open Chart</a>
+          <p class="muted">Live price data, all-time history.</p>
         </div>
       </div>
     </section>

@@ -1,18 +1,28 @@
 import os
 import smtplib
+import time
 from email.message import EmailMessage
 
+import requests
 from dotenv import load_dotenv
 from flask import Flask, jsonify, render_template, request, send_from_directory
 from learning_portal.portal_routes import portal
 
 load_dotenv()
 
-app = Flask(__name__, template_folder="templates")
+app = Flask(
+    __name__, template_folder="templates", static_folder="assets", static_url_path="/assets"
+)
 app.secret_key = os.getenv("SECRET_KEY", "dev_secret_key")
 
 # Register Learning Portal blueprint
 app.register_blueprint(portal)
+
+
+# Simple in-memory caches to reduce upstream API calls
+_btc_history_cache = {}
+_btc_snapshot_cache = {"data": None, "timestamp": 0}
+_CACHE_TTL_SECONDS = 300
 
 
 # ------------------------------
@@ -61,6 +71,11 @@ def live_feed():
 @app.route("/tools/dca")
 def dca():
     return render_template("tools/dca.html")
+
+
+@app.route("/tools/btc-price-map")
+def btc_price_map():
+    return render_template("tools/btc-price-map.html")
 
 
 # Static assets for DCA Tool
@@ -171,6 +186,73 @@ def submit_consulting_request():
         )
 
     return jsonify({"ok": True})
+
+
+# ------------------------------
+# BTC PRICE API PROXY
+# ------------------------------
+
+
+def _cache_is_valid(cache_entry: dict) -> bool:
+    return time.time() - cache_entry.get("timestamp", 0) < _CACHE_TTL_SECONDS
+
+
+def _fetch_btc_history(days: str):
+    cache_key = str(days)
+    cached = _btc_history_cache.get(cache_key)
+    if cached and _cache_is_valid(cached):
+        return cached["data"]
+
+    url = f"https://api.coingecko.com/api/v3/coins/bitcoin/market_chart"
+    params = {"vs_currency": "usd", "days": days, "interval": "daily"}
+    response = requests.get(url, params=params, timeout=15)
+    response.raise_for_status()
+    payload = response.json()
+    if not isinstance(payload, dict) or "prices" not in payload:
+        raise RuntimeError("Invalid BTC history response")
+
+    _btc_history_cache[cache_key] = {"data": payload["prices"], "timestamp": time.time()}
+    return payload["prices"]
+
+
+def _fetch_btc_snapshot():
+    if _cache_is_valid(_btc_snapshot_cache):
+        return _btc_snapshot_cache["data"]
+
+    url = "https://api.coingecko.com/api/v3/coins/bitcoin"
+    params = {
+        "localization": "false",
+        "tickers": "false",
+        "market_data": "true",
+        "community_data": "false",
+        "developer_data": "false",
+        "sparkline": "false",
+    }
+    response = requests.get(url, params=params, timeout=15)
+    response.raise_for_status()
+    payload = response.json()
+    _btc_snapshot_cache["data"] = payload
+    _btc_snapshot_cache["timestamp"] = time.time()
+    return payload
+
+
+@app.get("/api/btc/history")
+def btc_history():
+    days = request.args.get("days", "max")
+    try:
+        history = _fetch_btc_history(days)
+        return jsonify({"prices": history})
+    except Exception as exc:  # noqa: BLE001
+        return jsonify({"error": f"Unable to load BTC history: {exc}"}), 502
+
+
+@app.get("/api/btc/snapshot")
+def btc_snapshot():
+    try:
+        snapshot = _fetch_btc_snapshot()
+        return jsonify(snapshot)
+    except Exception as exc:  # noqa: BLE001
+        return jsonify({"error": f"Unable to load BTC snapshot: {exc}"}), 502
 
 
 # ------------------------------

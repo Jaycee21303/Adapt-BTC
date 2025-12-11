@@ -142,6 +142,33 @@
     </section>
 
     <section class="section" data-animate>
+      <div class="section-heading flex-between">
+        <div>
+          <p class="label">BTC Price Map</p>
+          <h2>Bitcoin Price Snapshot</h2>
+          <p class="hero-sub">Preview the live BTC Price Map — zoom, pan, and jump into the full chart experience.</p>
+        </div>
+        <a class="btn btn-outline" href="{{ url_for('btc_price_map') }}">Open BTC Price Map</a>
+      </div>
+      <div class="price-preview-card">
+        <div class="preview-header">
+          <div>
+            <p class="muted">Live BTC/USD preview</p>
+            <h3 id="price-map-preview-label">Interactive mini chart</h3>
+          </div>
+          <span id="price-map-preview-status" class="status-text">Loading BTC price data…</span>
+        </div>
+        <div class="chart-wrapper compact">
+          <canvas id="price-map-preview" aria-label="BTC price map preview" role="img"></canvas>
+        </div>
+        <div class="preview-footer">
+          <p class="tip">Tip: scroll to zoom or drag to pan through recent price action.</p>
+          <a class="btn" href="{{ url_for('btc_price_map') }}">View Full Chart</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" data-animate>
       <div class="section-heading">
         <h2>Why AdaptBTC?</h2>
       </div>
@@ -165,5 +192,9 @@
     </section>
   </main>
   {% include 'components/footer.html' %}
+  <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3.0.0/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@2.0.1/dist/chartjs-plugin-zoom.min.js"></script>
+  <script defer src="{{ url_for('static', filename='js/btc-price-map.js') }}"></script>
 </body>
 </html>
