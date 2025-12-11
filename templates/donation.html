@@ -3,47 +3,106 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Donate to AdaptBTC</title>
-  <link rel="stylesheet" href="/static/donation.css">
+  <title>AdaptBTC | Donation</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/global.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/donation.css') }}">
+  <script defer src="{{ url_for('static', filename='js/main.js') }}"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
-  <script defer src="/static/donation.js"></script>
+  <script defer src="{{ url_for('static', filename='js/donation.js') }}"></script>
 </head>
-
 <body>
-  <div class="container">
-
-    <h1 class="title">⚡ Support AdaptBTC</h1>
-    <p class="subtitle">Your donation helps build free Bitcoin tools, education, and onboarding for everyone.</p>
-
-    <!-- Strike Button -->
-    <div class="card">
-      <h2>⚡ Donate with Strike</h2>
-      <p>Fastest & easiest. Supports Lightning.</p>
-      <a class="btn"
-         target="_blank"
-         href="https://pay.strike.me/adaptbtcdonate">
-         Donate via Strike
-      </a>
-    </div>
-
-    <!-- On-chain Address -->
-    <div class="card">
-      <h2>₿ On-Chain Bitcoin Donation</h2>
-
-      <p>Send BTC to:</p>
-      <code id="btcAddress">bc1qruzxu9vdh7wlh5hnzsufcw8rxt9k6eamel6wmw</code>
-
-      <canvas id="btcQR"></canvas>
-
-      <button class="btn small" onclick="copyAddress()">Copy Address</button>
-
-      <div class="statusBox">
-        <h3>Live Payment Status</h3>
-        <p id="status">Waiting for transaction…</p>
-        <p id="confirmations"></p>
+  {% include 'components/navbar.html' %}
+  <main class="container">
+    <section class="section">
+      <div class="donation-hero" data-animate>
+        <div class="hero-copy">
+          <div class="badge">Support the mission</div>
+          <h1>Help us keep AdaptBTC free for everyone.</h1>
+          <p class="hero-sub">
+            Your donation powers open Bitcoin tools, new learning modules, and onboarding resources for builders and beginners alike.
+          </p>
+          <div class="hero-actions">
+            <a class="btn" href="#onchain">Send Bitcoin</a>
+          </div>
+          <div class="impact-row">
+            <span class="pill">Education</span>
+            <span class="pill">Open tools</span>
+            <span class="pill">Community</span>
+          </div>
+        </div>
+        <div class="hero-panel">
+          <div class="donation-highlight subtle">
+            <div class="pill pill-ghost">On-chain ready</div>
+            <h3>Native BTC address</h3>
+            <p>Send Bitcoin directly with a transparent status panel.</p>
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
 
-  </div>
+    <section class="section" id="onchain" data-animate>
+      <div class="donation-card">
+        <div class="flex-between">
+          <div>
+            <p class="label">On-chain</p>
+            <h2>Send a Bitcoin transaction</h2>
+            <p>Use our native Bitcoin address, view confirmations, and track when your donation lands.</p>
+          </div>
+          <span class="badge">BTC</span>
+        </div>
+        <div class="onchain-grid">
+          <div class="onchain-body">
+            <p class="label">BTC address</p>
+            <div class="address-row">
+              <code id="btcAddress">bc1qruzxu9vdh7wlh5hnzsufcw8rxt9k6eamel6wmw</code>
+              <button class="btn btn-outline" type="button" id="copy-btc">Copy</button>
+            </div>
+            <p class="note" id="btc-copy-hint" data-default-text="Tap copy and paste into your Bitcoin wallet.">Tap copy and paste into your Bitcoin wallet.</p>
+            <div class="status-box">
+              <div class="status-header">
+                <div>
+                  <p class="label">Payment status</p>
+                  <h3 id="status">Waiting for transaction…</h3>
+                </div>
+                <div class="pill pill-ghost" id="confirmations">0 / 3 confirmations</div>
+              </div>
+              <p class="muted">Status updates refresh automatically every 10 seconds.</p>
+            </div>
+          </div>
+          <div class="qr-panel">
+            <div class="qr-box">
+              <canvas id="btcQR" aria-label="Bitcoin address QR"></canvas>
+            </div>
+            <p class="qr-hint">Scan with your Bitcoin wallet to populate the destination address automatically.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section compact" data-animate>
+      <div class="section-heading">
+        <h2>Where your donation goes</h2>
+        <p class="hero-sub">Every contribution keeps the platform free, updated, and community-driven.</p>
+      </div>
+      <div class="impact-grid">
+        <div class="impact-card">
+          <div class="icon-circle">📚</div>
+          <h3>Open education</h3>
+          <p>Funds new lesson content, quizzes, and certification paths.</p>
+        </div>
+        <div class="impact-card">
+          <div class="icon-circle">🛠️</div>
+          <h3>Tool maintenance</h3>
+          <p>Supports uptime, roadmap features, and user experience polish.</p>
+        </div>
+        <div class="impact-card">
+          <div class="icon-circle">🌍</div>
+          <h3>Community growth</h3>
+          <p>Helps expand into more regions with localized onboarding.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  {% include 'components/footer.html' %}
 </body>
 </html>
