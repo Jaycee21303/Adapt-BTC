@@ -1,5 +1,5 @@
 (function () {
-  const HISTORY_CACHE = new Map();
+  const HISTORY_CACHE = new Map(https://github.com/Jaycee21303/Adapt-BTC/pull/96/conflicts);
   let snapshotCache = null;
   const API_BASE = 'https://api.coingecko.com/api/v3';
 
@@ -30,8 +30,7 @@
       return HISTORY_CACHE.get(rangeDays);
     }
 
-    const url = `${API_BASE}/coins/bitcoin/market_chart?vs_currency=usd&days=${rangeDays}&interval=daily`;
-    const response = await fetch(url);
+    const response = await fetch(`${API_BASE}/history?days=${rangeDays}`);
     if (!response.ok) throw new Error('Failed to fetch BTC history');
 
     const data = await response.json();
@@ -45,9 +44,7 @@
   async function fetchBtcSnapshot() {
     if (snapshotCache) return snapshotCache;
 
-    const url =
-      `${API_BASE}/coins/bitcoin?localization=false&tickers=false&market_data=true&community_data=false&developer_data=false&sparkline=false`;
-    const response = await fetch(url);
+    const response = await fetch(`${API_BASE}/snapshot`);
     if (!response.ok) throw new Error('Failed to fetch BTC snapshot');
 
     const data = await response.json();
@@ -202,8 +199,9 @@
   }
 
   function registerZoomPlugin() {
-    if (window.Chart && window['chartjs-plugin-zoom']) {
-      Chart.register(window['chartjs-plugin-zoom']);
+    const zoomPlugin = window.ChartZoom || window['chartjs-plugin-zoom'];
+    if (window.Chart && zoomPlugin) {
+      Chart.register(zoomPlugin);
     }
   }
 
