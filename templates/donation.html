@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Donate to AdaptBTC</title>
+  <link rel="stylesheet" href="/static/donation.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+  <script defer src="/static/donation.js"></script>
+</head>
+
+<body>
+  <div class="container">
+
+    <h1 class="title">⚡ Support AdaptBTC</h1>
+    <p class="subtitle">Your donation helps build free Bitcoin tools, education, and onboarding for everyone.</p>
+
+    <!-- Strike Button -->
+    <div class="card">
+      <h2>⚡ Donate with Strike</h2>
+      <p>Fastest & easiest. Supports Lightning.</p>
+      <a class="btn"
+         target="_blank"
+         href="https://pay.strike.me/adaptbtcdonate">
+         Donate via Strike
+      </a>
+    </div>
+
+    <!-- On-chain Address -->
+    <div class="card">
+      <h2>₿ On-Chain Bitcoin Donation</h2>
+
+      <p>Send BTC to:</p>
+      <code id="btcAddress">bc1qruzxu9vdh7wlh5hnzsufcw8rxt9k6eamel6wmw</code>
+
+      <canvas id="btcQR"></canvas>
+
+      <button class="btn small" onclick="copyAddress()">Copy Address</button>
+
+      <div class="statusBox">
+        <h3>Live Payment Status</h3>
+        <p id="status">Waiting for transaction…</p>
+        <p id="confirmations"></p>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

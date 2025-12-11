@@ -39,6 +39,11 @@ def donate():
     return render_template("donate.html")
 
 
+@app.route("/donation")
+def donation():
+    return render_template("donation.html")
+
+
 @app.route("/learning")
 def learning():
     return render_template("learning.html")
