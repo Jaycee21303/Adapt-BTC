@@ -22,7 +22,9 @@ app.register_blueprint(portal)
 # Simple in-memory caches to reduce upstream API calls
 _btc_history_cache = {}
 _btc_snapshot_cache = {"data": None, "timestamp": 0}
+_exchange_price_cache = {"data": None, "timestamp": 0}
 _CACHE_TTL_SECONDS = 300
+_EXCHANGE_CACHE_TTL_SECONDS = 60
 
 
 # ------------------------------
@@ -76,6 +78,16 @@ def dca():
 @app.route("/tools/btc-price-map")
 def btc_price_map():
     return render_template("tools/btc-price-map.html")
+
+
+@app.route("/tools/signal-engine")
+def signal_engine():
+    return render_template("tools/signal-engine.html")
+
+
+@app.route("/tools/exchange-compare")
+def exchange_compare():
+    return render_template("tools/exchange-compare.html")
 
 
 # Static assets for DCA Tool
@@ -193,8 +205,8 @@ def submit_consulting_request():
 # ------------------------------
 
 
-def _cache_is_valid(cache_entry: dict) -> bool:
-    return time.time() - cache_entry.get("timestamp", 0) < _CACHE_TTL_SECONDS
+def _cache_is_valid(cache_entry: dict, ttl: int = _CACHE_TTL_SECONDS) -> bool:
+    return time.time() - cache_entry.get("timestamp", 0) < ttl
 
 
 def _fetch_btc_history(days: str):
@@ -253,6 +265,101 @@ def btc_snapshot():
         return jsonify(snapshot)
     except Exception as exc:  # noqa: BLE001
         return jsonify({"error": f"Unable to load BTC snapshot: {exc}"}), 502
+
+
+def _fetch_exchange_prices():
+    if _cache_is_valid(_exchange_price_cache, _EXCHANGE_CACHE_TTL_SECONDS):
+        return _exchange_price_cache["data"]
+
+    exchanges = []
+    errors = []
+
+    try:
+        response = requests.get(
+            "https://api.coinbase.com/v2/prices/BTC-USD/spot", timeout=10
+        )
+        response.raise_for_status()
+        payload = response.json()
+        amount = payload.get("data", {}).get("amount")
+        if amount:
+            exchanges.append(
+                {
+                    "exchange": "Coinbase",
+                    "price": float(amount),
+                    "source": "Coinbase spot price",
+                }
+            )
+    except Exception as exc:  # noqa: BLE001
+        errors.append(f"Coinbase: {exc}")
+
+    try:
+        response = requests.get(
+            "https://api.binance.com/api/v3/ticker/price", params={"symbol": "BTCUSDT"}, timeout=10
+        )
+        response.raise_for_status()
+        payload = response.json()
+        if "price" in payload:
+            exchanges.append(
+                {
+                    "exchange": "Binance",
+                    "price": float(payload["price"]),
+                    "source": "Binance BTC/USDT ticker",
+                }
+            )
+    except Exception as exc:  # noqa: BLE001
+        errors.append(f"Binance: {exc}")
+
+    try:
+        response = requests.get(
+            "https://api.kraken.com/0/public/Ticker", params={"pair": "XBTUSD"}, timeout=10
+        )
+        response.raise_for_status()
+        payload = response.json().get("result", {})
+        kraken_pair = next(iter(payload.values()), {})
+        last_trade = kraken_pair.get("c", [None])[0]
+        if last_trade:
+            exchanges.append(
+                {
+                    "exchange": "Kraken",
+                    "price": float(last_trade),
+                    "source": "Kraken XBT/USD ticker",
+                }
+            )
+    except Exception as exc:  # noqa: BLE001
+        errors.append(f"Kraken: {exc}")
+
+    if not exchanges:
+        raise RuntimeError("No exchange prices available")
+
+    low_price = min(item["price"] for item in exchanges)
+    high_price = max(item["price"] for item in exchanges)
+    mid_price = (low_price + high_price) / 2 if high_price and low_price else 0
+    spread_bps = ((high_price - low_price) / mid_price * 10000) if mid_price else 0
+
+    payload = {
+        "exchanges": exchanges,
+        "errors": errors,
+        "spread": {
+            "low": low_price,
+            "high": high_price,
+            "basis_points": round(spread_bps, 2),
+            "percent": round((high_price - low_price) / low_price * 100, 4),
+        },
+        "timestamp": time.time(),
+    }
+
+    _exchange_price_cache["data"] = payload
+    _exchange_price_cache["timestamp"] = time.time()
+    return payload
+
+
+@app.get("/api/exchange-prices")
+def exchange_prices():
+    try:
+        prices = _fetch_exchange_prices()
+        return jsonify(prices)
+    except Exception as exc:  # noqa: BLE001
+        return jsonify({"error": f"Unable to load exchange prices: {exc}"}), 502
 
 
 # ------------------------------
