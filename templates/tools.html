@@ -37,32 +37,74 @@
       </div>
       <div class="tools-grid">
         <div class="tool-card highlight">
-          <h3>⚡ Live Bitcoin Feed</h3>
-          <p>Watch Bitcoin transactions in real-time.</p>
-          <a class="btn" href="{{ url_for('live_feed') }}">Open Tool</a>
+          <div class="tool-card-header">
+            <span class="pill pill-soft">Live data</span>
+            <span class="muted">Streaming</span>
+          </div>
+          <div class="tool-card-body">
+            <h3>⚡ Live Bitcoin Feed</h3>
+            <p>Watch Bitcoin transactions in real-time.</p>
+          </div>
+          <div class="tool-card-footer">
+            <a class="btn" href="{{ url_for('live_feed') }}">Open Tool</a>
+            <p class="muted">Latency tuned for transparency.</p>
+          </div>
         </div>
         <div class="tool-card highlight">
-          <h3>Signature Signal Engine</h3>
-          <p>Our flagship conviction model blends momentum, liquidity, and stability for live guidance.</p>
-          <a class="btn" href="{{ url_for('signal_engine') }}">Open Engine</a>
-          <p class="muted">Personalized accumulation playbooks powered by live data.</p>
+          <div class="tool-card-header">
+            <span class="pill pill-soft">Guidance</span>
+            <span class="muted">Conviction model</span>
+          </div>
+          <div class="tool-card-body">
+            <h3>Signature Signal Engine</h3>
+            <p>Our flagship conviction model blends momentum, liquidity, and stability for live guidance.</p>
+          </div>
+          <div class="tool-card-footer">
+            <a class="btn" href="{{ url_for('signal_engine') }}">Open Engine</a>
+            <p class="muted">Personalized accumulation playbooks powered by live data.</p>
+          </div>
         </div>
         <div class="tool-card highlight">
-          <h3>BTC DCA Calculator</h3>
-          <p>Plan your Bitcoin accumulation over time.</p>
-          <a class="btn" href="{{ url_for('dca') }}">Open Tool</a>
+          <div class="tool-card-header">
+            <span class="pill pill-soft">Planning</span>
+            <span class="muted">DCA scenarios</span>
+          </div>
+          <div class="tool-card-body">
+            <h3>BTC DCA Calculator</h3>
+            <p>Plan your Bitcoin accumulation over time.</p>
+          </div>
+          <div class="tool-card-footer">
+            <a class="btn" href="{{ url_for('dca') }}">Open Tool</a>
+            <p class="muted">Flexible cadence and horizon presets.</p>
+          </div>
         </div>
         <div class="tool-card highlight">
-          <h3>BTC Price Map</h3>
-          <p>Explore Bitcoin’s price history on an interactive chart.</p>
-          <a class="btn" href="{{ url_for('btc_price_map') }}">Open Chart</a>
-          <p class="muted">Live price data, all-time history.</p>
+          <div class="tool-card-header">
+            <span class="pill pill-soft">Visualization</span>
+            <span class="muted">Price history</span>
+          </div>
+          <div class="tool-card-body">
+            <h3>BTC Price Map</h3>
+            <p>Explore Bitcoin’s price history on an interactive chart.</p>
+          </div>
+          <div class="tool-card-footer">
+            <a class="btn" href="{{ url_for('btc_price_map') }}">Open Chart</a>
+            <p class="muted">Live price data, all-time history.</p>
+          </div>
         </div>
         <div class="tool-card highlight">
-          <h3>Exchange Price Comparator</h3>
-          <p>See Coinbase, Binance, and Kraken side by side with auto-calculated spreads.</p>
-          <a class="btn" href="{{ url_for('exchange_compare') }}">Check Prices</a>
-          <p class="muted">Server-side polling avoids browser CORS issues.</p>
+          <div class="tool-card-header">
+            <span class="pill pill-soft">Benchmarks</span>
+            <span class="muted">Exchange spreads</span>
+          </div>
+          <div class="tool-card-body">
+            <h3>Exchange Price Comparator</h3>
+            <p>See Coinbase, Binance, and Kraken side by side with auto-calculated spreads.</p>
+          </div>
+          <div class="tool-card-footer">
+            <a class="btn" href="{{ url_for('exchange_compare') }}">Check Prices</a>
+            <p class="muted">Server-side polling avoids browser CORS issues.</p>
+          </div>
         </div>
       </div>
     </section>
