@@ -1,6 +1,11 @@
 (function () {
   const HISTORY_CACHE = new Map();
+  const HISTORY_PROMISES = new Map();
+  const LAST_KNOWN_HISTORY = new Map();
+
   let snapshotCache = null;
+  let snapshotPromise = null;
+  let lastKnownSnapshot = null;
   const CHART_INSTANCES = new Map();
   const API_BASE = 'https://api.coingecko.com/api/v3';
 
@@ -63,11 +68,23 @@
     throw new Error('Failed to fetch JSON');
   }
 
-  async function fetchHistoricalPrices(rangeDays = 'max') {
-    if (HISTORY_CACHE.has(rangeDays)) {
-      return HISTORY_CACHE.get(rangeDays);
-    }
+  function normalizeHistory(prices) {
+    if (!Array.isArray(prices)) return [];
+    return prices.map(([timestamp, price]) => ({ x: timestamp, y: price }));
+  }
 
+  function getHistoryFromCache(rangeDays) {
+    if (HISTORY_CACHE.has(rangeDays)) return HISTORY_CACHE.get(rangeDays);
+    if (LAST_KNOWN_HISTORY.has(rangeDays)) return LAST_KNOWN_HISTORY.get(rangeDays);
+    return null;
+  }
+
+  function cacheHistory(rangeDays, data) {
+    HISTORY_CACHE.set(rangeDays, data);
+    LAST_KNOWN_HISTORY.set(rangeDays, data);
+  }
+
+  async function fetchHistoryRange(rangeDays = 'max') {
     const backendUrl = `/api/btc/history?days=${rangeDays}`;
     const fallbackUrl = `${API_BASE}/coins/bitcoin/market_chart?vs_currency=usd&days=${rangeDays}`;
 
@@ -81,34 +98,93 @@
 
     if (!Array.isArray(data?.prices)) throw new Error('Invalid BTC history response');
 
-    const parsed = data.prices.map(([timestamp, price]) => ({ x: timestamp, y: price }));
-    HISTORY_CACHE.set(rangeDays, parsed);
+    const parsed = normalizeHistory(data.prices);
+    cacheHistory(rangeDays, parsed);
     return parsed;
+  }
+
+  async function fetchFullHistory() {
+    if (HISTORY_CACHE.has('max')) return HISTORY_CACHE.get('max');
+    if (HISTORY_PROMISES.has('max')) return HISTORY_PROMISES.get('max');
+
+    const promise = fetchHistoryRange('max').finally(() => {
+      HISTORY_PROMISES.delete('max');
+    });
+
+    HISTORY_PROMISES.set('max', promise);
+    return promise;
+  }
+
+  async function fetchHistoricalPrices(rangeDays = 'max') {
+    const cached = getHistoryFromCache(rangeDays);
+    if (cached) return cached;
+
+    // Reuse the full history dataset for derived ranges to avoid multiple network calls
+    const numericDays = Number(rangeDays);
+    if (Number.isFinite(numericDays) && numericDays > 0) {
+      try {
+        const fullHistory = await fetchFullHistory();
+        const cutoff = Date.now() - numericDays * 24 * 60 * 60 * 1000;
+        const filtered = fullHistory.filter((point) => point.x >= cutoff);
+
+        if (filtered.length >= 2) {
+          cacheHistory(rangeDays, filtered);
+          return filtered;
+        }
+      } catch (error) {
+        console.warn('Falling back to direct range fetch after full history error', error);
+      }
+    }
+
+    if (HISTORY_PROMISES.has(rangeDays)) return HISTORY_PROMISES.get(rangeDays);
+
+    const promise = fetchHistoryRange(rangeDays)
+      .catch((error) => {
+        const fallbackData = getHistoryFromCache(rangeDays);
+        if (fallbackData) return fallbackData;
+        throw error;
+      })
+      .finally(() => {
+        HISTORY_PROMISES.delete(rangeDays);
+      });
+
+    HISTORY_PROMISES.set(rangeDays, promise);
+    return promise;
   }
 
   async function fetchBtcSnapshot() {
     if (snapshotCache) return snapshotCache;
+    if (snapshotPromise) return snapshotPromise;
 
     const backendUrl = '/api/btc/snapshot';
     const fallbackUrl = `${API_BASE}/coins/bitcoin?localization=false&tickers=false&community_data=false&developer_data=false&sparkline=false`;
 
-    let data;
-    try {
-      data = await fetchJsonWithRetry(backendUrl);
-    } catch (error) {
-      console.warn('Backend BTC snapshot failed, falling back to CoinGecko', error);
-      data = await fetchJsonWithRetry(fallbackUrl);
-    }
+    snapshotPromise = fetchJsonWithRetry(backendUrl)
+      .catch((error) => {
+        console.warn('Backend BTC snapshot failed, falling back to CoinGecko', error);
+        return fetchJsonWithRetry(fallbackUrl);
+      })
+      .then((data) => {
+        const market = data?.market_data || {};
+        snapshotCache = {
+          price: market.current_price?.usd ?? null,
+          change24h: market.price_change_percentage_24h ?? null,
+          ath: market.ath?.usd ?? null,
+          athDate: market.ath_date?.usd ? new Date(market.ath_date.usd) : null,
+          lastUpdated: data?.last_updated ? new Date(data.last_updated) : null,
+        };
+        lastKnownSnapshot = snapshotCache;
+        return snapshotCache;
+      })
+      .catch((error) => {
+        if (lastKnownSnapshot) return lastKnownSnapshot;
+        throw error;
+      })
+      .finally(() => {
+        snapshotPromise = null;
+      });
 
-    const market = data?.market_data || {};
-    snapshotCache = {
-      price: market.current_price?.usd ?? null,
-      change24h: market.price_change_percentage_24h ?? null,
-      ath: market.ath?.usd ?? null,
-      athDate: market.ath_date?.usd ? new Date(market.ath_date.usd) : null,
-      lastUpdated: data?.last_updated ? new Date(data.last_updated) : null,
-    };
-    return snapshotCache;
+    return snapshotPromise;
   }
 
   function applySummary(snapshot, summarySelectors = {}) {
@@ -275,6 +351,11 @@
 
   document.addEventListener('DOMContentLoaded', () => {
     registerZoomPlugin();
+
+    // Prefetch full history and snapshot so the first render is instant and resilient
+    Promise.all([fetchFullHistory(), fetchBtcSnapshot()]).catch((error) => {
+      console.warn('Prefetch error (continuing with lazy load)', error);
+    });
 
     const mainRangeButtons = document.querySelectorAll('.range-btn');
     let activeRange = 'max';
